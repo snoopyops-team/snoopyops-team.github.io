@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on SnoopyOPS</title>
+    <link>https://www.snoopyops.top/categories/kubernetes/</link>
+    <description>Recent content in Kubernetes on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 06 Dec 2023 07:44:38 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通过kubeasz快速部署Kubernetes</title>
+      <link>https://www.snoopyops.top/posts/kubernetes/%E9%80%9A%E8%BF%87kubeasz%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2kubernetes/</link>
+      <pubDate>Wed, 06 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/kubernetes/%E9%80%9A%E8%BF%87kubeasz%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2kubernetes/</guid>
+      <description>在一些没有云环境的场景，比如自建机房中，当我们需要使用Kubernetes时，需要手动部署。如果通过二进制部署，部署过程相当繁琐。我们可以通过kubeasz工具</description>
+    </item>
+    
+    <item>
+      <title>1. Kubernetes集群搭建</title>
+      <link>https://www.snoopyops.top/posts/kubernetes/1.-kubernete%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 11 May 2023 18:24:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/kubernetes/1.-kubernete%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid>
+      <description>Kubernete集群搭建 一、环境准备 1. K8S核心组件 K8S的逻辑架构图如下： etcd：保存了整个集群的状态，就是一个数据库。 1.1 主控（master）节点 apiserver 提供 了</description>
+    </item>
+    
+  </channel>
+</rss>

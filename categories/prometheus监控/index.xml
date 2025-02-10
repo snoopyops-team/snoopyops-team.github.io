@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prometheus监控 on SnoopyOPS</title>
+    <link>https://www.snoopyops.top/categories/prometheus%E7%9B%91%E6%8E%A7/</link>
+    <description>Recent content in Prometheus监控 on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 19 Feb 2024 18:23:48 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/categories/prometheus%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blackbox网络监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/blackbox%E7%BD%91%E7%BB%9C%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Mon, 19 Feb 2024 18:23:48 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/blackbox%E7%BD%91%E7%BB%9C%E7%9B%91%E6%8E%A7/</guid>
+      <description>背景 公司服务器ng-ec-pay-1到 三方VPN 多次中断，由于没有监控及告警，均没能再第一时间处理故障。为了及时发现问题并处理，因此需要通过 Prometheus 对 VPN 链路进行监控。</description>
+    </item>
+    
+    <item>
+      <title>Prometheus监控华为云服务</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 18 Dec 2023 14:39:50 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1/</guid>
+      <description>公司内使用部分华为云云服务，针对云服务可以采用云监控服务CES进行监控。但是有较多的人员需要看监控图表，这就需要开通很多华为云账号。所以决定将部分华为云服务的监</description>
+    </item>
+    
+    <item>
+      <title>GPU监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/gpu%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Wed, 13 Dec 2023 15:48:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/gpu%E7%9B%91%E6%8E%A7/</guid>
+      <description>公司内有一批GPU服务器，需要针对GPU使用的情况进行监控。 通过nvidia_gpu_exporter可实现对GPU的监控。 安装nvidia_gpu_expor</description>
+    </item>
+    
+    <item>
+      <title>MinIO监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/minio%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Wed, 13 Dec 2023 15:46:59 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/minio%E7%9B%91%E6%8E%A7/</guid>
+      <description>MinIO配置 minio自身提供了Prometheus监控的指标数据，分为两种形式获取： 开放形式获取(不需要任何认证) 需要通过认证获取 通常我们会采用通过认证的方</description>
+    </item>
+    
+    <item>
+      <title>ES集群监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/es%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 08 Dec 2023 16:10:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/es%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装elasticsearch_exporter 公司内部有elasticsearch集群，针对es集群可通过elasticsearch_exporter监控。 在</description>
+    </item>
+    
+    <item>
+      <title>主机监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E4%B8%BB%E6%9C%BA%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 24 Nov 2023 19:40:14 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E4%B8%BB%E6%9C%BA%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装node-exporter 脚本地址，点击下载。 下载安装 1 2 3 4 cd /usr/local/src wget https://github.com/prometheus/node_exporter/releases/download/v0.18.0/node_exporter-0.18.0.linux-amd64.tar.gz tar xf node_exporter-0.18.0.linux-amd64.tar.gz -C /opt/ ln -s /opt/node_exporter-0.18.0.linux-amd64/ /opt/node_exporter 以ops用户启动，需要先创建用户并授权。 1 2 useradd ops chown -R ops. /opt/node_exporter* 服务启动 sy</description>
+    </item>
+    
+    <item>
+      <title>进程监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E8%BF%9B%E7%A8%8B%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Thu, 16 Nov 2023 18:46:57 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E8%BF%9B%E7%A8%8B%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装process-exporter 脚本地址，点击下载。 下载安装。 1 2 3 4 cd /usr/local/src wget https://github.com/ncabatoff/process-exporter/releases/download/v0.7.10/process-exporter-0.7.10.linux-amd64.tar.gz tar xf process-exporter-0.7.10.linux-amd64.tar.gz -C /usr/local/ ln -s /usr/local/process-exporter-0.7.10.linux-amd64/ /usr/local/process-exporter 配置监控所有进程。 1 2 3 4 5 6 cat &amp;gt; /usr/local/process-exporter/process-all.yaml &amp;lt;&amp;lt; EOF process_names: - name: &amp;#34;{{.Comm}}&amp;#34; cmdline: - &amp;#39;.+&amp;#39; EOF 若只</description>
+    </item>
+    
+    <item>
+      <title>RabbitMQ监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/rabbitmq%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Tue, 14 Nov 2023 11:33:16 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/rabbitmq%E7%9B%91%E6%8E%A7/</guid>
+      <description>RabbitMQ安装rabbitmq_prometheus插件后，可支持Prometheus监控。 可参考官方文档。 推荐直接使用官方方案，以下方案为三方方案。 背景</description>
+    </item>
+    
+  </channel>
+</rss>

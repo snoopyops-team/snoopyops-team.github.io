@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux基础 on SnoopyOPS</title>
+    <link>https://www.snoopyops.top/tags/linux%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in Linux基础 on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Jan 2024 15:44:49 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/linux%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux简介</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Thu, 04 Jan 2024 15:44:49 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/</guid>
+      <description>Linux是什么 Linux的诞生可以追溯到1991年。那年，一位名叫Linus Torvalds（林纳斯·托瓦兹）的大学生对于已有的操作系统并不满意。于是开始着手</description>
+    </item>
+    
+    <item>
+      <title>搭建YUM源服务器</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 28 Dec 2023 15:09:42 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>为了提高软件包的下载速度，减轻网络负担，提高系统的安全性，我们可自建yum源服务器。 本地yum服务器：自己准备软件安装包，通过ftp或http的方式共享给其他主</description>
+    </item>
+    
+    <item>
+      <title>系统初始化</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <pubDate>Wed, 06 Dec 2023 07:52:49 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <description>当我们安装完操作系统后，通常会做一些初始化的操作才会将服务器投入到生产环境中使用。 在使用云环境时，我们也可以将做完初始化的操作系统封装为镜像，后续通过自己封装的</description>
+    </item>
+    
+    <item>
+      <title>定时任务</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Mon, 12 Jun 2023 16:19:32 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description>crond计划任务 Crontab配置文件记录了时间周期的含义 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 [root@localhost ~]# cat /etc/crontab SHELL=/bin/bash # 执行的命令解释器 PATH=/sbin:/bin:/usr/sbin:/usr/bin # 环境变量 MAILTO=root # 邮件发送给谁 # For details see man 4 crontabs</description>
+    </item>
+    
+    <item>
+      <title>进程管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 04 Jun 2023 12:11:39 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+      <description>认识进程 进程 进程（Process）是指正在运行的程序的实例。当一个程序被执行时，操作系统会为该程序创建一个新的进程，并为其分配所需的资源，如内存空间、文件描述符</description>
+    </item>
+    
+    <item>
+      <title>磁盘管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 03 Jun 2023 13:55:19 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</guid>
+      <description>本章节主要解释磁盘分区，磁盘阵列等磁盘相关知识。 磁盘分区 为主机分别添加一个1T和4T的磁盘。 可以通过查看/dev下面的设备或者lsblk命令确认磁盘是否添加成功</description>
+    </item>
+    
+    <item>
+      <title>Linux软件安装</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 01 Jun 2023 12:15:27 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/</guid>
+      <description>当我们需要在CentOS系统上安装软件时，通常可以通过RPM、yum和源码安装的几种方式安装。 RPM RPM是 Redhat Package Manager 的缩写，由红帽开发用于软件包的安装升级卸载与查询的</description>
+    </item>
+    
+    <item>
+      <title>压缩与解压</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/</link>
+      <pubDate>Wed, 31 May 2023 17:09:34 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/</guid>
+      <description>在Linux常用的压缩格式如下表： 格式 压缩工具 .zip zip压缩工具。 .gz gzip压缩工具，只能压缩文件，会删除原文件，通常配合tar使用。 .bz2 bzip2压缩工具，只能压</description>
+    </item>
+    
+    <item>
+      <title>文件查找</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/</link>
+      <pubDate>Wed, 31 May 2023 11:55:28 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/</guid>
+      <description>文件查找常用场景： 忘记文件所在的具体位置，根据文件名模糊查询。 查找N天前的日志并删除，释放磁盘空间。 find命令可以根据不同的条件来进行查找文件。我们可以根据文</description>
+    </item>
+    
+    <item>
+      <title>Linux输入与输出</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</link>
+      <pubDate>Tue, 30 May 2023 18:49:29 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</guid>
+      <description>输入与输出 当运行一个程序时通常会自动打开三个标准文件，分别是标准输入、标准输出、错误输出。 在Linux中，一切皆文件。在/dev下有些关于输入与输出的文件。 1 2</description>
+    </item>
+    
+    <item>
+      <title>Linux权限管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 27 May 2023 19:13:18 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</guid>
+      <description>权限概述 什么是Linux权限 在Linux系统中，权限是控制用户对文件或目录进行访问的一种机制。这种权限定义了谁可以访问文件，以及他们可以做什么。 为什么要有权限 保</description>
+    </item>
+    
+    <item>
+      <title>用户与组</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/</link>
+      <pubDate>Wed, 24 May 2023 14:57:18 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/</guid>
+      <description>用户相关概念 认识用户 在Linux系统中，用户和组是用于管理和控制系统资源访问权限的重要概念。 用户（User）：是指系统中的账号。每个用户都有一个唯一的用户名和用</description>
+    </item>
+    
+    <item>
+      <title>Vim编辑器</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/</link>
+      <pubDate>Mon, 22 May 2023 12:14:38 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/</guid>
+      <description>认识vim vi和vim vi和vim都是Linux系统中的编辑器。 vim是vi的升级版本，兼容vi的所有指令，并具有一些新的特性，如多级撤消、易用性、语法加亮、可</description>
+    </item>
+    
+    <item>
+      <title>Linux文件操作</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 21 May 2023 20:13:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>本章节，我们将认识 Linux 系统中常用的文件操作相关命令。 路径切换 我们可以通过cd 命令切换目录。 cd命令常用的参数如下: 命令 解释 cd ~ 切换回当前用户的家目录，注意：roo</description>
+    </item>
+    
+    <item>
+      <title>Linux目录结构</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sat, 20 May 2023 18:04:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>目录简介 在Linux中一切皆文件，这些文件按照一定的规则存放在不同的目录当中。为了能够快速找到文件及以后的操作的规范性，我们必须记清楚Linux的目录结构。 Wi</description>
+    </item>
+    
+    <item>
+      <title>认识Bash Shell</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/</link>
+      <pubDate>Thu, 11 May 2023 17:43:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/</guid>
+      <description>初识Shell Shell就是终端程序的统称，它充当了人与内核（硬件）之间的翻译官，将用户输入的命令翻译给内核，内核处理完成之后，将结果返回。现在许多主流Linu</description>
+    </item>
+    
+    <item>
+      <title>虚拟机安装CentOS7</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/</link>
+      <pubDate>Thu, 11 May 2023 14:43:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/</guid>
+      <description>本章节我们将学习如何安装创建一个Linux学习环境。 在初学Linux阶段，我们通常会使用虚拟机运行一个Linux的操作系统以供练习。 在windows上常用的虚拟</description>
+    </item>
+    
+  </channel>
+</rss>

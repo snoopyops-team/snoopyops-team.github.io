@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="Linux基础 - https://www.snoopyops.top/tags/linux%E5%9F%BA%E7%A1%80/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>Linux基础</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">Linux基础</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+<div class="container-main container-list">
+    <div class="toc"><div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div><div class="list post-list">
+             
+            <div class="count">文章列表： 17 篇</div>
+            
+            
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux文件操作 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux权限管理 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux目录结构 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux简介 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux软件安装 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Linux输入与输出 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Vim编辑器 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 压缩与解压 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 定时任务 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 搭建YUM源服务器 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 文件查找 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 用户与组 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 磁盘管理 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 系统初始化 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 虚拟机安装CentOS7 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 认识Bash Shell <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> 进程管理 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+            </div>
+    </div>
+
+    <div class="content">
+        
+    </div>
+
+     
+        
+    
+
+    <div class="list list-single-col ">
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2024-01-04</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux简介 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2024-01-04 ~ 2024-01-09
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">Linux是什么 Linux的诞生可以追溯到1991年。那年，一位名叫Linus Torvalds（林纳斯·托瓦兹）的大学生对于已有的操作系统并不满意。于是开始着手</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-12-28</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 搭建YUM源服务器 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-12-28 ~ 2023-12-28
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">为了提高软件包的下载速度，减轻网络负担，提高系统的安全性，我们可自建yum源服务器。 本地yum服务器：自己准备软件安装包，通过ftp或http的方式共享给其他主</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-12-06</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 系统初始化 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-12-06 ~ 2023-12-26
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">当我们安装完操作系统后，通常会做一些初始化的操作才会将服务器投入到生产环境中使用。 在使用云环境时，我们也可以将做完初始化的操作系统封装为镜像，后续通过自己封装的</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-06-12</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 定时任务 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-06-12 ~ 2024-01-10
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">crond计划任务 Crontab配置文件记录了时间周期的含义 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 [root@localhost ~]# cat /etc/crontab SHELL=/bin/bash # 执行的命令解释器 PATH=/sbin:/bin:/usr/sbin:/usr/bin # 环境变量 MAILTO=root # 邮件发送给谁 # For details see man 4 crontabs</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-06-04</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 进程管理 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-06-04 ~ 2024-01-16
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">认识进程 进程 进程（Process）是指正在运行的程序的实例。当一个程序被执行时，操作系统会为该程序创建一个新的进程，并为其分配所需的资源，如内存空间、文件描述符</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-06-03</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 磁盘管理 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-06-03 ~ 2024-01-10
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">本章节主要解释磁盘分区，磁盘阵列等磁盘相关知识。 磁盘分区 为主机分别添加一个1T和4T的磁盘。 可以通过查看/dev下面的设备或者lsblk命令确认磁盘是否添加成功</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-06-01</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux软件安装 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-06-01 ~ 2024-01-10
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">当我们需要在CentOS系统上安装软件时，通常可以通过RPM、yum和源码安装的几种方式安装。 RPM RPM是 Redhat Package Manager 的缩写，由红帽开发用于软件包的安装升级卸载与查询的</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-31</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 压缩与解压 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-31 ~ 2024-01-16
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">在Linux常用的压缩格式如下表： 格式 压缩工具 .zip zip压缩工具。 .gz gzip压缩工具，只能压缩文件，会删除原文件，通常配合tar使用。 .bz2 bzip2压缩工具，只能压</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-31</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 文件查找 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-31 ~ 2024-02-26
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">文件查找常用场景： 忘记文件所在的具体位置，根据文件名模糊查询。 查找N天前的日志并删除，释放磁盘空间。 find命令可以根据不同的条件来进行查找文件。我们可以根据文</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-30</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux输入与输出 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-30 ~ 2024-01-02
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">输入与输出 当运行一个程序时通常会自动打开三个标准文件，分别是标准输入、标准输出、错误输出。 在Linux中，一切皆文件。在/dev下有些关于输入与输出的文件。 1 2</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-27</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux权限管理 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-27 ~ 2023-12-26
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">权限概述 什么是Linux权限 在Linux系统中，权限是控制用户对文件或目录进行访问的一种机制。这种权限定义了谁可以访问文件，以及他们可以做什么。 为什么要有权限 保</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-24</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 用户与组 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-24 ~ 2023-12-18
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">用户相关概念 认识用户 在Linux系统中，用户和组是用于管理和控制系统资源访问权限的重要概念。 用户（User）：是指系统中的账号。每个用户都有一个唯一的用户名和用</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-22</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Vim编辑器 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-22 ~ 2023-12-23
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">认识vim vi和vim vi和vim都是Linux系统中的编辑器。 vim是vi的升级版本，兼容vi的所有指令，并具有一些新的特性，如多级撤消、易用性、语法加亮、可</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-21</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux文件操作 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-21 ~ 2023-12-23
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">本章节，我们将认识 Linux 系统中常用的文件操作相关命令。 路径切换 我们可以通过cd 命令切换目录。 cd命令常用的参数如下: 命令 解释 cd ~ 切换回当前用户的家目录，注意：roo</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-20</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> Linux目录结构 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-20 ~ 2023-11-16
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">目录简介 在Linux中一切皆文件，这些文件按照一定的规则存放在不同的目录当中。为了能够快速找到文件及以后的操作的规范性，我们必须记清楚Linux的目录结构。 Wi</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-11</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 认识Bash Shell <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-11 ~ 2024-01-05
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">初识Shell Shell就是终端程序的统称，它充当了人与内核（硬件）之间的翻译官，将用户输入的命令翻译给内核，内核处理完成之后，将结果返回。现在许多主流Linu</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2023-05-11</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 虚拟机安装CentOS7 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2023-05-11 ~ 2023-11-16
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div><div class="summary">本章节我们将学习如何安装创建一个Linux学习环境。 在初学Linux阶段，我们通常会使用虚拟机运行一个Linux的操作系统以供练习。 在windows上常用的虚拟</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+    </div>
+
+    <div class="container-pagination">
+    
+    </div>
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

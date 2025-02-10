@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="Prometheus - https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>Prometheus</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">Prometheus</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            2024-01-02&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2024-02-06&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            3729 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            8 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/prometheus">Prometheus</a>
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#监控概述">监控概述</a>
+      <ul>
+        <li><a href="#什么是监控">什么是监控</a></li>
+        <li><a href="#为什么做监控">为什么做监控</a></li>
+        <li><a href="#监控怎么做">监控怎么做</a></li>
+      </ul>
+    </li>
+    <li><a href="#初识prometheus">初识Prometheus</a>
+      <ul>
+        <li><a href="#历史">历史</a></li>
+        <li><a href="#架构图">架构图</a></li>
+        <li><a href="#组件">组件</a></li>
+        <li><a href="#优缺点">优缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#prometheu部署">Prometheu部署</a>
+      <ul>
+        <li><a href="#快速部署">快速部署</a></li>
+        <li><a href="#初识配置文件">初识配置文件</a></li>
+        <li><a href="#认识metrics">认识metrics</a></li>
+        <li><a href="#自动化生成的标签">自动化生成的标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#主机监控">主机监控</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#下载及安装">下载及安装</a></li>
+        <li><a href="#添加数据源">添加数据源</a></li>
+        <li><a href="#出图">出图</a></li>
+        <li><a href="#集成ldap">集成ldap</a></li>
+        <li><a href="#权限控制">权限控制</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#部署与配置">部署与配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#基于文件的服务发现">基于文件的服务发现</a></li>
+    <li><a href="#基于consul的服务发现">基于consul的服务发现</a>
+      <ul>
+        <li><a href="#数百台主机接入监控">数百台主机接入监控</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#进程监控">进程监控</a>
+      <ul>
+        <li><a href="#nginx监控">Nginx监控</a></li>
+        <li><a href="#ldap监控">LDAP监控</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql监控">MySQL监控</a></li>
+    <li><a href="#jvm监控">jvm监控</a>
+      <ul>
+        <li><a href="#windows监控">windows监控</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h2 id="监控概述">监控概述</h2>
+<h3 id="什么是监控">什么是监控</h3>
+<p>监控是整个运维乃至整个产品生命周期中最重要的一环，事前及时预警发现故障，事后提供详实的数据用于追查定位问题。</p>
+<p>目前业界有很多不错的开源产品可供选择。选择一款开源的监控系统，是一个省时省力、效率最高的方案。当然，对监控不是很明白的朋友们，看了以下文章可能会对监控整个体系有比较深刻的认识。</p>
+<h3 id="为什么做监控">为什么做监控</h3>
+<h3 id="监控怎么做">监控怎么做</h3>
+<h2 id="初识prometheus">初识Prometheus</h2>
+<h3 id="历史">历史</h3>
+<p>起源：<code>Prometheus</code>项目最初由<code>SoundCloud</code>的工程师团队于2012年开始开发。</p>
+<p>开源发布：2015年，<code>Prometheus</code>首次作为开源项目发布，并迅速获得了广泛的关注和采用。<code>Prometheus</code>的开源模型吸引了全球开发者社区的参与和贡献，使得项目得以快速发展和改进。</p>
+<p>CNCF孵化：2016年，<code>Prometheus</code>加入了云原生计算基金会（<code>CNCF</code>），成为其维护的项目之一。</p>
+<p>CNCF毕业：2018 年 ，云原生计算基金会（<code>CNCF</code>）宣布开源监控工具<code>Prometheus</code>已从孵化状态进入毕业状态。要到达这一评级，一个项目必须展示其增长，文档、有组织的治理流程、对社区可持续性和包容性的承诺。</p>
+<h3 id="架构图">架构图</h3>
+<p><img src="https://images.snoopyops.top/architecture.png" alt="Prometheus架构"></p>
+<h3 id="组件">组件</h3>
+<p>Prometheus server：<code>Prometheus</code>组件中的核心部分，负责实现对监控数据的获取，存储以及查询。</p>
+<p>Exporter：将被监控的服务的数据通过<code>HTTP</code>服务的形式暴露给<code>Prometheus Server</code>。</p>
+<p>Alertnamager：如果满足定义的告警规则被触发，就会产生一条告警，<code>AlertManager</code>用户管理后续的告警流程，如告警渠道，告警抑制与静默等。</p>
+<p>Pushgateway：由于<code>Prometheus</code>数据采集基于<code>Pull</code>模型进行设计，因此在网络环境的配置上必须要让<code>Prometheus Server</code>能够直接与<code>Exporter</code>进行通信。 当这种网络需求无法直接满足时，就可以利用<code>PushGateway</code>来进行中转。</p>
+<h3 id="优缺点">优缺点</h3>
+<p><strong>优点</strong></p>
+<ul>
+<li>
+<p>部署极为简单且组建较少，大大缩短监控部署时间。</p>
+</li>
+<li>
+<p>天生支持容器监控。</p>
+</li>
+<li>
+<p>周边插件非常丰富，大量的<code>exporter</code>拿来即用。</p>
+</li>
+<li>
+<p>大量的服务开始原生支持<code>Prometheus</code>，如<code>Apollo</code>/<code>RabbitMQ</code>等。</p>
+</li>
+<li>
+<p>采用时序型数据库，查询快人一步。</p>
+</li>
+<li>
+<p>开源且社区活跃，<code>bug</code>修复快。</p>
+</li>
+<li>
+<p>非常方便地在应用程序中进行集成，研发同学可讲自己的应用程序纳入到<code>Prometheus</code>监控中。</p>
+</li>
+<li>
+<p>结合<code>Grafana</code>出图美观，汇报首选。</p>
+</li>
+</ul>
+<p><strong>不足</strong></p>
+<ul>
+<li>中文文档匮乏，自学成本高。</li>
+<li>监控数据需要通过数学计算得出，少数时候需要自己研究指标含义及修改数学计算公式。</li>
+<li>对集群支持较差。</li>
+</ul>
+<h2 id="prometheu部署">Prometheu部署</h2>
+<h3 id="快速部署">快速部署</h3>
+<p><code>Prometheus</code>下载地址为<code>https://prometheus.io/download/</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/local/src/
+</span></span><span style="display:flex;"><span>wget https://github.com/prometheus/prometheus/releases/download/v2.48.1/prometheus-2.48.1.linux-amd64.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解压<code>Prometheus</code>安装包。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tar xf prometheus-2.48.1.linux-amd64.tar.gz -C /opt/
+</span></span><span style="display:flex;"><span>ln -s /opt/prometheus-2.48.1.linux-amd64/ /opt/prometheus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建用户，用于运行<code>Prometheus</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd -M prometheus
+</span></span><span style="display:flex;"><span>chown -R prometheus. /opt/prometheus*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置<code>systemd</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat &gt; /etc/systemd/system/prometheus.service <span style="color:#d14">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Description=Prometheus Server
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Documentation=https://prometheus.io/docs/introduction/overview/
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">After=network-online.target
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">User=prometheus
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Group=prometheus
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Restart=on-failure
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">ExecStart=/opt/prometheus/prometheus \
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">  --config.file=/opt/prometheus/prometheus.yml \
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">  --storage.tsdb.path=/opt/prometheus/data \
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">  --storage.tsdb.retention.time=30d
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">EOF</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务，并加入开机自启。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl start prometheus.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> prometheus.service
+</span></span><span style="display:flex;"><span>systemctl status prometheus.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>prometheus</code> 使用的是 <code>9090</code> 端口。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -lnpt | grep <span style="color:#099">9090</span>
+</span></span><span style="display:flex;"><span>tcp6       <span style="color:#099">0</span>      <span style="color:#099">0</span> :::9090                 :::*                    LISTEN      8121/prometheus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过浏览器访问<code>Prometheus</code>，我看可查看监控。如我们可以一下语句查询<code>healthy</code>接口被请求的次数。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">handler</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/-/healthy&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="初识配置文件">初识配置文件</h3>
+<p>我们是如何获取到<code>Prometheus</code>相关的监控数据的呢？</p>
+<p>在启动<code>Promethues</code>的时候，我们指定了配置文件的路径。我们一起来看看配置文件的内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>grep -Ev &#34;^ *#|^$&#34; /opt/prometheus/prometheus.yml<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">global</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">scrape_interval</span>:<span style="color:#bbb"> </span>15s<span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># 设置采集数据时间间隔，默认为1分钟采集一次。</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">evaluation_interval</span>:<span style="color:#bbb"> </span>15s<span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># 假设CPU超过80%报警，每15S会去做一次判断，默认1分钟判断一次。</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">alerting</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">alertmanagers</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">rule_files</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">scrape_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#000080">job_name</span>:<span style="color:#bbb"> </span><span style="color:#d14">&#34;prometheus&#34;</span><span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># 包含相同类型的实例instance。</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb"> </span>[<span style="color:#d14">&#34;localhost:9090&#34;</span>]<span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># 定义要被监控的节点，可以是多个，也叫instance。</span><span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Prometheus</code>采集精度可以精确到<code>1-5</code>秒，提升监控的精细程度。但是过于频繁的采集，会带来存储成本的增加及性能瓶颈。</p>
+<p>根据以上配置文件，<code>Prometheus</code>会每隔<code>15s</code>去请求一次<code>http://localhost:9090/metrics</code>。</p>
+<h3 id="认识metrics">认识metrics</h3>
+<p><code>metric</code>通常由指标名称<code>metric name</code>和标签<code>label</code>组成，格式如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&lt;metric name&gt;<span style="color:#000;font-weight:bold">{</span>&lt;label name&gt;<span style="color:#000;font-weight:bold">=</span>&lt;label value&gt;, ...<span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>prometheus_http_requests_total</code>为指标名称，其中<code>{}</code>为标签。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># HELP prometheus_http_requests_total Counter of HTTP requests.</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># TYPE prometheus_http_requests_total counter</span>
+</span></span><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">code</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;200&#34;</span>,handler<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">code</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;200&#34;</span>,handler<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/-/healthy&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">code</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;200&#34;</span>,handler<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/-/quit&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">code</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;200&#34;</span>,handler<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/-/ready&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>prometheus_http_requests_total<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">code</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;200&#34;</span>,handler<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/-/reload&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>metrics类型</strong></p>
+<p><code>Prometheus</code>客户库提供了四个核心的<code>metrics</code>类型。</p>
+<p><strong>Counter(计数器)</strong></p>
+<p><code>Counter</code>是一种累积指标，它的值随着时间的推移，只会单调递增。当重启时，它的值重置为零。</p>
+<p>例如，您可以使用<code>counter</code>来表示所服务的请求数、已完成的任务数或错误数。上述<code>prometheus_http_requests_total</code>就是<code>counter</code>类型。</p>
+<p>不要使用计数器来暴露可能减小的值。 例如，不要使用计数器来计算当前正在运行的进程数。</p>
+<p><strong>Gauge(测量器)</strong></p>
+<p><code>Gauge</code>可以表示任意上升和下降的单个数值。</p>
+<p>例如：可以使用<code>Gauge</code>来表示当内存使用情况等，但也用于可上下的“计数”，例如并发请求数。</p>
+<p><strong>Histogram(柱状图)</strong></p>
+<p><code>Histogram</code>是柱状图，表示对目标请求持续的时间或目标响应的大小进行采样，并将它们计数到可配置的存储桶<code>(bucket)</code>中。 有如下作用：</p>
+<ul>
+<li>
+<p>对每个采样点进行统计，打到各个分类值中(<code>bucket</code>)。</p>
+</li>
+<li>
+<p>对每个采样点值累计和(<code>sum</code>)。</p>
+</li>
+<li>
+<p>对采样点的次数累计和(<code>count</code>)。</p>
+</li>
+</ul>
+<p><strong>Summary采样点分位图</strong></p>
+<p>类似于<code>Histogram</code>，有如下作用：</p>
+<ul>
+<li>
+<p>对于每个采样点进行统计，并形成分位图。（如：正态分布一样，统计低于<code>60</code>分不及格的同学比例，统计低于<code>80</code>分的同学比例，统计低于<code>95</code>分的同学比例。）</p>
+</li>
+<li>
+<p>统计班上所有同学的总成绩(<code>sum</code>)。</p>
+</li>
+<li>
+<p>统计班上同学的考试总人数(<code>count</code>)。</p>
+</li>
+</ul>
+<h3 id="自动化生成的标签">自动化生成的标签</h3>
+<p>当<code>Prometheus</code>抓取目标时，它会自动在抓取的时间序列上附加一些标签，用于表示抓取的目标。</p>
+<ul>
+<li>job: 目标所属的配置任务名称。</li>
+<li>instance: 采样点所在服务: <code>host:port</code>。</li>
+</ul>
+<p>如果以上两个标签二者之一存在于采样点中，这个取决于<code>honor_labels</code>配置选项。</p>
+<p>对于每个<code>instance</code>，<code>Prometheus</code>还会增加以下<code>metric</code>。</p>
+<ul>
+<li><code>up{job=&quot;[job-name]&quot;, instance=&quot;instance-id&quot;}</code>: up值=1，表示采样点所在服务健康; 否则，网络不通, 或者服务挂掉了</li>
+<li><code>scrape_duration_seconds{job=&quot;[job-name]&quot;, instance=&quot;[instance-id]&quot;}</code>: 尝试获取目前采样点的时间开销。</li>
+<li><code>scrape_samples_post_metric_relabeling{job=&quot;&quot;, instance=&quot;&quot;}</code>: 表示度量指标的标签变化后，标签没有变化的度量指标数量。</li>
+<li><code>scrape_samples_scraped{job=&quot;&quot;, instance=&quot;&quot;}</code>: 这个采样点目标暴露的样本点数量。</li>
+</ul>
+<p><strong>up是一个非常重要的指标，可通过up的状态判断服务是否健康。</strong></p>
+<h2 id="主机监控">主机监控</h2>
+<p>我们可以通过<code>node_exporter</code>从主机上抓取系统级别的指标数据。如<code>CPU</code>/内存/磁盘等。</p>
+<p>下载并解压<code>node_exporter</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/local/src
+</span></span><span style="display:flex;"><span>wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xf node_exporter-1.7.0.linux-amd64.tar.gz -C /opt
+</span></span><span style="display:flex;"><span>useradd -M ops
+</span></span><span style="display:flex;"><span>chmod -R ops. /opt/node_exporter*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置启动文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat &gt; /etc/systemd/system/node_exporter.service <span style="color:#d14">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Description=Node_exporter daemon
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">ExecStart=/opt/node_exporter/node_exporter
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">User=ops
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">Group=ops
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">PrivateTmp=True
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">EOF</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> node_exporter
+</span></span><span style="display:flex;"><span>systemctl start node_exporter
+</span></span><span style="display:flex;"><span>systemctl status node_exporter
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查监听的端口。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat  -lnpt | grep <span style="color:#099">9100</span>
+</span></span><span style="display:flex;"><span>tcp6       <span style="color:#099">0</span>      <span style="color:#099">0</span> :::9100                 :::*                    LISTEN      18313/node_exporter
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改<code>Prometheus</code>配置，添加如下内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#000080">job_name</span>:<span style="color:#bbb"> </span><span style="color:#d14">&#34;node_exporter&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb"> </span>[<span style="color:#d14">&#34;localhost:9100&#34;</span>]<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>平滑重启。</p>
+<h1 id="promql">PromQL</h1>
+<h1 id="数据可视化grafana">数据可视化Grafana</h1>
+<p><code>Grafana</code>是一个开源的数据可视化和监控平台。它提供了一个功能强大的仪表板和图表编辑器，可以将各种数据源的数据进行可视化展示，帮助用户实时监控和分析数据。</p>
+<p>除了数据可视化外，<code>Grafana</code>还提供了强大的告警功能，用户可以设置条件和阈值，当监控指标超出预设的范围时，系统会发送警报通知。这使得用户可以及时发现和解决潜在的问题，保证系统的稳定性和可靠性。</p>
+<h3 id="下载及安装">下载及安装</h3>
+<p>可到<code>Grafana</code><a href="https://grafana.com/grafana/download?edition=oss">官网</a>下载，<code>OSS</code>为社区版，可免费使用。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/local/src/
+</span></span><span style="display:flex;"><span>wget https://dl.grafana.com/oss/release/grafana-10.2.3-1.x86_64.rpm
+</span></span><span style="display:flex;"><span>yum localinstall grafana-10.2.3-1.x86_64.rpm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> grafana-server
+</span></span><span style="display:flex;"><span>systemctl start grafana-server
+</span></span><span style="display:flex;"><span>systemctl status grafana-server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>grafana</code>默认监听在<code>3000</code>端口上。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -lnpt | grep grafana
+</span></span><span style="display:flex;"><span>tcp6       <span style="color:#099">0</span>      <span style="color:#099">0</span> :::3000                 :::*                    LISTEN      18883/grafana
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>浏览器通过<code>IP:Port</code>的方式可访问<code>grafana</code>。</p>
+<p>默认的用户名和密码均为<code>admin</code>，登录成功后，需要修改密码。</p>
+<h3 id="添加数据源">添加数据源</h3>
+<p><img src="images/image-20240103151701139.png" alt="image-20240103151701139"></p>
+<h3 id="出图">出图</h3>
+<p>出图</p>
+<p>导入</p>
+<p>在 <code>https://grafana.com/grafana/dashboards?dataSource=prometheus</code> 找到合适的模板并导入</p>
+<h3 id="集成ldap">集成ldap</h3>
+<h3 id="权限控制">权限控制</h3>
+<h1 id="告警alertmanager">告警AlertManager</h1>
+<h2 id="部署与配置">部署与配置</h2>
+<p>告警状态</p>
+<p>分组</p>
+<p>抑制</p>
+<p>静默</p>
+<p>一些经验</p>
+<h1 id="push-gateway">Push gateway</h1>
+<h1 id="自动化监控">自动化监控</h1>
+<h2 id="基于文件的服务发现">基于文件的服务发现</h2>
+<h2 id="基于consul的服务发现">基于consul的服务发现</h2>
+<h3 id="数百台主机接入监控">数百台主机接入监控</h3>
+<h1 id="其他应用监控">其他应用监控</h1>
+<h2 id="进程监控">进程监控</h2>
+<h3 id="nginx监控">Nginx监控</h3>
+<h3 id="ldap监控">LDAP监控</h3>
+<h2 id="mysql监控">MySQL监控</h2>
+<h2 id="jvm监控">jvm监控</h2>
+<h3 id="windows监控">windows监控</h3>
+<h4 id="24-cpu使用的百分比">2.4 CPU使用的百分比</h4>
+<pre tabindex="0"><code>increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m])
+increase(node_cpu_seconds_total[1m])
+</code></pre><p>通过 <code>metrics</code> 我们可看出 <code>node_cpu_seconds_total</code> 数据类型为 <code>counter</code></p>
+<pre tabindex="0"><code># TYPE node_cpu_seconds_total counter
+node_cpu_seconds_total{cpu=&#34;0&#34;,mode=&#34;idle&#34;} 27710.33
+......
+</code></pre><p>取值思路</p>
+<p><em>1 - （ idle时间 / cpu占用总时间 )</em></p>
+<p>取出 <code>idle</code> 占用的时间</p>
+<pre tabindex="0"><code>node_cpu_seconds_total{mode=&#34;idle&#34;}
+</code></pre><p>取出 <code>1min</code> 内增加的 <code>idle</code> 占用的时间</p>
+<pre tabindex="0"><code>increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m])
+</code></pre><p><img src="https://images.wuennan.cn/image-20201011220941133.png" alt="image-20201011220941133"></p>
+<p>由于 <code>cpu</code> 是多核心的，可通过 <code>sum</code> 函数对结果进行聚合，但是会将不同的服务器不同的核心全都聚合成一条线</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m]))
+</code></pre><p>通过 <code>sum</code> 配合 <code>by</code> 可根据不同类型的数据进行聚合</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m]))by(instance)
+</code></pre><p><img src="https://images.wuennan.cn/image-20201011221949615.png" alt="image-20201011221949615"></p>
+<p>通过上述推算，我们可得</p>
+<p><code>cpu</code> 在 <code>1min</code> 内空闲的时间</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m]))by(instance)
+</code></pre><p><code>cpu</code> 在 <code>1min</code> 内总的时间</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total[1m]))by(instance)
+</code></pre><p>空闲时间占总时间的比值</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m]))by(instance)/sum(increase(node_cpu_seconds_total[1m]))by(instance)
+</code></pre><p>CPU的使用率</p>
+<pre tabindex="0"><code>(1-sum(increase(node_cpu_seconds_total{mode=&#34;idle&#34;}[1m]))by(instance)/sum(increase(node_cpu_seconds_total[1m]))by(instance))*100
+</code></pre><p><img src="https://images.wuennan.cn/image-20201011223535558.png" alt="image-20201011223535558"></p>
+<p>同理，<code>cpu</code> 的 <code>io</code> 时间百分比可通过以下公式获得</p>
+<pre tabindex="0"><code>sum(increase(node_cpu_seconds_total{mode=&#34;iowait&#34;}[1m]))by(instance)/sum(increase(node_cpu_seconds_total[1m]))by(instance)*100
+</code></pre><h4 id="25-基于文件的目标发现">2.5 基于文件的目标发现</h4>
+<p>通过编辑 <code>prometheus.yml</code> 可实现对节点的监控</p>
+<pre tabindex="0"><code>  - job_name: &#39;node-exporter&#39;
+    static_configs:
+    - targets: [&#39;192.168.199.206:9100&#39;,&#39;192.168.199.207:9100&#39;]
+</code></pre><p>也可以基于文件自动发现的方式实现此功能，修改 <code>prometheus.yml</code> 配置文件</p>
+<pre tabindex="0"><code>  - job_name: &#39;node-exporter&#39;
+    file_sd_configs:
+    - files: [&#39;targets/*.json&#39;]
+      refresh_interval: 5s
+</code></pre><p>根据文件目录新建文件，若是通过 <code>Docker</code> 方式启动，需要注意配置文件的路径</p>
+<pre tabindex="0"><code>/etc/prometheus $ cat targets/node-exporter.json
+[{
+  &#34;targets&#34;: [
+    &#34;192.168.199.206:9100&#34;,
+    &#34;192.168.199.207:9100&#34;
+  ],
+  &#34;labels&#34;: {
+    &#34;datacenter&#34;:&#34;NanJing&#34;
+  }
+}]
+</code></pre><p>重启启动 <code>Prometheus</code> 后，可以发现目标主机已经被发现</p>
+<p><img src="https://images.wuennan.cn/image-20210212144523998.png" alt="image-20210212144523998"></p>
+<p>也可基于 <strong>DNS</strong> 实现目标发现</p>
+<hr>
+<center><img src="https://images.snoopyops.top/wechat-snoopy.jpg" alt="image-20231028232834657" style="zoom:40%;" /></center>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

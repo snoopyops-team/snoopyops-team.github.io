@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="Vim编辑器 - https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>Vim编辑器</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">Vim编辑器</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            2023-05-22&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2023-12-23&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            1809 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            4 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#认识vim">认识vim</a>
+      <ul>
+        <li><a href="#vi和vim">vi和vim</a></li>
+        <li><a href="#命令模式">命令模式</a></li>
+        <li><a href="#编辑模式">编辑模式</a></li>
+        <li><a href="#末行模式">末行模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim视图模式">vim视图模式</a>
+      <ul>
+        <li><a href="#块视图模式">块视图模式</a></li>
+        <li><a href="#行视图模式">行视图模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim扩展知识">vim扩展知识</a>
+      <ul>
+        <li><a href="#个性化配置">个性化配置</a></li>
+        <li><a href="#文件对比">文件对比</a></li>
+        <li><a href="#异常退出处理">异常退出处理</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h2 id="认识vim">认识vim</h2>
+<h3 id="vi和vim">vi和vim</h3>
+<p><code>vi</code>和<code>vim</code>都是<code>Linux</code>系统中的编辑器。</p>
+<p><code>vim</code>是<code>vi</code>的升级版本，兼容<code>vi</code>的所有指令，并具有一些新的特性，如多级撤消、易用性、语法加亮、可视化操作以及对<code>vi</code>的完全兼容等。</p>
+<p>总的来说，<code>vim</code>是<code>vi</code>的高级版本，具有更多的特性和更好的性能。</p>
+<p><code>vim</code>有命令模式，编辑模式末行模式，接下来我们将学习<code>vim</code>的常用用法。</p>
+<p>最小化安装系统，默认没有安装<code>vim</code>，需要执行以下命令，手动安装。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install vim -y</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://images.snoopyops.top/image-20231201231015355.png" alt="image-20231124125413545"></p>
+<h3 id="命令模式">命令模式</h3>
+<p>在该模式下不能对文件直接进行编辑，但可以使用一些快捷键对文件进行操作（删除行、复制行、移动光标、粘贴等）。这是打开<code>vim</code>时默认进入的模式。</p>
+<p><strong>光标跳转</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">G</td>
+<td>光标条至文件末端。</td>
+</tr>
+<tr>
+<td style="text-align:center">gg</td>
+<td>光标跳转至文件顶端。</td>
+</tr>
+<tr>
+<td style="text-align:center">5gg</td>
+<td>光标跳转至当前文件的第5行，5可以是任意数字。</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td>光标跳转至当前光标所在行的尾部。</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td>光标跳转至当前光标所在行的首部。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>复制与粘贴</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">yy</td>
+<td>复制当前光标所在的行。</td>
+</tr>
+<tr>
+<td style="text-align:center">5yy</td>
+<td>复制当前光标以及光标向下4行。5可是任意数字。</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td>粘贴至当前光标下一行。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>删除与剪贴</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">dd</td>
+<td>删除当前光标所在的行。</td>
+</tr>
+<tr>
+<td style="text-align:center">5dd</td>
+<td>删除当前光标以及光标向下4行。5可是任意数字。</td>
+</tr>
+<tr>
+<td style="text-align:center">dG</td>
+<td>删除当前光标以后的所有行。</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td>删除当前光标及光标以后的内容。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>替换与撤销</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u</td>
+<td>撤销上一次的操作。</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td>替换光标所在字符。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编辑模式">编辑模式</h3>
+<p>此模式也叫输入模式，在该模式下可以对文件内容进行编辑，和使用普通的文本编辑器一样。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">i</td>
+<td>进入编辑模式，光标不做任何操作。</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td>进入编辑模式，将当前光标往后一位。</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td>进入编辑模式，并在当前光标下添加一行空白内容。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="末行模式">末行模式</h3>
+<p>此模式也叫尾行模式，可以在末行输入命令来对文件进行操作（搜索、替换、保存、退出、撤销、高亮等）。</p>
+<p><strong>文件保存与退出</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:w</td>
+<td>保存当前状态。</td>
+</tr>
+<tr>
+<td style="text-align:center">:q</td>
+<td>退出当前文档(文档必须保存才能退出)。</td>
+</tr>
+<tr>
+<td style="text-align:center">:wq</td>
+<td>先保存，在退出。</td>
+</tr>
+<tr>
+<td style="text-align:center">！</td>
+<td>强制执行，可配合w、q、wq使用。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文件内容另存</strong>
+将文件另存为<code>/root/123.txt</code>。</p>
+<img src="https://images.snoopyops.top/image-20231124132052308.png" alt="image-20231124132052308" style="zoom:50%;" />
+<p><strong>文件内容查找与替换</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/string</td>
+<td>需要搜索的内容（查找）。</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td>按搜索到的内容依次往下进行查找。</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td>按搜索到的内容依次往上进行查找。</td>
+</tr>
+</tbody>
+</table>
+<p>查找<code>root</code>相关内容。</p>
+<img src="https://images.snoopyops.top/image-20231124131227942.png" alt="image-20231124131227942" style="zoom:50%;" />
+<p><strong>文件内容替换</strong>
+替换<code>2-5</code>行中包含<code>bin</code>的内容为<code>snoopy</code>。</p>
+<img src="https://images.snoopyops.top/image-20231124132651535.png" alt="image-20231124132651535" style="zoom:50%;" />
+<p>替换整个文本文件中包含<code>bin</code>的替换为<code>ops</code>。</p>
+<img src="https://images.snoopyops.top/image-20231124131905561.png" alt="image-20231124131905561" style="zoom:50%;" />
+<h2 id="vim视图模式">vim视图模式</h2>
+<h3 id="块视图模式">块视图模式</h3>
+<p><code>ctrl+v</code>可进入视图块模式，可通过移动光标进行选择。</p>
+<img src="https://images.snoopyops.top/image-20231124133111630.png" alt="image-20231124133111630" style="zoom:50%;" />
+<p>按<code>shift+i</code>可进行编辑。</p>
+<img src="https://images.snoopyops.top/image-20231124133249898.png" alt="image-20231124133249898" style="zoom:50%;" />
+<p>按<code>esc</code>，刚刚选中的块都会快速填充。</p>
+<img src="https://images.snoopyops.top/image-20231124133335587.png" alt="image-20231124133335587" style="zoom:50%;" />
+<p>在视图块模式下，选中要删除的内容，按<code>d</code>可快速删。</p>
+<img src="https://images.snoopyops.top/image-20231124133449430.png" alt="image-20231124133449430" style="zoom:50%;" />
+<p>选中需要替换的内容, 按下<code>r</code>键,然后输入替换后的内容。如图，我们可以将选中的字符替换为<code>@</code>。</p>
+<img src="https://images.snoopyops.top/image-20231124133714258.png" alt="image-20231124133714258" style="zoom:50%;" />
+<h3 id="行视图模式">行视图模式</h3>
+<p><code>shift+v</code>可进入视图行模式，可通过移动光标进行选择。</p>
+<p>复制: 选中行内容后按<code>y</code>键及可复制。</p>
+<img src="https://images.snoopyops.top/image-20231124133912229.png" alt="image-20231124133912229" style="zoom:50%;" />
+<p>粘贴：按<code>p</code>可粘贴。</p>
+<img src="https://images.snoopyops.top/image-20231124134032150.png" alt="image-20231124134032150" style="zoom:50%;" />
+<p>删除：选中行内容后按<code>d</code>键删除。</p>
+<img src="https://images.snoopyops.top/image-20231124134200886.png" alt="image-20231124134200886" style="zoom:50%;" />
+<h2 id="vim扩展知识">vim扩展知识</h2>
+<h3 id="个性化配置">个性化配置</h3>
+<p>我们可以通过以下指令对文件进行个性化设置，但是只针对当前打开的<code>vim</code>实例有效，关闭了<code>vim</code>之后再次打开，之前的设置就无效了。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:set nu</td>
+<td>显示行号。</td>
+</tr>
+<tr>
+<td style="text-align:center">:set ic</td>
+<td>忽略大小写, 在搜索的时候有用。</td>
+</tr>
+</tbody>
+</table>
+<p><code>vimrc</code>是<code>vim</code>的配置文件，<code>vim</code>在启动时会加载<code>vimrc</code>文件。几乎所有的配置，包括主题、快捷键、插件设置等等，都可以配置在<code>vimrc</code>中。若要永久生效配置，需要将指令添加到<code>vimrc</code>配置文件中。</p>
+<p><code>~/.vimrc</code> 个人<code>vim</code>配置优先级高。编辑此配置。文本最后直接添加以下内容即可。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">set</span> nu
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">set</span> ic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/vimrc</code> 全局<code>vim</code>配置，优先级低于个人配置。</p>
+<h3 id="文件对比">文件对比</h3>
+<p><code>diff</code>用于文件对比。如</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># diff passwd test.txt </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>diff</code>显示不直观。我们可以通过<code>vimdiff</code> 以<code>vim</code>方式打开两个文件对比，高亮显示不同的内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vimdiff passwd test.txt </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://images.snoopyops.top/image-20231124134440832.png" alt="image-20231124134440832"></p>
+<h3 id="异常退出处理">异常退出处理</h3>
+<p>如果<code>vim</code>非正常退出<code>(ctrl+z)</code>挂起或强制退出终端没关闭<code>vim</code>后。再次通过<code>vim</code>编辑文件时，会有如下提示：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim passwd </span>
+</span></span><span style="display:flex;"><span>E325: ATTENTION
+</span></span><span style="display:flex;"><span>Found a swap file by the name <span style="color:#d14">&#34;.passwd.swp&#34;</span>
+</span></span><span style="display:flex;"><span>          owned by: root   dated: Thu Aug  <span style="color:#099">1</span> 14:03:58 <span style="color:#099">2019</span>
+</span></span><span style="display:flex;"><span>         file name: ~root/passwd
+</span></span><span style="display:flex;"><span>          modified: YES
+</span></span><span style="display:flex;"><span>         user name: root   host name: localhost
+</span></span><span style="display:flex;"><span>        process ID: <span style="color:#099">10939</span> <span style="color:#000;font-weight:bold">(</span>still running<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>While opening file <span style="color:#d14">&#34;passwd&#34;</span>
+</span></span><span style="display:flex;"><span>             dated: Thu Aug  <span style="color:#099">1</span> 12:38:26 <span style="color:#099">2019</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">)</span> Another program may be editing the same file.  If this is the <span style="color:#000;font-weight:bold">case</span>,
+</span></span><span style="display:flex;"><span>    be careful not to end up with two different instances of the same
+</span></span><span style="display:flex;"><span>    file when making changes.  Quit, or <span style="color:#000;font-weight:bold">continue</span> with caution.
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;font-weight:bold">)</span> An edit session <span style="color:#000;font-weight:bold">for</span> this file crashed.
+</span></span><span style="display:flex;"><span>    If this is the <span style="color:#000;font-weight:bold">case</span>, use <span style="color:#d14">&#34;:recover&#34;</span> or <span style="color:#d14">&#34;vim -r passwd&#34;</span>
+</span></span><span style="display:flex;"><span>-- More --
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    to recover the changes <span style="color:#000;font-weight:bold">(</span>see <span style="color:#d14">&#34;:help recovery&#34;</span><span style="color:#000;font-weight:bold">)</span>.
+</span></span><span style="display:flex;"><span>    If you did this already, delete the swap file <span style="color:#d14">&#34;.passwd.swp&#34;</span>
+</span></span><span style="display:flex;"><span>    to avoid this message.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Swap file <span style="color:#d14">&#34;.passwd.swp&#34;</span> already exists!
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>O<span style="color:#000;font-weight:bold">]</span>pen Read-Only, <span style="color:#000;font-weight:bold">(</span>E<span style="color:#000;font-weight:bold">)</span>dit anyway, <span style="color:#000;font-weight:bold">(</span>R<span style="color:#000;font-weight:bold">)</span>ecover, <span style="color:#000;font-weight:bold">(</span>Q<span style="color:#000;font-weight:bold">)</span>uit, <span style="color:#000;font-weight:bold">(</span>A<span style="color:#000;font-weight:bold">)</span>bort:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>仔细阅读以上内容，我们发现提示<code>.swp</code>文件已经存在。使用<code>vim</code>编辑文件实际是先<code>copy</code>一份临时文件并映射到内存给你编辑，编辑的是临时文件， 当执行<code>：w</code>后才保存临时文件到原文件，执行<code>：q</code>后才删除临时文件。</p>
+<p>遇到上述情况，可以先按<code>R</code>，将原来正在写入的内容保存。然后删除.<code>swp</code>文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rm -f .passwd.swp</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<center><img src="https://images.snoopyops.top/wechat-snoopy.jpg" alt="image-20231028232834657" style="zoom:50%;" /></center>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

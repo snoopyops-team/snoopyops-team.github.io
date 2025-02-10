@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content=" - https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/thanos/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title></title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title"></h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            0001-01-01&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2025-01-11&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            2875 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            6 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前期准备">前期准备</a></li>
+    <li><a href="#thanos架构">Thanos架构</a></li>
+    <li><a href="#存储">存储</a>
+      <ul>
+        <li><a href="#minio">Minio</a></li>
+        <li><a href="#nginx代理">Nginx代理</a></li>
+        <li><a href="#创建bucket">创建bucket</a></li>
+      </ul>
+    </li>
+    <li><a href="#prometheus部署">Prometheus部署</a></li>
+    <li><a href="#thanos-1">Thanos</a>
+      <ul>
+        <li><a href="#thanos-sidecar">Thanos-sidecar</a></li>
+        <li><a href="#thanos-store">Thanos-store</a></li>
+        <li><a href="#thanos-qurey">Thanos-qurey</a></li>
+        <li><a href="#thanos-frontend">Thanos-frontend</a></li>
+        <li><a href="#thanos-compact">Thanos-compact</a></li>
+        <li><a href="#thanos-rule">Thanos-rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#grafana">Grafana</a></li>
+    <li><a href="#consul">Consul</a></li>
+    <li><a href="#alertmanager">Alertmanager</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h1 id="thanos">ThanOS</h1>
+<h2 id="前期准备">前期准备</h2>
+<ul>
+<li>需要监控的服务器部署好相关的<code>exporter</code></li>
+<li>准备一套<code>Grafana</code></li>
+<li>对象存储</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.220.2.164</td>
+<td>Thanos-sidecar,Thanos-query,minio,Promethues</td>
+<td></td>
+</tr>
+<tr>
+<td>10.220.0.236</td>
+<td>Thanos-sidecar,Thanos-query,minio,Prometheus</td>
+<td></td>
+</tr>
+<tr>
+<td>10.220.6.194</td>
+<td>minio</td>
+<td></td>
+</tr>
+<tr>
+<td>10.220.6.134</td>
+<td>Nginx/minio</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="thanos架构">Thanos架构</h2>
+<p><img src="https://images.snoopyops.top/Thanos_High_Level_Arch_Diagram.png" alt="thanos"></p>
+<ul>
+<li>黄色的部分是prometheus，exporters和alertmanager的三大组件，是prometheus最原始的架构。</li>
+</ul>
+<p>Thanos常用组件：</p>
+<ol>
+<li>
+<p>Thanos Sidecar: 连接 Prometheus，将其数据提供给 Thanos Query 查询，并且/或者将其上传到对象存储，以供长期存储。</p>
+</li>
+<li>
+<p>Thanos Store Gateway: 将对象存储的数据暴露给 Thanos Query 去查询。</p>
+</li>
+<li>
+<p>Thanos Compactor: 将对象存储中的数据进行压缩和降低采样率，加速大时间区间监控数据查询的速度。</p>
+</li>
+</ol>
+<p>Thanos Query: 实现了 Prometheus API，将来自下游组件提供的数据进行聚合最终返回给查询数据的 client (如 grafana)，类似数据库中间件。
+4，Thanos Ruler: 对监控数据进行评估和告警，还可以计算出新的监控数据，将这些新数据提供给 Thanos Query 查询并且/或者上传到对象存储，以供长期存储。</p>
+<h2 id="存储">存储</h2>
+<p>目前<code>Thanos</code>支持的<a href="https://thanos.io/tip/thanos/storage.md/">存储</a>。</p>
+<h3 id="minio">Minio</h3>
+<p><code>Minio</code>集群需要4个主机。配置相同，均按照以下方式配置即可。</p>
+<p>下载<code>minio</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/local/src/
+</span></span><span style="display:flex;"><span>wget https://dl.min.io/server/minio/release/linux-amd64/minio
+</span></span><span style="display:flex;"><span>chmod +x minio
+</span></span><span style="display:flex;"><span>mv minio /usr/local/bin/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>初始化目录</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /work/minio/data <span style="color:#000;font-weight:bold">&amp;&amp;</span> mkdir /work/minio/run <span style="color:#000;font-weight:bold">&amp;&amp;</span> mkdir /etc/minio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动文件，其中指定<code>9001</code>端口为<code>api</code>端口，<code>9000</code>端口为<code>web</code>端口。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/minio.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Minio service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WorkingDirectory</span><span style="color:#000;font-weight:bold">=</span>/work/minio/run
+</span></span><span style="display:flex;"><span><span style="color:#008080">EnvironmentFile</span><span style="color:#000;font-weight:bold">=</span>/etc/minio/minio.pw
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/minio server <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--config-dir /etc/minio <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--address :9000 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--console-address :9001 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	http://10.220.2.164:9000/work/minio/data <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	http://10.220.0.236:9000/work/minio/data <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	http://10.220.6.194:9000/work/minio/data <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	http://10.220.6.134:9000/work/minio/data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>on-failure
+</span></span><span style="display:flex;"><span><span style="color:#008080">RestartSec</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编辑配置文件，初始化<code>minio</code>登录密码</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/minio/minio.pw
+</span></span><span style="display:flex;"><span><span style="color:#008080">MINIO_ACCESS_KEY</span><span style="color:#000;font-weight:bold">=</span>Minio
+</span></span><span style="display:flex;"><span><span style="color:#008080">MINIO_SECRET_KEY</span><span style="color:#000;font-weight:bold">=</span>24H4Gcr7U0L
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start minio
+</span></span><span style="display:flex;"><span>systemctl status minio
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> minio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="nginx代理">Nginx代理</h3>
+<p>Web页面</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat minio.ng.fg-example.com.conf
+</span></span><span style="display:flex;"><span>upstream minio.ng.fg-example <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    server 10.220.6.164:9001 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span>    server 10.220.6.194:9001 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span>    server 10.220.6.134:9001 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span>    server 10.220.0.236:9001 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#099">80</span> ;
+</span></span><span style="display:flex;"><span>    server_name minio.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp ;
+</span></span><span style="display:flex;"><span>    rewrite ^/<span style="color:#000;font-weight:bold">(</span>.*<span style="color:#000;font-weight:bold">)</span>$  https://<span style="color:#008080">$server_name</span>/<span style="color:#008080">$1</span> ;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen      <span style="color:#099">443</span> ssl ;
+</span></span><span style="display:flex;"><span>    server_name minio.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    ssl_certificate      /etc/nginx/cert/wildcard-ng-fg-example-com_fullchain.pem;
+</span></span><span style="display:flex;"><span>    ssl_certificate_key  /etc/nginx/cert/wildcard-ng-fg-example-com_key.pem;
+</span></span><span style="display:flex;"><span>    ssl_session_timeout  5m ;
+</span></span><span style="display:flex;"><span>    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+</span></span><span style="display:flex;"><span>    ssl_ciphers  HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM;
+</span></span><span style="display:flex;"><span>    ssl_prefer_server_ciphers   on;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp;
+</span></span><span style="display:flex;"><span>    include iplist/iplist.txt;
+</span></span><span style="display:flex;"><span>    access_log  /work/nginx/logs/minio.ng.fg-example.com.access.log json1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    location / <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header Host <span style="color:#008080">$host</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Real-IP <span style="color:#008080">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-For <span style="color:#008080">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>    	proxy_pass http://minio.ng.fg-example;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接口</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat minio.public.ng.example.osa.conf
+</span></span><span style="display:flex;"><span>upstream minio<span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        server 10.220.2.164:9000;
+</span></span><span style="display:flex;"><span>        server 10.220.6.194:9000;
+</span></span><span style="display:flex;"><span>        server 10.220.6.134:9000;
+</span></span><span style="display:flex;"><span>        server 10.220.0.236:9000;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#099">80</span> ;
+</span></span><span style="display:flex;"><span>    server_name minio.public.ng.example.osa;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp ;
+</span></span><span style="display:flex;"><span>    access_log  /work/nginx/logs/minio.public.ng.example.osa.access.log json1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    location / <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header Host <span style="color:#008080">$host</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Real-IP <span style="color:#008080">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-For <span style="color:#008080">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>    	proxy_pass http://minio;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="创建bucket">创建bucket</h3>
+<p>访问域名，确认集群状态正常，<code>4</code>个节点均在线。</p>
+<p><img src="https://images.snoopyops.top/image-20230911161808631.png" alt="image-20230911161808631"></p>
+<p>创建<code>bucket</code>。</p>
+<p><img src="https://images.snoopyops.top/image-20230911162925870.png" alt="image-20230911162925870"></p>
+<p>创建<code>thanos</code>用户。</p>
+<p><img src="https://images.snoopyops.top/image-20230911162210211.png" alt="image-20230911162210211"></p>
+<h2 id="prometheus部署">Prometheus部署</h2>
+<p>两台服务器分别部署一套<code>Prometheus</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/local/src/
+</span></span><span style="display:flex;"><span>wget https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xf prometheus-2.47.0.linux-amd64.tar.gz -C /opt/
+</span></span><span style="display:flex;"><span>ln -s /opt/prometheus-2.47.0.linux-amd64/ /opt/prometheus
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/prometheus.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Prometheus
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network-online.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Type</span><span style="color:#000;font-weight:bold">=</span>simple
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStartPre</span><span style="color:#000;font-weight:bold">=</span>/opt/prometheus/promtool check config /opt/prometheus/prometheus.yml
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/opt/prometheus/prometheus <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --config.file<span style="color:#000;font-weight:bold">=</span>/opt/prometheus/prometheus.yml <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --web.listen-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:9090 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --web.enable-lifecycle <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --web.enable-admin-api <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --web.console.templates<span style="color:#000;font-weight:bold">=</span>/opt/prometheus/consoles <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --web.console.libraries<span style="color:#000;font-weight:bold">=</span>/opt/prometheus/console_libraries <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --storage.tsdb.path<span style="color:#000;font-weight:bold">=</span>/work/prometheus/ <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    <span style="color:#998;font-style:italic"># 注意此处block-duration相关配置，sidecar依赖此配置</span>
+</span></span><span style="display:flex;"><span>    --storage.tsdb.min-block-duration<span style="color:#000;font-weight:bold">=</span>2h <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --storage.tsdb.max-block-duration<span style="color:#000;font-weight:bold">=</span>2h <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --storage.tsdb.retention.time<span style="color:#000;font-weight:bold">=</span>30d <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>    --log.level<span style="color:#000;font-weight:bold">=</span>info
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/curl -X POST http://127.0.01:9090/-/reload
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置文件如下。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000080">global</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">scrape_interval</span>:<span style="color:#bbb"> </span>15s<span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># Set the scrape interval to every 15 seconds. Default is every 1 minute.</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">evaluation_interval</span>:<span style="color:#bbb"> </span>15s<span style="color:#bbb"> </span><span style="color:#998;font-style:italic"># Evaluate rules every 15 seconds. The default is every 1 minute.</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#998;font-style:italic"># 添加标签，两套Prometheus分别为A和B</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">external_labels</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">relica</span>:<span style="color:#bbb"> </span>A<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">alerting</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">alertmanagers</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">          </span><span style="color:#998;font-style:italic"># - alertmanager:9093</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">rule_files</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080">scrape_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#000080">job_name</span>:<span style="color:#bbb"> </span><span style="color:#d14">&#34;prometheus&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb"> </span>[<span style="color:#d14">&#34;localhost:9090&#34;</span>]<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#000080">job_name</span>:<span style="color:#bbb"> </span><span style="color:#d14">&#34;node&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080">static_configs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#000080">targets</span>:<span style="color:#bbb"> </span>[<span style="color:#d14">&#34;10.220.2.164:9100&#34;</span>,<span style="color:#d14">&#34;10.220.0.236:9100&#34;</span>]<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start prometheus.service
+</span></span><span style="display:flex;"><span>systemctl status prometheus.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> prometheus.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于两套<code>Prometheus</code>配置是一样的，采集的数据也相同。需要通过<code>ThanOS</code>进行聚合查询等</p>
+<h2 id="thanos-1">Thanos</h2>
+<p>准备对象存储配置文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/thanos/thanos-minio.yml
+</span></span><span style="display:flex;"><span>type: S3
+</span></span><span style="display:flex;"><span>config:
+</span></span><span style="display:flex;"><span>  bucket: <span style="color:#d14">&#34;thanos&#34;</span>
+</span></span><span style="display:flex;"><span>  endpoint: <span style="color:#d14">&#34;minio.public.ng.example.osa&#34;</span>
+</span></span><span style="display:flex;"><span>  access_key: <span style="color:#d14">&#34;thanos&#34;</span>
+</span></span><span style="display:flex;"><span>  insecure: <span style="color:#0086b3">false</span>
+</span></span><span style="display:flex;"><span>  secret_key: <span style="color:#d14">&#34;Passw0rd&#34;</span>
+</span></span><span style="display:flex;"><span>  http_config:
+</span></span><span style="display:flex;"><span>    idle_conn_timeout: 5m
+</span></span><span style="display:flex;"><span>    response_header_timeout: 10m
+</span></span><span style="display:flex;"><span>    insecure_skip_verify: <span style="color:#0086b3">true</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载<code>thanos</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/thanos-io/thanos/releases/download/v0.32.2/thanos-0.32.2.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xf thanos-0.32.2.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>mv thanos-0.32.2.linux-amd64/thanos /usr/local/bin/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>thanos --version
+</span></span><span style="display:flex;"><span>thanos, version 0.32.2 <span style="color:#000;font-weight:bold">(</span>branch: HEAD, revision: 7f5c066ff1bf46bbefa55011e390320b4857748d<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>  build user:       root@9d5d2ca31e89
+</span></span><span style="display:flex;"><span>  build date:       20230831-13:56:58
+</span></span><span style="display:flex;"><span>  go version:       go1.20.7
+</span></span><span style="display:flex;"><span>  platform:         linux/amd64
+</span></span><span style="display:flex;"><span>  tags:             netgo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thanos-sidecar">Thanos-sidecar</h3>
+<p>配置<code>sidecar</code> 用于抽象数据，需要在<code>Prometheus</code>的服务器上都部署一套。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/thanos-sidecar.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos sidecar
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos sidecar <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--tsdb.path<span style="color:#000;font-weight:bold">=</span>/work/prometheus <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--prometheus.url<span style="color:#000;font-weight:bold">=</span>http://10.220.0.236:9090 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10901 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--grpc-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10902 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--objstore.config-file<span style="color:#000;font-weight:bold">=</span>/etc/thanos/thanos-minio.yml
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查服务状态</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start thanos-sidecar.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> thanos-sidecar.service
+</span></span><span style="display:flex;"><span>systemctl status thanos-sidecar.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>等待2h后，对象存储中会有数据。</p>
+<h3 id="thanos-store">Thanos-store</h3>
+<p>和<code>query</code>一样，需要在<code>Prometheus</code>的服务器上都部署一套。</p>
+<p>准备目录</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /work/thanos/store
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/thanos-store.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos-store
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Type</span><span style="color:#000;font-weight:bold">=</span>simple
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos store <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--data-dir<span style="color:#000;font-weight:bold">=</span>/work/thanos/store <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--objstore.config-file<span style="color:#000;font-weight:bold">=</span>/etc/thanos/thanos-minio.yml <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10905 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--grpc-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10906
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start thanos-store.service
+</span></span><span style="display:flex;"><span>systemctl status thanos-store.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> thanos-store.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thanos-qurey">Thanos-qurey</h3>
+<p><code>query</code>用于查询所有可能的数据接口，如<code>sidecar</code>和<code>storage-gateway</code>等。需要在<code>Thanos-sidecar</code>的服务器上都部署一套。</p>
+<p>启动配置文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/thanos-query.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos-query
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos query <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10903 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--grpc-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10904 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	<span style="color:#998;font-style:italic"># sidecar地址</span>
+</span></span><span style="display:flex;"><span>	--store<span style="color:#000;font-weight:bold">=</span>10.220.2.164:10902 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--store<span style="color:#000;font-weight:bold">=</span>10.220.0.236:10902 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	<span style="color:#998;font-style:italic"># store-gataway地址</span>
+</span></span><span style="display:flex;"><span>	--store<span style="color:#000;font-weight:bold">=</span>10.220.2.164:10906 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--store<span style="color:#000;font-weight:bold">=</span>10.220.0.236:10906 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--query.timeout<span style="color:#000;font-weight:bold">=</span>10m <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--query.max-concurrent<span style="color:#000;font-weight:bold">=</span><span style="color:#099">200</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--query.max-concurrent-select<span style="color:#000;font-weight:bold">=</span><span style="color:#099">40</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--query.replica-label<span style="color:#000;font-weight:bold">=</span>replica
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start thanos-query.service
+</span></span><span style="display:flex;"><span>systemctl status thanos-query.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> thanos-query.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可通过<code>Nginx</code>代理两个<code>query</code>，非必需，因为后面会通过<code>Thenos-frontend</code>组件，不会直接使用<code>query</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat query.ng.fg-example.com.conf
+</span></span><span style="display:flex;"><span>upstream query.ng.fg-example <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    server 10.220.2.164:10903 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span>    server 10.220.0.236:10903 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#099">80</span> ;
+</span></span><span style="display:flex;"><span>    server_name query.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp ;
+</span></span><span style="display:flex;"><span>    rewrite ^/<span style="color:#000;font-weight:bold">(</span>.*<span style="color:#000;font-weight:bold">)</span>$  https://<span style="color:#008080">$server_name</span>/<span style="color:#008080">$1</span> ;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen      <span style="color:#099">443</span> ssl ;
+</span></span><span style="display:flex;"><span>    server_name query.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    ssl_certificate      /etc/nginx/cert/wildcard-ng-fg-example-com_fullchain.pem;
+</span></span><span style="display:flex;"><span>    ssl_certificate_key  /etc/nginx/cert/wildcard-ng-fg-example-com_key.pem;
+</span></span><span style="display:flex;"><span>    ssl_session_timeout  5m ;
+</span></span><span style="display:flex;"><span>    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+</span></span><span style="display:flex;"><span>    ssl_ciphers  HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM;
+</span></span><span style="display:flex;"><span>    ssl_prefer_server_ciphers   on;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp;
+</span></span><span style="display:flex;"><span>    include iplist/iplist.txt;
+</span></span><span style="display:flex;"><span>    access_log  /work/nginx/logs/query.ng.fg-example.com.access.log json1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    location / <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header Host <span style="color:#008080">$host</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Real-IP <span style="color:#008080">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-For <span style="color:#008080">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>    	proxy_pass http://query.ng.fg-example;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>web</code>页面如下</p>
+<p><img src="https://images.snoopyops.top/image-20230912131324954.png" alt="image-20230912131324954"></p>
+<h3 id="thanos-frontend">Thanos-frontend</h3>
+<p>启动文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/thanos-frontend.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos-frontend
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos query-frontend <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10913 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--query-frontend.downstream-url<span style="color:#000;font-weight:bold">=</span>http://127.0.0.1:10903
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start thanos-frontend.service
+</span></span><span style="display:flex;"><span>systemctl status thanos-frontend.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> thanos-frontend.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>nginx</code>代理</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat thanos.ng.fg-example.com.conf
+</span></span><span style="display:flex;"><span>upstream thanos.ng.fg-example <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    server 10.220.2.164:10913 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span>    server 10.220.0.236:10913 <span style="color:#008080">max_fails</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">fail_timeout</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#008080">weight</span><span style="color:#000;font-weight:bold">=</span>3;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#099">80</span> ;
+</span></span><span style="display:flex;"><span>    server_name thanos.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp ;
+</span></span><span style="display:flex;"><span>    rewrite ^/<span style="color:#000;font-weight:bold">(</span>.*<span style="color:#000;font-weight:bold">)</span>$  https://<span style="color:#008080">$server_name</span>/<span style="color:#008080">$1</span> ;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    listen      <span style="color:#099">443</span> ssl ;
+</span></span><span style="display:flex;"><span>    server_name thanos.ng.fg-example.com;
+</span></span><span style="display:flex;"><span>    ssl_certificate      /etc/nginx/cert/wildcard-ng-fg-example-com_fullchain.pem;
+</span></span><span style="display:flex;"><span>    ssl_certificate_key  /etc/nginx/cert/wildcard-ng-fg-example-com_key.pem;
+</span></span><span style="display:flex;"><span>    ssl_session_timeout  5m ;
+</span></span><span style="display:flex;"><span>    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+</span></span><span style="display:flex;"><span>    ssl_ciphers  HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM;
+</span></span><span style="display:flex;"><span>    ssl_prefer_server_ciphers   on;
+</span></span><span style="display:flex;"><span>    index index.html index.htm index.jsp;
+</span></span><span style="display:flex;"><span>    include iplist/iplist.txt;
+</span></span><span style="display:flex;"><span>    access_log  /work/nginx/logs/thanos.ng.fg-example.com.access.log json1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    location / <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        proxy_set_header Host <span style="color:#008080">$host</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Real-IP <span style="color:#008080">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-For <span style="color:#008080">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>    	proxy_pass http://thanos.ng.fg-example;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>访问页面</p>
+<p><img src="https://images.snoopyops.top/image-20230912185932286.png" alt="image-20230912185932286"></p>
+<h3 id="thanos-compact">Thanos-compact</h3>
+<p>部署一份即可</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir /work/thanos/compact
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动配置</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /etc/systemd/system/thanos-compact.service
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos-compact
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos compact <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--data-dir<span style="color:#000;font-weight:bold">=</span>/work/thanos/compact <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--objstore.config-file<span style="color:#000;font-weight:bold">=</span>/etc/thanos/thanos-minio.yml <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10912 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>	--wait
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动服务</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl start thanos-compact.service
+</span></span><span style="display:flex;"><span>systemctl status thanos-compact.service
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#0086b3">enable</span> thanos-compact.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thanos-rule">Thanos-rule</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>Thanos-ruel
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/local/bin/thanos rule <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --grpc-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10907 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --http-address<span style="color:#000;font-weight:bold">=</span>0.0.0.0:10908 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --rule-file<span style="color:#000;font-weight:bold">=</span>/opt/prometheus/rules/alert-rules.yml <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --data-dir<span style="color:#000;font-weight:bold">=</span>/data/thanos/rule <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --query<span style="color:#000;font-weight:bold">=</span>172.16.1.8:10903 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>       --alertmanagers.url<span style="color:#000;font-weight:bold">=</span>https://alert-global.linke.ai
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -HUP
+</span></span><span style="display:flex;"><span><span style="color:#008080">TimeoutStopSec</span><span style="color:#000;font-weight:bold">=</span>20s
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">LimitNOFILE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">20480000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="grafana">Grafana</h2>
+<p>随便找台服务器部署<code>Grafana</code></p>
+<h2 id="consul">Consul</h2>
+<h2 id="alertmanager">Alertmanager</h2>
+<pre tabindex="0"><code>kind: Config
+apiVersion: v1
+preferences: {}
+clusters:
+  - name: internalCluster
+    cluster:
+      server: https://10.215.46.197:5443
+      certificate-authority-data: &gt;-
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREekNDQWZlZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFwTVJrd0Z3WURWUVFLRXhCRFEwVWcKVkdWamFHNXZiRzluYVdWek1Rd3dDZ1lEVlFRREV3TkRRMFV3SGhjTk1qSXdOakF4TURjd01qTXlXaGNOTkRJdwpOakF4TURjd01qTXlXakFwTVJrd0Z3WURWUVFLRXhCRFEwVWdWR1ZqYUc1dmJHOW5hV1Z6TVF3d0NnWURWUVFECkV3TkRRMFV3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRREk3eDJkME9INUsraVMKVmZ2cEhIaG0yQWM1REZ1WEhOQlFQZE9NS3N0YXFDdUVjYk5wb09SMTYvajdiS3RXOGE5Q2YxWnMwQmsxSWlyQgovaTFFdnM1eGdzSE43Vng5emNsREpyaU8rZVFWODM1U1d6aHhGaFNJN1RTRE1BTCszeU94aldPNkh1bUhpM2ZRCm5aME9aWllMRlNYcmVQdXRmeEcvUGo4QWt2amliNjd0Sm1Rckt5cHhGRFFRcEZpWm9DRVVFRGw5QTZzaVpFVUoKMHNBVlVPNGw2TlhwV1E5dk1HNWxlQnRpbDlHNjVxNGRlKytNVFY0czRZWFZBTmNuYTVxNEZVaXhNbFQ5eDZHKwpXcjhjRWRZN2NxWVJzUk13cGxIMktSTW1WRENPRFNXUnJ6VzhUZ2NtWWI5b3ZaNjdXV0hPc2R1b3QwU2NsSEVCCk8wSXN0cmNGQWdNQkFBR2pRakJBTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQQmdOVkhSTUJBZjhFQlRBREFRSC8KTUIwR0ExVWREZ1FXQkJTandpWkFpTUFYQjdGaC9jaWlKSmZNcm9GZThqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQwpBUUVBbHBaQ3VsLy82SjJDb3gxRHlJTndmVGtqeWViK2RYQ2NsUjgzR2RSdXd1dFhMOXFFbkJUS0NIR2l6R3ZZCldwblNmUHJUc0Z1SEVxY254dG1jMGtZczh2UlREenFwaWdqbS8rY2ZZRmUwVEVtN1ZGb21Xc2xnV3czbXhWZC8KSW5OMW9SZ3JiR1ZHdVN4MmVPM3VyUElxemRvaXlQMHJaSUJvZUZRSXh6TU9oNVdtWGZodkV0dnczdERoWjV0KwpHMUQ1TlpVSnNGWkRqelJMZUVaTjRiUE4yQkFlTVYzRjBHQlJsT1ZzR1d3OUtrU0I4MngxWUNiMGRhTVlrZGNPCnZVKzRncUpHcU1OVVNGSzhmYU9YNU0vMEZ1QkwwYVhDMWl3TDhPdzBDTVBWWlhMWmIxRVdMRU9VWitlSkpIakMKTXdXZTA5NlJaSDBaTTk5bml2UjdWcjJybmc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  - name: externalCluster
+    cluster:
+      server: https://182.160.17.159:5443
+      insecure-skip-tls-verify: true
+  - name: externalClusterTLSVerify
+    cluster:
+      server: https://182.160.17.159:5443
+      certificate-authority-data: &gt;-
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUREekNDQWZlZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFwTVJrd0Z3WURWUVFLRXhCRFEwVWcKVkdWamFHNXZiRzluYVdWek1Rd3dDZ1lEVlFRREV3TkRRMFV3SGhjTk1qSXdOakF4TURjd01qTXlXaGNOTkRJdwpOakF4TURjd01qTXlXakFwTVJrd0Z3WURWUVFLRXhCRFEwVWdWR1ZqYUc1dmJHOW5hV1Z6TVF3d0NnWURWUVFECkV3TkRRMFV3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRREk3eDJkME9INUsraVMKVmZ2cEhIaG0yQWM1REZ1WEhOQlFQZE9NS3N0YXFDdUVjYk5wb09SMTYvajdiS3RXOGE5Q2YxWnMwQmsxSWlyQgovaTFFdnM1eGdzSE43Vng5emNsREpyaU8rZVFWODM1U1d6aHhGaFNJN1RTRE1BTCszeU94aldPNkh1bUhpM2ZRCm5aME9aWllMRlNYcmVQdXRmeEcvUGo4QWt2amliNjd0Sm1Rckt5cHhGRFFRcEZpWm9DRVVFRGw5QTZzaVpFVUoKMHNBVlVPNGw2TlhwV1E5dk1HNWxlQnRpbDlHNjVxNGRlKytNVFY0czRZWFZBTmNuYTVxNEZVaXhNbFQ5eDZHKwpXcjhjRWRZN2NxWVJzUk13cGxIMktSTW1WRENPRFNXUnJ6VzhUZ2NtWWI5b3ZaNjdXV0hPc2R1b3QwU2NsSEVCCk8wSXN0cmNGQWdNQkFBR2pRakJBTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQQmdOVkhSTUJBZjhFQlRBREFRSC8KTUIwR0ExVWREZ1FXQkJTandpWkFpTUFYQjdGaC9jaWlKSmZNcm9GZThqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQwpBUUVBbHBaQ3VsLy82SjJDb3gxRHlJTndmVGtqeWViK2RYQ2NsUjgzR2RSdXd1dFhMOXFFbkJUS0NIR2l6R3ZZCldwblNmUHJUc0Z1SEVxY254dG1jMGtZczh2UlREenFwaWdqbS8rY2ZZRmUwVEVtN1ZGb21Xc2xnV3czbXhWZC8KSW5OMW9SZ3JiR1ZHdVN4MmVPM3VyUElxemRvaXlQMHJaSUJvZUZRSXh6TU9oNVdtWGZodkV0dnczdERoWjV0KwpHMUQ1TlpVSnNGWkRqelJMZUVaTjRiUE4yQkFlTVYzRjBHQlJsT1ZzR1d3OUtrU0I4MngxWUNiMGRhTVlrZGNPCnZVKzRncUpHcU1OVVNGSzhmYU9YNU0vMEZ1QkwwYVhDMWl3TDhPdzBDTVBWWlhMWmIxRVdMRU9VWitlSkpIakMKTXdXZTA5NlJaSDBaTTk5bml2UjdWcjJybmc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+users:
+  - name: user
+    user:
+      client-certificate-data: &gt;-
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZRENDQWtpZ0F3SUJBZ0lJTi9OSlllUWhhTkl3RFFZSktvWklodmNOQVFFTEJRQXdLVEVaTUJjR0ExVUUKQ2hNUVEwTkZJRlJsWTJodWIyeHZaMmxsY3pFTU1Bb0dBMVVFQXhNRFEwTkZNQjRYRFRJek1UQXlNREE1TlRrMQpNbG9YRFRJNE1UQXlNREE1TlRrMU1sb3diVEZBTUJVR0ExVUVDaE1PYzNsemRHVnRPbTFoYzNSbGNuTXdKd1lEClZRUUtFeUE1TTJJek1UVmpZamsyTjJFMFpERTRZV000WldRME5tRTRaall6T1dWbVlURXBNQ2NHQTFVRUF4TWcKWm1RNVkySm1PVGd5TURRME5HVXpaV0ppWWpKaFpUTXdaVEF6Wm1ZelptSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQgpBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRREk3eDJkME9INUsraVNWZnZwSEhobTJBYzVERnVYSE5CUVBkT01Lc3RhCnFDdUVjYk5wb09SMTYvajdiS3RXOGE5Q2YxWnMwQmsxSWlyQi9pMUV2czV4Z3NITjdWeDl6Y2xESnJpTytlUVYKODM1U1d6aHhGaFNJN1RTRE1BTCszeU94aldPNkh1bUhpM2ZRblowT1paWUxGU1hyZVB1dGZ4Ry9QajhBa3ZqaQpiNjd0Sm1Rckt5cHhGRFFRcEZpWm9DRVVFRGw5QTZzaVpFVUowc0FWVU80bDZOWHBXUTl2TUc1bGVCdGlsOUc2CjVxNGRlKytNVFY0czRZWFZBTmNuYTVxNEZVaXhNbFQ5eDZHK1dyOGNFZFk3Y3FZUnNSTXdwbEgyS1JNbVZEQ08KRFNXUnJ6VzhUZ2NtWWI5b3ZaNjdXV0hPc2R1b3QwU2NsSEVCTzBJc3RyY0ZBZ01CQUFHalNEQkdNQTRHQTFVZApEd0VCL3dRRUF3SUZvREFUQmdOVkhTVUVEREFLQmdnckJnRUZCUWNEQWpBZkJnTlZIU01FR0RBV2dCU2p3aVpBCmlNQVhCN0ZoL2NpaUpKZk1yb0ZlOGpBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUpkdVE4Vk1ESWRjUTZhcW4KTnpUNjV1WlI3eWQ0RFJRRlRSdWlrZ1NpUER3K1B2aHpHREk0eitiWGZRNWNSN1B0VHVpdzN2RFJWZVp2aWxnQwpKTEorc0JTcCtPR3duUFVMSHR5b1FZaDRMNWxZUEJCdnF5OFdGVU4zMm0wQWl1OElvQUJWUXZVeHEzQ3VWTlpiCmpIbDRtL0prd3hFcnV2UDZpd3BkOUFFbk5oMXlOT3NQWkUyVUtTY0hKcjJ6U08xR1FwMjZER1BzdmhYMTVQbVcKRnFNY05GWVN5V1lNT1M3UzhYL2o2QkhrSGdYNXJNdHM0Wkp1VGRidlZQUE8xQUl1VjkvbVFPSm1JM3ZmZ0ljTQpHNDZwOURqNzAzekZUTWxaVjQrSGoyUU5CUFBMRm43QjJxbTVndW1GZjE1eVFaeEFTS1c3SnN4TXYwN1czYVR0CllOVjZsQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+      client-key-data: &gt;-
+        LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBeU84ZG5kRGgrU3Zva2xYNzZSeDRadGdIT1F4Ymx4elFVRDNUakNyTFdxZ3JoSEd6CmFhRGtkZXY0KzJ5clZ2R3ZRbjlXYk5BWk5TSXF3ZjR0Ukw3T2NZTEJ6ZTFjZmMzSlF5YTRqdm5rRmZOK1VsczQKY1JZVWlPMDBnekFDL3Q4anNZMWp1aDdwaDR0MzBKMmREbVdXQ3hVbDYzajdyWDhSdno0L0FKTDQ0bSt1N1NaawpLeXNxY1JRMEVLUlltYUFoRkJBNWZRT3JJbVJGQ2RMQUZWRHVKZWpWNlZrUGJ6QnVaWGdiWXBmUnV1YXVIWHZ2CmpFMWVMT0dGMVFEWEoydWF1QlZJc1RKVS9jZWh2bHEvSEJIV08zS21FYkVUTUtaUjlpa1RKbFF3amcwbGthODEKdkU0SEptRy9hTDJldTFsaHpySGJxTGRFbkpSeEFUdENMTGEzQlFJREFRQUJBb0lCQUNtbDVtMmZyamNIY3QxaQpGU1RzVWNoL1huL2tuOWRpa1lzUVJaajRCYzUwclJCMndNbFVJQWFSTXJwcWU5azVueW9aV3NDVElhWnh2b3NYCk5DcmJvYzdGVzRaamZKaFczekNjQmdVY3Byb21EampqejM4aEpJQjlLalZHN2xnRnlGQTFEa2Exd1pIbXhwN24KREhhL2Q2bzBaL2UyeS9QYU1zT0JFMjM3Q0x0bUxJeUtzWGx4bDliTDlDekJEcTJxOC9Eb2VLL29Md0xBamRzSgpJUEZFbmlNR1VBbitFSVNZdVJOQXJMVVltbWRZVGluSVZlejJQdlJyeGtHczM4dU1OZzBOZzBUM1ordEJycFlKCnlXU1dFK05Jb0UxcVRVMS82TWlMOVllVEZSTGVXUDJ1NlMwanFhNjg0WjlTQlBZTWlqeW03eVNQa2FIMDJzNU8KUzRxUXhnRUNnWUVBMDVsYkRsNWVia1Jkdkp3MEpORUdTVXUwanVXbko4SVZGa0Y5ZzZXZDJod055TkhCK2xHeAowcC9qVlFmTlc2dUw2NSttckRCMFErTHFReWlpNmtYdDJNSEhFbktrcGhYZDRmdjJoQXgyM0o1WTNnTXZNQlByCmhvckJoUFNtZFlBUyttb01UelBrcjY3Q0hjWUh0dHRjNGFyN0NldUVKS1k4eERUTzhWUVdsTDBDZ1lFQTh4amIKOU80MlB5N0Fnd3pxRzJJelNyNTVvMytHSlJlbUF5VEZlMEtxcFlpM2FhZ1BNZ01XVXBOWDNjUHMyRnd4cGM2RgpYT09iK0FQTzlKL3g4dzNrUDRhcisyWW5oZGoxQlpHdjdQNjZ4eFRmMGVTeU8xQllFMU4rZ2hEemNwTXdoYkJoCjhTa3Y3Qk94YWptMWhnYmJCbkwrcWJobVJMaG9CTWs4ZlFFWm8ra0NnWUIzS1ZiUkNhM3VOUXdBeW9yRzdQdTQKVFN6NmlEUVJQTWc1UjFwU3gvTFVRSlkyc0lHbjRWZmVBSEs2a1BGQ0hhSm5aL29wNEFPcHMyRXZ2dk80TVBkWAo2UkNkdi9nZkhCTmZUMUN0WG9PVmpJc0pSQXZQN0hmbnhiNWpqSTh0ZnBteGNnVkttVFBCQ0E2RFMrRk9SY3pSCnZVTXdlL1JuMjBJL1VHbjJGOSs3bFFLQmdRREdsczVKWHJpT0VRRlBqYU5KejRVYlVGTktUNGtra0JjY2hsT1YKaURhamwvWk5wKzhSNmhlNFNZb0VMbVF6czgwVEtJMGwvd0tSTDN0SHQ4b054cEZwbS9pdkhScTRheTV1NkQ4UgptbDYyOThTSVVRMlJDdWVJa2pMTXlsQTJqeXVhYXliM3ZhL2FhWlFMdFMwbldqNWZIRjRTQkFQM3E3VytBeThZCjUyY3MwUUtCZ0VKZGpJcm95d2VQeGdpTXBvZWdJT1hwYzFJMGFuUkg4UHNnVEJVWmpmNmQrcHI3azBKMTBXNGUKVS92c2dwbzF0cys4cFNvMjVqVTBiM2Z6Q1ZGWjRKbTZJZDlQWjBxa0dsK3NVSXJyaXl5aGdHcGp2NnVMS1g0UAphY0pHRWFxdU8wM1BVbU01VUdsRG5DcnE5cHVZNVFEQ3Jlc3RXL1JYVlV4LzRLd0ROclo1Ci0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+contexts:
+  - name: internal
+    context:
+      cluster: internalCluster
+      user: user
+  - name: external
+    context:
+      cluster: externalCluster
+      user: user
+  - name: externalTLSVerify
+    context:
+      cluster: externalClusterTLSVerify
+      user: user
+current-context: external
+</code></pre><h1 id="k8s部署">K8S部署</h1>
+<p>部署顺序</p>
+<ol>
+<li>部署k8s监控组件</li>
+</ol>
+<p>apply metrics-server.yaml 和 kube-state-metrics.yaml（注意k8s集群版本差异）</p>
+<ol start="2">
+<li>
+<p>创建文件顺序</p>
+<p>rbac.yaml——&gt;thanos-storage-minio.yaml——&gt;其他yaml 只需要在其中一个集群部署Alertmanager和thanos-query-global即可</p>
+</li>
+</ol>
+<p>不同集群修改文件内容</p>
+<ol>
+<li>thanos-storage-minio.yaml</li>
+</ol>
+<p>修改bucket的access_key和secret_key还有地址</p>
+<pre tabindex="0"><code>bucket: thanos-tj-test
+endpoint: 192.168.10.20:40000
+access_key: access_key
+secret_key: secret_key
+</code></pre><ol start="2">
+<li>prometheus.yaml</li>
+</ol>
+<p>修改Prometheus额外标签，标注集群名称</p>
+<pre tabindex="0"><code>- name: CLUSTER
+  value: &#34;shanghai&#34;
+</code></pre><p>3.*-ingress.yaml</p>
+<p>修改ingress资源访问域名</p>
+<pre tabindex="0"><code>spec:
+  routes:
+    - match: Host(`prometheus.shanghai.com`)
+</code></pre><hr>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create ns thanos
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -f metrics-server.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f kube-state-metrics.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f rbac.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f thanos-storage-minio.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f prometheus-config.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f prometheus-rule.yaml
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 修改Promehteus.yaml中的集群信息</span>
+</span></span><span style="display:flex;"><span>grep -C <span style="color:#099">4</span> <span style="color:#d14">&#34;CLUSTER&#34;</span> prometheus.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        - name: POD_NAME
+</span></span><span style="display:flex;"><span>          valueFrom:
+</span></span><span style="display:flex;"><span>            fieldRef:
+</span></span><span style="display:flex;"><span>              fieldPath: metadata.name
+</span></span><span style="display:flex;"><span>        - name: CLUSTER
+</span></span><span style="display:flex;"><span>          value: <span style="color:#d14">&#34;marketing&#34;</span>
+</span></span><span style="display:flex;"><span>        volumeMounts:
+</span></span><span style="display:flex;"><span>        - name: prometheus-config
+</span></span><span style="display:flex;"><span>          mountPath: /etc/prometheus/config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl apply -f prometheus.yaml <span style="color:#000;font-weight:bold">(</span>版本超过v0.35.0可能Prometheus会报错配置文件找不到<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>为promethues创建ingress <span style="color:#000;font-weight:bold">(</span>prometheus-ingress.yaml<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>root@ops:/data/local-yaml/mp/thanos-install# kubectl apply  -f thanos-store.yaml
+</span></span><span style="display:flex;"><span>为store创建ingress（thanos-store-ingress.yaml）
+</span></span><span style="display:flex;"><span>root@ops:/data/local-yaml/mp/thanos-install# kubectl apply  -f thanos-query.yaml
+</span></span><span style="display:flex;"><span>为query创建ingress（thanos-query-ingress.yaml<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>root@ops:/data/local-yaml/mp/thanos-install# kubectl apply -f thanos-compact.yaml
+</span></span><span style="display:flex;"><span>为compact创建ingress（thanos-compact-ingress.yaml<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>创建rule，需要需改其中alertmanager的地址
+</span></span><span style="display:flex;"><span>root@ops:/data/local-yaml/mp/thanos-install# kubectl apply -f thanos-rule.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>NAME                            CLASS   HOSTS                           ADDRESS                   PORTS     AGE
+</span></span><span style="display:flex;"><span>prometheus-ai-ng.i.o-kash.com   nginx   prometheus-ai-ng.i.o-kash.com   10.66.0.243,10.66.2.151   80, <span style="color:#099">443</span>   43d
+</span></span><span style="display:flex;"><span>rule-ai-ng.i.o-kash.com         nginx   rule-ai-ng.i.o-kash.com         10.66.0.243,10.66.2.151   80, <span style="color:#099">443</span>   36d
+</span></span><span style="display:flex;"><span>thanos-ai-ng.i.o-kash.com       nginx   thanos-ai-ng.i.o-kash.com       10.66.0.243,10.66.2.151   80, <span style="color:#099">443</span>   43d
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

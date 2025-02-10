@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="用户与组 - https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>用户与组</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">用户与组</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            2023-05-24&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2023-12-18&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            6539 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            14 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#用户相关概念">用户相关概念</a>
+      <ul>
+        <li><a href="#认识用户">认识用户</a></li>
+        <li><a href="#配置文件">配置文件</a></li>
+        <li><a href="#用户id">用户ID</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户管理">用户管理</a>
+      <ul>
+        <li><a href="#创建用户">创建用户</a></li>
+        <li><a href="#用户创建流程">用户创建流程</a></li>
+        <li><a href="#修改用户">修改用户</a></li>
+        <li><a href="#删除用户">删除用户</a></li>
+      </ul>
+    </li>
+    <li><a href="#密码管理">密码管理</a>
+      <ul>
+        <li><a href="#设置密码">设置密码</a></li>
+        <li><a href="#随机密码">随机密码</a></li>
+      </ul>
+    </li>
+    <li><a href="#其他用户相关命令">其他用户相关命令</a>
+      <ul>
+        <li><a href="#who命令">who命令</a></li>
+        <li><a href="#whoami命令">whoami命令</a></li>
+        <li><a href="#w命令">w命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户组相关概念">用户组相关概念</a>
+      <ul>
+        <li><a href="#认识用户组">认识用户组</a></li>
+        <li><a href="#配置文件-1">配置文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户组管理">用户组管理</a>
+      <ul>
+        <li><a href="#创建用户组">创建用户组</a></li>
+        <li><a href="#修改用户组">修改用户组</a></li>
+        <li><a href="#删除用户组">删除用户组</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户提权">用户提权</a>
+      <ul>
+        <li><a href="#su命令">su命令</a></li>
+        <li><a href="#sudo命令">sudo命令</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h2 id="用户相关概念">用户相关概念</h2>
+<h3 id="认识用户">认识用户</h3>
+<p>在<code>Linux</code>系统中，用户和组是用于管理和控制系统资源访问权限的重要概念。</p>
+<p>用户（<code>User</code>）：是指系统中的账号。每个用户都有一个唯一的用户名和用户<code>ID</code>（<code>UID</code>）。用户可以拥有自己的个人文件和目录，并且可以在系统中执行特定的操作。</p>
+<p>普通用户应用场景：</p>
+<ol>
+<li>针对研发、测试等岗位的同事，我们通常会分配普通用户给他们，避免因<code>root</code>权限过大，误操作导致故障。</li>
+<li>生产环境服务器通常会禁止使用<code>root</code>登录，管理人员需要使用普通用户登录系统后提权到<code>root</code>用户。</li>
+<li>使用普通用户运行程序，规避因程序存在漏洞，导致黑客入侵后获取到较高的权限。</li>
+</ol>
+<h3 id="配置文件">配置文件</h3>
+<p>创建用户时，系统会对<code>/etc/passwd</code>和<code>/etc/shadow</code>文件进行变更，接下来让我们来认识这两个配置文件。</p>
+<p><code>Linux</code>系统会将用户信息存放在<code>/etc/passwd</code>中，<code>/etc/passwd</code>只记录用户信息，不记录密码。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># head -1 /etc/passwd</span>
+</span></span><span style="display:flex;"><span>root:x:0:0:root:/root:/bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/passwd</code>以<code>:</code>为分隔符，共可分为<code>7</code>列。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第一列</th>
+<th style="text-align:center">第二列</th>
+<th style="text-align:center">第三列</th>
+<th style="text-align:center">第四列</th>
+<th style="text-align:center">第五列</th>
+<th style="text-align:center">第六列</th>
+<th style="text-align:center">第七列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">root</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">root</td>
+<td style="text-align:center">/root</td>
+<td style="text-align:center">/bin/bash</td>
+</tr>
+<tr>
+<td style="text-align:center">用户名</td>
+<td style="text-align:center">密码占位符</td>
+<td style="text-align:center">用户UID</td>
+<td style="text-align:center">组GID</td>
+<td style="text-align:center">注释信息</td>
+<td style="text-align:center">用户家目录</td>
+<td style="text-align:center">用户登陆shell</td>
+</tr>
+</tbody>
+</table>
+<p><code>/etc/shadow</code>用于记录用户的密码信息。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># head -1 /etc/shadow</span>
+</span></span><span style="display:flex;"><span>root:<span style="color:#008080">$xxx6</span>:19489:0:99999:7:2:66275:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/shadow</code>以<code>:</code>为分隔符，共可分为<code>9</code>列。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一列</td>
+<td>root</td>
+<td>用户名。</td>
+</tr>
+<tr>
+<td>第二列</td>
+<td>$xxx6</td>
+<td>密码密文，!!表示无密码。</td>
+</tr>
+<tr>
+<td>第三列</td>
+<td>19489</td>
+<td>最近修改密码的日期，从1970年1月1日到现在过了多少天。</td>
+</tr>
+<tr>
+<td>第四列</td>
+<td>0</td>
+<td>最小修改密码时间间隔。0表示随时可以修改，如果是n那么就表示设置了新密码以后n天之内都不能再修改这个密码。</td>
+</tr>
+<tr>
+<td>第五列</td>
+<td>99999</td>
+<td>密码有效期。99999表示不强制在多少天内修改密码。如果改为 90，则表示密码被修改 90 天之后必须再次修改，否则该用户即将过期。</td>
+</tr>
+<tr>
+<td>第六列</td>
+<td>7</td>
+<td>密码到期提醒。当账号的密码有效期限快要到的时候，系统会根据设定的数值发出警告信息提醒用户密码还有多少天就要过期了。</td>
+</tr>
+<tr>
+<td>第七列</td>
+<td>2</td>
+<td>密码过期后的宽限天数。在密码过期后，用户如果还是没有修改密码，则在此字段规定的宽限天数内，用户还是可以登录系统的；如果过了宽限天数，系统将不再让此账户登陆，也不会提示账户过期，是完全禁用。</td>
+</tr>
+<tr>
+<td>第八列</td>
+<td>66275</td>
+<td>账号失效日期。从1970年1月1日起，过多少天后，账户失效。</td>
+</tr>
+<tr>
+<td>第九列</td>
+<td></td>
+<td>保留字段</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>可通过<a href="https://www.gongjugou.com/kaifa/shijianjisuanqi/1-19700101005617-19700104005624.html">在线工具</a>计算1970年1月1日距今已经过去了多少天。</p>
+</blockquote>
+<h3 id="用户id">用户ID</h3>
+<p>系统对用户的约定，在<code>CentOS7</code>系统之前，<code>UID1-499</code>用于系统用户，而<code>500+</code>则用于普通用户。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">用户UID</th>
+<th>系统中约定的含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td>超级管理员，最高权限。</td>
+</tr>
+<tr>
+<td style="text-align:center">1~200</td>
+<td>系统用户，用来运行系统自带的进程，默认已创建。</td>
+</tr>
+<tr>
+<td style="text-align:center">201~999</td>
+<td>系统用户，用来运行用户安装的程序，所以此类用户无需登陆系统。</td>
+</tr>
+<tr>
+<td style="text-align:center">1000+</td>
+<td>普通用户，正常可以登陆系统的用户，权限比较小，能执行的任务有限。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用户管理">用户管理</h2>
+<h3 id="创建用户">创建用户</h3>
+<p><code>useradd</code>命令用于新增用户，常用选项及说明如下表。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-u</td>
+<td>指定用户的UID。</td>
+</tr>
+<tr>
+<td style="text-align:center">-g</td>
+<td>指定用户的默认组，只能有一个。</td>
+</tr>
+<tr>
+<td style="text-align:center">-G</td>
+<td>指定用户的附加组，逗号隔开可以添加多个。</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td>指定要创建的用户的家目录。</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td>指定要创建用户的bash shell。</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td>指定要创建用户的注释信息。</td>
+</tr>
+<tr>
+<td style="text-align:center">-M</td>
+<td>给创建的用户不创建家目录。</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td>创建系统账户，默认无家目录。</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以通过以下练习熟悉<code>useradd</code>的使用。</p>
+<p><strong>例1</strong>：创建<code>snoopy</code>用户，指定<code>UID</code>为<code>5001</code>，基本组<code>ops</code>，附加组<code>dev</code>， 注释信息<code>testUser</code>，登陆<code>shell</code>为<code>/bin/bash</code>。</p>
+<p>用<code>groupadd</code>添加相关的用户组。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd ops</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd dev</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建用户并验证</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># useradd snoopy -u 5001 -g ops -G dev -c &#34;testUser&#34; -s /bin/bash</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查用户</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id snoopy</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5001<span style="color:#000;font-weight:bold">(</span>snoopy<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span>,1001<span style="color:#000;font-weight:bold">(</span>dev<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;snoopy&#34; /etc/passwd</span>
+</span></span><span style="display:flex;"><span>snoopy:x:5001:1000:testUser:/home/snoopy:/bin/bash
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;snoopy&#34; /etc/shadow</span>
+</span></span><span style="display:flex;"><span>snoopy:!!:19667:0:99999:7:::
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>例2</strong>：创建<code>mysql</code>系统用户，不建立用户家目录，并指定<code>nologin</code>使用户无法登陆系统。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># useradd mysql -r -s /sbin/nologin</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 检查用户</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>998<span style="color:#000;font-weight:bold">(</span>mysql<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>996<span style="color:#000;font-weight:bold">(</span>mysql<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>996<span style="color:#000;font-weight:bold">(</span>mysql<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;mysql&#34; /etc/passwd</span>
+</span></span><span style="display:flex;"><span>mysql:x:998:996::/home/mysql:/sbin/nologin
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 未创建用户家目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /home/ | grep mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 无法登录</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># su - mysql</span>
+</span></span><span style="display:flex;"><span>su: warning: cannot change directory to /home/mysql: No such file or directory
+</span></span><span style="display:flex;"><span>This account is currently not available.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请自己尝试创建一个<code>develop</code>用户，<code>uid</code>为<code>6666</code>，附加组为<code>ops</code>，用户家目录为<code>/tmp/develop</code>，登录<code>shell</code>为<code>/sbin/nologin</code>。</p>
+<blockquote>
+<p>修改用户家目录需要关闭selinux。</p>
+</blockquote>
+<h3 id="用户创建流程">用户创建流程</h3>
+<p><strong>配置文件解读</strong></p>
+<p>在用户创建的过程需要参考<code>/etc/login.defs</code>和<code>/etc/default/useradd</code>这两个文件。如果在创建用户时指定了参数，则会覆盖<code>/etc/login.defs</code>和<code>/etc/default/useradd</code>相关内容。</p>
+<p><code>/etc/login.defs</code>相关配置内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># egrep -v &#34;^$|#&#34; /etc/login.defs</span>
+</span></span><span style="display:flex;"><span>MAIL_DIR	/var/spool/mail      <span style="color:#998;font-style:italic"># 邮见存放目录。</span>
+</span></span><span style="display:flex;"><span>PASS_MAX_DAYS	<span style="color:#099">99999</span>            <span style="color:#998;font-style:italic"># 密码最长使用天数。</span>
+</span></span><span style="display:flex;"><span>PASS_MIN_DAYS	<span style="color:#099">0</span>                <span style="color:#998;font-style:italic"># 密码最短使用天数。</span>
+</span></span><span style="display:flex;"><span>PASS_MIN_LEN	<span style="color:#099">5</span>                <span style="color:#998;font-style:italic"># 密码的长度。</span>
+</span></span><span style="display:flex;"><span>PASS_WARN_AGE	<span style="color:#099">7</span>                <span style="color:#998;font-style:italic"># 密码到期前7天警告。</span>
+</span></span><span style="display:flex;"><span>UID_MIN                  <span style="color:#099">1000</span>    <span style="color:#998;font-style:italic"># UID从1000开始。</span>
+</span></span><span style="display:flex;"><span>UID_MAX                 <span style="color:#099">60000</span>    <span style="color:#998;font-style:italic"># UID从6w结束。</span>
+</span></span><span style="display:flex;"><span>SYS_UID_MIN               <span style="color:#099">201</span>    <span style="color:#998;font-style:italic"># 系统用户UID从201开始。</span>
+</span></span><span style="display:flex;"><span>SYS_UID_MAX               <span style="color:#099">999</span>    <span style="color:#998;font-style:italic"># 系统用户UID最大到999。</span>
+</span></span><span style="display:flex;"><span>GID_MIN                  <span style="color:#099">1000</span>    <span style="color:#998;font-style:italic"># GID从1000开始。</span>
+</span></span><span style="display:flex;"><span>GID_MAX                 <span style="color:#099">60000</span>    <span style="color:#998;font-style:italic"># GID最大到6w结束。</span>
+</span></span><span style="display:flex;"><span>SYS_GID_MIN               <span style="color:#099">201</span>    <span style="color:#998;font-style:italic"># 系统GID从201开始。</span>
+</span></span><span style="display:flex;"><span>SYS_GID_MAX               <span style="color:#099">999</span>    <span style="color:#998;font-style:italic"># 系统GID醉倒到999结束。</span>
+</span></span><span style="display:flex;"><span>CREATE_HOME	yes                  <span style="color:#998;font-style:italic"># 默认给用户创建家目录。</span>
+</span></span><span style="display:flex;"><span>UMASK           077				 <span style="color:#998;font-style:italic"># 建立的用户家目录的默认权限。</span>
+</span></span><span style="display:flex;"><span>USERGROUPS_ENAB yes				 <span style="color:#998;font-style:italic"># 创建同名用户组；使用userdel删除用户时，默认连组一起删除。</span>
+</span></span><span style="display:flex;"><span>ENCRYPT_METHOD SHA512 			 <span style="color:#998;font-style:italic"># 密码加密算法。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/default/useradd</code>相关配置内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># egrep -v &#34;^$|#&#34; /etc/default/useradd</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">GROUP</span><span style="color:#000;font-weight:bold">=</span>100				 <span style="color:#998;font-style:italic"># 当创建用户时，不指定组，且/etc/login.defs中USERGROUPS_ENAB为no时，默认给用户分配到gid为100的组。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">HOME</span><span style="color:#000;font-weight:bold">=</span>/home               <span style="color:#998;font-style:italic"># 用户默认的家目录。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">INACTIVE</span><span style="color:#000;font-weight:bold">=</span>-1              <span style="color:#998;font-style:italic"># 密码过期后的宽限天数，也就是/etc/shadow文件的第七个字段。默认值是-1，表示没有强制密码过期。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">EXPIRE</span><span style="color:#000;font-weight:bold">=</span>                  <span style="color:#998;font-style:italic"># 密码失效时间，也就是/etc/shadow文件的第八个字段，不设置表示永久有效。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">SHELL</span><span style="color:#000;font-weight:bold">=</span>/bin/bash          <span style="color:#998;font-style:italic"># 默认登陆shell。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">SKEL</span><span style="color:#000;font-weight:bold">=</span>/etc/skel           <span style="color:#998;font-style:italic"># 默认用户拷贝的环境变量。</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">CREATE_MAIL_SPOOL</span><span style="color:#000;font-weight:bold">=</span>yes    <span style="color:#998;font-style:italic"># 创建一个和用户同名的保存邮件信息的文件。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>应用场景</strong></p>
+<p>我们使用<code>rm</code>时，可能会误删环境变量相关文件，登录后提示符如下。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># su - snoopy</span>
+</span></span><span style="display:flex;"><span>Last login: Tue Nov  <span style="color:#099">7</span> 00:19:58 CST <span style="color:#099">2023</span> on pts/2
+</span></span><span style="display:flex;"><span>-bash-4.2$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以自己拷贝环境变量到家目录，重启登录后可恢复。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-bash-4.2$ cp /etc/skel/.bash* ./
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="修改用户">修改用户</h3>
+<p><code>usermod</code>命令用于更改用户信息，常用选项及说明如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td>更改用户组的时候，保存原有组不变，直接追加。</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td>将家目录内容移至新位置 (仅与 -d 一起使用)。</td>
+</tr>
+<tr>
+<td style="text-align:center">-l</td>
+<td>指定要修改的用户的登录名。</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td>指定用户的UID。</td>
+</tr>
+<tr>
+<td style="text-align:center">-g</td>
+<td>指定用户的默认组，只能有一个。</td>
+</tr>
+<tr>
+<td style="text-align:center">-G</td>
+<td>指定用户的附加组，逗号隔开可以添加多个。常与-a配合使用。</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td>指定要创建的用户的家目录。</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td>指定要创建用户的bash shell。</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td>指定要创建用户的注释信息。</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以通过以下练习熟悉<code>usermod</code>的使用。</p>
+<p><strong>例1</strong>：将用户<code>snoopy</code>的<code>UID</code>改为<code>9999</code>，并添加附属组<code>dba</code>。</p>
+<p>查看用户<code>snoopy</code>的信息。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id snoopy</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5001<span style="color:#000;font-weight:bold">(</span>snoopy<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span>,1001<span style="color:#000;font-weight:bold">(</span>dev<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加用户组<code>dba</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd dba</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 若不加-a选项，附属组不会保留原先设置的组，会直接变更为dba</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod snoopy -u 9999 -aG dba</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id snoopy</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>9999<span style="color:#000;font-weight:bold">(</span>snoopy<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span>,1001<span style="color:#000;font-weight:bold">(</span>dev<span style="color:#000;font-weight:bold">)</span>,1002<span style="color:#000;font-weight:bold">(</span>dba<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>例2</strong>：将用户<code>snoopy</code>的用户名修改为<code>snoopyops</code>，家目录修改为<code>/tmp/snoopyops</code>。</p>
+<p>更改用户家目录时应加上<code>-m</code>选项，会将用户家目录移动到<code>/tmp</code>目录。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod snoopy -md /tmp/snoopyops -l snoopyops</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id snoopyops</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>9999<span style="color:#000;font-weight:bold">(</span>snoopyops<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>1000<span style="color:#000;font-weight:bold">(</span>ops<span style="color:#000;font-weight:bold">)</span>,1001<span style="color:#000;font-weight:bold">(</span>dev<span style="color:#000;font-weight:bold">)</span>,1002<span style="color:#000;font-weight:bold">(</span>dba<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># su - snoopyops</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更改用户家目录，没加<code>-m</code>选项，因为没有移动之前的家目录到<code>/tmp/test</code>目录，会提示家目录不存在。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod snoopyops -d /tmp/test</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># su - snoopyops</span>
+</span></span><span style="display:flex;"><span>Last login: Mon Aug  <span style="color:#099">5</span> 15:45:28 CST <span style="color:#099">2019</span> on pts/1
+</span></span><span style="display:flex;"><span>su: warning: cannot change directory to /tmp/test: No such file or directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除用户">删除用户</h3>
+<p><code>userdel</code>命令用于删除用户，常用选项及说明如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-r</td>
+<td>删除用户的同时删除他的家目录。</td>
+</tr>
+</tbody>
+</table>
+<p>删除用户<code>snoopyops</code>，不删除用户家目录等其他目录。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># userdel snoopyops</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之前将用于家目前修改成了<code>/tmp/snoopyops/</code>，我们发现用户相关目录还存在，没有被删除。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /tmp/snoopyops/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /var/spool/mail/snoopyops</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除用户<code>snoopyops</code>及其家目录。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># userdel -r snoopyops</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>用户数据可能会放置于家目录内，-r选项删除用户时，会删除其家目录，慎用！！！</p>
+</blockquote>
+<h2 id="密码管理">密码管理</h2>
+<h3 id="设置密码">设置密码</h3>
+<p><strong>为新用户添加密码</strong></p>
+<p>只有<code>root</code>才能执行才能为新用户添加密码。添加密码非为交互式和非交互式两种。</p>
+<ul>
+<li>
+<p>交互式添加密码。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># useradd snoopy</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># passwd snoopy</span>
+</span></span><span style="display:flex;"><span>Changing password <span style="color:#000;font-weight:bold">for</span> user snoopy.
+</span></span><span style="display:flex;"><span>New password: 输入密码
+</span></span><span style="display:flex;"><span>BAD PASSWORD: The password is a palindrome
+</span></span><span style="display:flex;"><span>Retype new password: 确认密码
+</span></span><span style="display:flex;"><span>passwd: all authentication tokens updated successfully.
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>非交互式添加密码。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># echo &#34;qwert&#34; | passwd --stdin snoopy</span>
+</span></span><span style="display:flex;"><span>Changing password <span style="color:#000;font-weight:bold">for</span> user snoopy.
+</span></span><span style="display:flex;"><span>passwd: all authentication tokens updated successfully.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过脚本，批量添加用户。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat user.sh </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i in <span style="color:#000;font-weight:bold">{</span>1..100<span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>	useradd test<span style="color:#008080">$i</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;123456&#34;</span> | passwd --stdin test<span style="color:#008080">$i</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p><strong>修改密码</strong></p>
+<p>为别人修改密码（只用<code>root</code>才能执行）。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># passwd test50</span>
+</span></span><span style="display:flex;"><span>Changing password <span style="color:#000;font-weight:bold">for</span> user test50.
+</span></span><span style="display:flex;"><span>New password: 
+</span></span><span style="display:flex;"><span>BAD PASSWORD: The password is a palindrome
+</span></span><span style="display:flex;"><span>Retype new password: 
+</span></span><span style="display:flex;"><span>passwd: all authentication tokens updated successfully.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为自己修改密码（自己就可以）。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>test50@localhost ~<span style="color:#000;font-weight:bold">]</span>$ passwd 
+</span></span><span style="display:flex;"><span>Changing password <span style="color:#000;font-weight:bold">for</span> user test50.
+</span></span><span style="display:flex;"><span>Changing password <span style="color:#000;font-weight:bold">for</span> test50.
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">(</span>current<span style="color:#000;font-weight:bold">)</span> UNIX password: 
+</span></span><span style="display:flex;"><span>New password: 
+</span></span><span style="display:flex;"><span>Retype new password: 
+</span></span><span style="display:flex;"><span>passwd: all authentication tokens updated successfully.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="随机密码">随机密码</h3>
+<p><strong>方式一</strong>：<code>$RANDOM</code>可以生成随机数，将随机数通过<code>md5</code>加密，取加密后的<code>6-15</code>字符。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span>$ <span style="color:#0086b3">echo</span> <span style="color:#008080">$RANDOM</span> | md5sum | cut -c 6-15
+</span></span><span style="display:flex;"><span>45de81b10c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>方式二</strong>：可以通过<code>mkpasswd</code>随机生成密码。</p>
+<p>安装扩展包。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#  yum install expect -y</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成随机密码。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mkpasswd</span>
+</span></span><span style="display:flex;"><span>7q~HfjM0g
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># -l密码长度  -d数字个数  -c小写字母个数  -C大写字母个数  -s特殊字符个数</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mkpasswd -l 10 -d 3 -c 2 -C 3 -s 2</span>
+</span></span><span style="display:flex;"><span>6u36~LRSo&amp;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="其他用户相关命令">其他用户相关命令</h2>
+<h3 id="who命令">who命令</h3>
+<p><code>who</code>命令用于查看目前登录系统的用户信息。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># who</span>
+</span></span><span style="display:flex;"><span>root     tty1         2023-11-05 23:06
+</span></span><span style="display:flex;"><span>root     pts/0        2023-11-06 22:14 <span style="color:#000;font-weight:bold">(</span>192.168.199.1<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>root     pts/1        2023-11-06 22:17 <span style="color:#000;font-weight:bold">(</span>192.168.199.1<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>root     pts/2        2023-11-06 23:06 <span style="color:#000;font-weight:bold">(</span>192.168.199.1<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="whoami命令">whoami命令</h3>
+<p><code>whoami</code>用于查看当前登陆系统的用户是谁。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># whoami</span>
+</span></span><span style="display:flex;"><span>root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="w命令">w命令</h3>
+<p><code>w</code>命令用于显示已经登陆系统的用户列表，并显示用户正在执行的指令。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># w</span>
+</span></span><span style="display:flex;"><span> 23:34:44 up <span style="color:#099">1</span> day, <span style="color:#099">28</span> min,  <span style="color:#099">4</span> users,  load average: 0.00, 0.01, 0.05
+</span></span><span style="display:flex;"><span>USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+</span></span><span style="display:flex;"><span>root     tty1                      Sun23    1:17m  0.02s  0.02s -bash
+</span></span><span style="display:flex;"><span>root     pts/0    192.168.199.1    22:14    1:20m  0.01s  0.01s -bash
+</span></span><span style="display:flex;"><span>root     pts/1    192.168.199.1    22:17    1:10m  0.07s  0.07s -bash
+</span></span><span style="display:flex;"><span>root     pts/2    192.168.199.1    23:06    4.00s  0.13s  0.00s w
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<table>
+<thead>
+<tr>
+<th>显示信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23:34:44</td>
+<td>当前系统时间。</td>
+</tr>
+<tr>
+<td>up</td>
+<td>当前系统运行的时长。</td>
+</tr>
+<tr>
+<td>4 users</td>
+<td>有多少用户登陆了系统。</td>
+</tr>
+<tr>
+<td>load average</td>
+<td>当前系统负载状态。</td>
+</tr>
+<tr>
+<td>0.00</td>
+<td>1分钟内平均负载。</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>5分钟内平均负载。</td>
+</tr>
+<tr>
+<td>0.05</td>
+<td>15分钟内平均负载</td>
+</tr>
+<tr>
+<td>JCPU</td>
+<td>该终端连接后所产生的进程占用的时间，不包括过去的后台进程所占用的时间。</td>
+</tr>
+<tr>
+<td>PCPU</td>
+<td>当前进程(即w项中显示的)所占用的时间。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用户组相关概念">用户组相关概念</h2>
+<h3 id="认识用户组">认识用户组</h3>
+<p>组（<code>Group</code>）：是一组相关用户的集合。每个组都有一个唯一的组名和组<code>ID</code>（<code>GID</code>）。组可以用于简化权限管理，将一组用户归类，并将特定权限分配给整个组。用户组分为基本组和附加组。</p>
+<p>基本组：用户只能有一个基本组，创建时可通过<code>-g</code>指定，如未指定则创建一个与用户同名的默认的组。</p>
+<p>附加组：用户除了基本组还可以属于多个附加组。</p>
+<h3 id="配置文件-1">配置文件</h3>
+<p>用户组信息保存在<code>/etc/group</code>和<code>/etc/gshadow</code>两个文件中。</p>
+<p><code>/etc/group</code>文件是用户组的配置文件，即用户组的所有信息都存放在此文件中。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># head -1 /etc/group</span>
+</span></span><span style="display:flex;"><span>root:x:0:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/group</code>以<code>:</code>为分隔符，共可分为<code>4</code>列。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第一列</th>
+<th style="text-align:center">第二列</th>
+<th style="text-align:center">第三列</th>
+<th style="text-align:center">第四列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">root</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">组名</td>
+<td style="text-align:center">组密码标志</td>
+<td style="text-align:center">组GID</td>
+<td style="text-align:center">组中附加用户，不显示基本成员</td>
+</tr>
+</tbody>
+</table>
+<p>用户组的密码信息存储在<code>/etc/gshadow</code>文件中。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># head -1 /etc/gshadow</span>
+</span></span><span style="display:flex;"><span>root:::
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>/etc/gshadow</code>以<code>:</code>为分隔符，共可分为<code>4</code>列。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第一列</th>
+<th style="text-align:center">第二列</th>
+<th style="text-align:center">第三列</th>
+<th style="text-align:center">第四列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">root</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">组名</td>
+<td style="text-align:center">组密码，通常不设置密码</td>
+<td style="text-align:center">组管理员，通常不设置</td>
+<td style="text-align:center">组中附加用户，不显示基本成员</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用户组管理">用户组管理</h2>
+<h3 id="创建用户组">创建用户组</h3>
+<p>我们可以通过<code>groupadd</code>命令创建一个用户组。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd group_test</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;group_test&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>group_test:x:5107:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建<code>GID</code>为<code>666</code>的用户组<code>g1</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd -g 666 g1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;666&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>g1:x:666:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建系统用户组<code>g2</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd -r g2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;g2&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>g2:x:665:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="修改用户组">修改用户组</h3>
+<p>将<code>g1</code>的<code>GID</code>改为<code>777</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupmod -g 777 g1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;g1&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>g1:x:777:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将<code>g1</code>的用户名修改为<code>gg</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupmod g1 -n gg</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;777&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>gg:x:777:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除用户组">删除用户组</h3>
+<p>当我们删除用户时，系统默认会把用户的基本组删除。</p>
+<p>可通过<code>groupdel</code>命令删除用户的附加组，需要先删除附加组内的所有用户后才可以删除附加组。</p>
+<p>创建一个用户<code>u1</code>，属于附加组<code>gg</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># useradd u1 -G gg</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id u1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5108<span style="color:#000;font-weight:bold">(</span>u1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>5108<span style="color:#000;font-weight:bold">(</span>u1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>5108<span style="color:#000;font-weight:bold">(</span>u1<span style="color:#000;font-weight:bold">)</span>,777<span style="color:#000;font-weight:bold">(</span>gg<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;u1&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>gg:x:777:u1
+</span></span><span style="display:flex;"><span>u1:x:5108:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除用户<code>u1</code>后，用户基本组<code>u1</code>也默认被删除，但是<code>gg</code>组还在。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># userdel u1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;u1&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;gg&#34; /etc/group</span>
+</span></span><span style="display:flex;"><span>gg:x:777:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可通过<code>groupdel</code>命令删除<code>gg</code>用户组。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupdel gg</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># grep &#34;gg&#34; /etc/group</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="用户提权">用户提权</h2>
+<p>因考虑到安全合规的需求，公司的服务器通常都会禁止<code>root</code>用户直接登录，所以我们通常使用的都是普通用户登录系统。当我们需要使用到<code>root</code>权限时，应如何提权呢？</p>
+<h3 id="su命令">su命令</h3>
+<p><code>su</code>命令是<code>Linux</code>操作系统中用于切换用户身份的命令，全名为<code>switch user</code>。它允许当前用户切换到其他用户账户，包括超级用户<code>root</code>。除<code>root</code>外，使用改命令需要输入密码。</p>
+<p><strong>切换用户</strong></p>
+<p><code>su username</code>可切换用户且不改变原用户的工作目录，属于非登录式<code>shell</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ su root
+</span></span><span style="display:flex;"><span>Password:
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost snoopy<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># pwd</span>
+</span></span><span style="display:flex;"><span>/home/snoopy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>su - username</code>切换用户后，同时切换到新用户的工作环境中，加载<code>root</code>用户的全部的环境变量，属于非登录式<code>shell</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ su - root
+</span></span><span style="display:flex;"><span>Password:
+</span></span><span style="display:flex;"><span>Last login: Mon Dec <span style="color:#099">11</span> 01:15:18 CST <span style="color:#099">2023</span> on pts/1
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># pwd</span>
+</span></span><span style="display:flex;"><span>/root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>环境变量加载顺序</strong></p>
+<p><code>profile</code>类的文件, 主要用于设定环境变量, 登陆前运行的脚本和命令。</p>
+<p><code>bashrc</code>类的文件, 主要用于设定本地变量, 定义命令别名。</p>
+<p>非登录式<code>shell</code>配置文件执行顺序。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/etc/profile.d/*.sh
+</span></span><span style="display:flex;"><span>/etc/bashrc
+</span></span><span style="display:flex;"><span>~/.bashrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>登录式<code>shell</code>配置文件执行顺序。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/etc/profile.d/*.sh
+</span></span><span style="display:flex;"><span>/etc/profile
+</span></span><span style="display:flex;"><span>/etc/bashrc
+</span></span><span style="display:flex;"><span>~/.bashrc
+</span></span><span style="display:flex;"><span>~/.bash_profile
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>使用其他用户运行命令</strong></p>
+<p>使用指定用户执行命令，这里以使用<code>root</code>用户执行命令为例。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ whoami
+</span></span><span style="display:flex;"><span>snoopy
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ su root -c <span style="color:#d14">&#34;whoami&#34;</span>
+</span></span><span style="display:flex;"><span>Password:
+</span></span><span style="display:flex;"><span>root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>su</code>切换用户的缺点：需要知道用户名对应的密码，很不安全。</p>
+<h3 id="sudo命令">sudo命令</h3>
+<p><code>sudo</code>是<code>Linux</code>系统下的一个命令，全称为<code>superuser do</code>。它允许普通用户执行一些<code>root</code>命令，这样不仅减少了<code>root</code>的管理时间，同样也提高了安全性。</p>
+<p><strong>用户提权</strong></p>
+<p>普通用户执行<code>yum</code>命令，不能成功。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ yum install wget
+</span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror
+</span></span><span style="display:flex;"><span>You need to be root to perform this command.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用<code>sudo</code>命令提权，提示用户不在<code>sudoers</code>文件中。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo yum install wget
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>We trust you have received the usual lecture from the <span style="color:#0086b3">local</span> System
+</span></span><span style="display:flex;"><span>Administrator. It usually boils down to these three things:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#1) Respect the privacy of others.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#2) Think before you type.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#3) With great power comes great responsibility.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sudo<span style="color:#000;font-weight:bold">]</span> password <span style="color:#000;font-weight:bold">for</span> snoopy:
+</span></span><span style="display:flex;"><span>snoopy is not in the sudoers file.  This incident will be reported.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们需要修改<code>/etc/sudoers</code>文件，对<code>snoopy</code>用户授权，通常会使用<code>visudo</code>命令对配置文件进行修改。</p>
+<p>通过<code>root</code>用户执行<code>visudo</code>命令，对用户进行权限设置。</p>
+<p>添加如下内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo </span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 添加</span>
+</span></span><span style="display:flex;"><span>snoopy  <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span>       /usr/bin/yum
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查配置文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo -c</span>
+</span></span><span style="display:flex;"><span>/etc/sudoers: parsed OK
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>登陆到<code>snoopy</code>用户，检查用户的权限。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo -l
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sudo<span style="color:#000;font-weight:bold">]</span> password <span style="color:#000;font-weight:bold">for</span> snoopy: 输入密码
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>User snoopy may run the following commands on localhost:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">(</span>ALL<span style="color:#000;font-weight:bold">)</span> /usr/bin/yum
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>利用<code>sudo</code>执行<code>yum</code>命令，可以成功执行。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>snoopy@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo yum install wget
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>sudo<span style="color:#000;font-weight:bold">]</span> password <span style="color:#000;font-weight:bold">for</span> snoopy:
+</span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror
+</span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
+</span></span><span style="display:flex;"><span> * base: mirrors.tuna.tsinghua.edu.cn
+</span></span><span style="display:flex;"><span> * extras: mirrors.bupt.edu.cn
+</span></span><span style="display:flex;"><span> * updates: mirrors.bupt.edu.cn
+</span></span><span style="display:flex;"><span>Package wget-1.14-18.el7_6.1.x86_64 already installed and latest version
+</span></span><span style="display:flex;"><span>Nothing to <span style="color:#000;font-weight:bold">do</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>别名提权</strong></p>
+<p>可使用<code>sudo</code>中自带的别名操作, 将多个用户或多个命令定义成一个逻辑组。我们针对逻辑组进行提权配置。
+用<code>root</code>用户执行<code>visudo</code>命令，对用户进行权限设置。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加如下内容设置用户组别名及命令别名。其中<code>ops_user1</code>、<code>ops_user2</code>、<code>dev_user1</code>和<code>dev_user2</code>为用户，若系统中不存在，需要先创建。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root    <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span>       ALL
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置组别名，ops_user1和ops_user2为OPS组；dev_user1和dev_user2为DEV组。</span>
+</span></span><span style="display:flex;"><span>User_Alias <span style="color:#008080">OPS</span> <span style="color:#000;font-weight:bold">=</span> ops_user1,ops_user2
+</span></span><span style="display:flex;"><span>User_Alias <span style="color:#008080">DEV</span> <span style="color:#000;font-weight:bold">=</span> dev_user1,dev_user2
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置命令别名</span>
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">NETWORKING</span> <span style="color:#000;font-weight:bold">=</span> /sbin/ifconfig, /bin/ping
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">SOFTWARE</span> <span style="color:#000;font-weight:bold">=</span> /bin/rpm, /usr/bin/yum
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">SERVICES</span> <span style="color:#000;font-weight:bold">=</span> /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl status
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 将组的别名和命令别名对应起来</span>
+</span></span><span style="display:flex;"><span>OPS <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span> NETWORKING,SOFTWARE,SERVICES
+</span></span><span style="display:flex;"><span>DEV <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span> NETWORKING
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查配置。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo -c</span>
+</span></span><span style="display:flex;"><span>/etc/sudoers: parsed OK
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用<code>ops_user1</code>用户登陆系统，查看权限。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>ops_user1@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo -l
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>User ops_user1 may run the following commands on localhost:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">(</span>ALL<span style="color:#000;font-weight:bold">)</span> /sbin/ifconfig, /bin/ping, /bin/rpm, /usr/bin/yum,
+</span></span><span style="display:flex;"><span>        /usr/bin/systemctl start, /usr/bin/systemctl stop,
+</span></span><span style="display:flex;"><span>        /usr/bin/systemctl status
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用<code>dev_user1</code>用户登陆系统，查看权限。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>dev_user1@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo -l
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>User dev_user1 may run the following commands on localhost:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">(</span>ALL<span style="color:#000;font-weight:bold">)</span> /sbin/ifconfig, /bin/ping
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>用户组提权</strong></p>
+<p><code>sudo</code>可针对系统的用户组进行提权，可使用<code>groupadd</code>将用户添加到用户组，然后给组分配<code>sudo</code>的权限。如果有新用户加入，直接将用户添加到该组。
+将用户添加到对应的组中，若系统中不存在，需要先创建。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建用户组</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd ops_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># groupadd dev_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 修改用户附加组</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod ops_user1 -aG ops_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod ops_user2 -aG ops_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod dev_user1 -aG dev_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># usermod dev_user2 -aG dev_group</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id ops_user1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5113<span style="color:#000;font-weight:bold">(</span>ops_user1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>5116<span style="color:#000;font-weight:bold">(</span>ops_user1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>5116<span style="color:#000;font-weight:bold">(</span>ops_user1<span style="color:#000;font-weight:bold">)</span>,5121<span style="color:#000;font-weight:bold">(</span>ops_group<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id ops_user2</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5114<span style="color:#000;font-weight:bold">(</span>ops_user2<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>5117<span style="color:#000;font-weight:bold">(</span>ops_user2<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>5117<span style="color:#000;font-weight:bold">(</span>ops_user2<span style="color:#000;font-weight:bold">)</span>,5121<span style="color:#000;font-weight:bold">(</span>ops_group<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id dev_user1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5116<span style="color:#000;font-weight:bold">(</span>dev_user1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>5119<span style="color:#000;font-weight:bold">(</span>dev_user1<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>5119<span style="color:#000;font-weight:bold">(</span>dev_user1<span style="color:#000;font-weight:bold">)</span>,5120<span style="color:#000;font-weight:bold">(</span>dev_group<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># id dev_user2</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">uid</span><span style="color:#000;font-weight:bold">=</span>5115<span style="color:#000;font-weight:bold">(</span>dev_user2<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">gid</span><span style="color:#000;font-weight:bold">=</span>5118<span style="color:#000;font-weight:bold">(</span>dev_user2<span style="color:#000;font-weight:bold">)</span> <span style="color:#008080">groups</span><span style="color:#000;font-weight:bold">=</span>5118<span style="color:#000;font-weight:bold">(</span>dev_user2<span style="color:#000;font-weight:bold">)</span>,5120<span style="color:#000;font-weight:bold">(</span>dev_group<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改配置文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>visudo</code>主要添加了以下的内容。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置命令别名</span>
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">NETWORKING</span> <span style="color:#000;font-weight:bold">=</span> /sbin/ifconfig, /bin/ping
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">SOFTWARE</span> <span style="color:#000;font-weight:bold">=</span> /bin/rpm, /usr/bin/yum
+</span></span><span style="display:flex;"><span>Cmnd_Alias <span style="color:#008080">SERVICES</span> <span style="color:#000;font-weight:bold">=</span> /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl status
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># %代表组，如果不加%，系统会认为是一个用户名</span>
+</span></span><span style="display:flex;"><span>%ops_group <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span> NETWORKING,SOFTWARE,SERVICES
+</span></span><span style="display:flex;"><span>%dev_group <span style="color:#008080">ALL</span><span style="color:#000;font-weight:bold">=(</span>ALL<span style="color:#000;font-weight:bold">)</span> NETWORKING
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查配置文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># visudo -c</span>
+</span></span><span style="display:flex;"><span>/etc/sudoers: parsed OK
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>登陆到<code>ops_user2</code>查看用户的权限。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>ops_user2@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo -l
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>User ops_user2 may run the following commands on localhost:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">(</span>ALL<span style="color:#000;font-weight:bold">)</span> /sbin/ifconfig, /bin/ping, /bin/rpm, /usr/bin/yum,
+</span></span><span style="display:flex;"><span>        /usr/bin/systemctl start, /usr/bin/systemctl stop,
+</span></span><span style="display:flex;"><span>        /usr/bin/systemctl status
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用<code>dev_user2</code>用户登陆系统，查看权限。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>dev_user2@localhost ~<span style="color:#000;font-weight:bold">]</span>$ sudo -l
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>    .......
+</span></span><span style="display:flex;"><span>User dev_user2 may run the following commands on localhost:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">(</span>ALL<span style="color:#000;font-weight:bold">)</span> /sbin/ifconfig, /bin/ping
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<center><img src="https://images.snoopyops.top/wechat-snoopy.jpg" alt="image-20231028232834657" style="zoom:50%;" /></center>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="磁盘管理 - https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>磁盘管理</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">磁盘管理</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            2023-06-03&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2024-01-10&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            2870 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            6 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#磁盘分区">磁盘分区</a>
+      <ul>
+        <li><a href="#分区概念">分区概念</a></li>
+        <li><a href="#fdisk工具">fdisk工具</a></li>
+        <li><a href="#gdisk工具">gdisk工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#挂载文件系统">挂载文件系统</a>
+      <ul>
+        <li><a href="#挂载与卸载">挂载与卸载</a></li>
+        <li><a href="#设置开机自动挂载">设置开机自动挂载</a></li>
+      </ul>
+    </li>
+    <li><a href="#swap交换分区">swap交换分区</a></li>
+    <li><a href="#磁盘阵列">磁盘阵列</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <p>本章节主要解释磁盘分区，磁盘阵列等磁盘相关知识。</p>
+<h2 id="磁盘分区">磁盘分区</h2>
+<p>为主机分别添加一个<code>1T</code>和<code>4T</code>的磁盘。</p>
+<p>可以通过查看<code>/dev</code>下面的设备或者<code>lsblk</code>命令确认磁盘是否添加成功。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /dev/sd*</span>
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8,  <span style="color:#099">0</span> Aug <span style="color:#099">19</span> 19:32 /dev/sda
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8,  <span style="color:#099">1</span> Aug <span style="color:#099">19</span> 19:32 /dev/sda1
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8,  <span style="color:#099">2</span> Aug <span style="color:#099">19</span> 19:32 /dev/sda2
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8,  <span style="color:#099">3</span> Aug <span style="color:#099">19</span> 19:32 /dev/sda3
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># /dev/sdb /dev/sdc为新添加的磁盘</span>
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8, <span style="color:#099">16</span> Aug <span style="color:#099">19</span> 19:32 /dev/sdb
+</span></span><span style="display:flex;"><span>brw-rw----. <span style="color:#099">1</span> root disk 8, <span style="color:#099">32</span> Aug <span style="color:#099">19</span> 19:32 /dev/sdc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>lsblk</code> 是一个用于列出块设备信息的命令。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># lsblk </span>
+</span></span><span style="display:flex;"><span>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span><span style="display:flex;"><span>sda      8:0    <span style="color:#099">0</span>   20G  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>├─sda1   8:1    <span style="color:#099">0</span>    1G  <span style="color:#099">0</span> part /boot
+</span></span><span style="display:flex;"><span>├─sda2   8:2    <span style="color:#099">0</span>  800M  <span style="color:#099">0</span> part <span style="color:#000;font-weight:bold">[</span>SWAP<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>└─sda3   8:3    <span style="color:#099">0</span> 18.2G  <span style="color:#099">0</span> part /
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># /dev/sdb /dev/sdc为新添加的磁盘</span>
+</span></span><span style="display:flex;"><span>sdb      8:16   <span style="color:#099">0</span>    1T  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>sdc      8:32   <span style="color:#099">0</span>    4T  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>sr0     11:0    <span style="color:#099">1</span>  4.3G  <span style="color:#099">0</span> rom  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="分区概念">分区概念</h3>
+<p>在<code>Linux</code>中，分区分为主分区，扩展分区和逻辑分区。</p>
+<p>主分区：在Linux中，分区表有<code>64</code>个字节的限制，而每个分区条目的大小为<code>16</code>字节，所以最多只能有<code>4</code>个分区，这<code>4</code>个分区就是我们说的主分区。</p>
+<p>扩展分区：为了突破一个物理硬盘只能有4个分区的限制，引入了扩展分区。扩展分区和主分区的地位相当，但是扩展分区本身不能被直接使用，然而可以被继续划分成多个逻辑分区。</p>
+<p>逻辑分区：逻辑分区可以有任意多个，但是不能独立存在。</p>
+<h3 id="fdisk工具">fdisk工具</h3>
+<p><code>fdisk</code>仅可针对<code>2T</code>以下的磁盘进行分区操作。</p>
+<p>通过<code>fdisk</code>创建主分区。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># fdisk /dev/sdb </span>
+</span></span><span style="display:flex;"><span>Welcome to fdisk <span style="color:#000;font-weight:bold">(</span>util-linux 2.23.2<span style="color:#000;font-weight:bold">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Changes will remain in memory only, <span style="color:#000;font-weight:bold">until</span> you decide to write them.
+</span></span><span style="display:flex;"><span>Be careful before using the write command.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Device does not contain a recognized partition table
+</span></span><span style="display:flex;"><span>Building a new DOS disklabel with disk identifier 0xaa8a2dfe.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: n
+</span></span><span style="display:flex;"><span>Partition type:
+</span></span><span style="display:flex;"><span>   p   primary <span style="color:#000;font-weight:bold">(</span><span style="color:#099">0</span> primary, <span style="color:#099">0</span> extended, <span style="color:#099">4</span> free<span style="color:#000;font-weight:bold">)</span>     <span style="color:#998;font-style:italic"># p为主分区</span>
+</span></span><span style="display:flex;"><span>   e   extended   <span style="color:#998;font-style:italic"># e为扩展分区</span>
+</span></span><span style="display:flex;"><span>Select <span style="color:#000;font-weight:bold">(</span>default p<span style="color:#000;font-weight:bold">)</span>:  <span style="color:#998;font-style:italic"># 默认为p</span>
+</span></span><span style="display:flex;"><span>Using default response p
+</span></span><span style="display:flex;"><span>Partition number <span style="color:#000;font-weight:bold">(</span>1-4, default 1<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>First sector <span style="color:#000;font-weight:bold">(</span>2048-2147483647, default 2048<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Using default value <span style="color:#099">2048</span>
+</span></span><span style="display:flex;"><span>Last sector, +sectors or +size<span style="color:#000;font-weight:bold">{</span>K,M,G<span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">(</span>2048-2147483647, default 2147483647<span style="color:#000;font-weight:bold">)</span>: +10G  <span style="color:#998;font-style:italic">#选择创建的分区大小</span>
+</span></span><span style="display:flex;"><span>Partition <span style="color:#099">1</span> of <span style="color:#0086b3">type</span> Linux and of size <span style="color:#099">10</span> GiB is <span style="color:#0086b3">set</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 1099.5 GB, <span style="color:#099">1099511627776</span> bytes, <span style="color:#099">2147483648</span> sectors
+</span></span><span style="display:flex;"><span><span style="color:#008080">Units</span> <span style="color:#000;font-weight:bold">=</span> sectors of <span style="color:#099">1</span> * <span style="color:#008080">512</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#000;font-weight:bold">(</span>logical/physical<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>I/O size <span style="color:#000;font-weight:bold">(</span>minimum/optimal<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Disk label type: dos
+</span></span><span style="display:flex;"><span>Disk identifier: 0xaa8a2dfe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Device Boot      Start         End      Blocks   Id  System
+</span></span><span style="display:flex;"><span>/dev/sdb1            <span style="color:#099">2048</span>    <span style="color:#099">20973567</span>    <span style="color:#099">10485760</span>   <span style="color:#099">83</span>  Linux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建扩展分区。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: n       
+</span></span><span style="display:flex;"><span>Partition type:
+</span></span><span style="display:flex;"><span>   p   primary <span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span> primary, <span style="color:#099">0</span> extended, <span style="color:#099">3</span> free<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>   e   extended
+</span></span><span style="display:flex;"><span>Select <span style="color:#000;font-weight:bold">(</span>default p<span style="color:#000;font-weight:bold">)</span>: e
+</span></span><span style="display:flex;"><span>Partition number <span style="color:#000;font-weight:bold">(</span>2-4, default 2<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>First sector <span style="color:#000;font-weight:bold">(</span>20973568-2147483647, default 20973568<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Using default value <span style="color:#099">20973568</span>
+</span></span><span style="display:flex;"><span>Last sector, +sectors or +size<span style="color:#000;font-weight:bold">{</span>K,M,G<span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">(</span>20973568-2147483647, default 2147483647<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Using default value <span style="color:#099">2147483647</span>
+</span></span><span style="display:flex;"><span>Partition <span style="color:#099">2</span> of <span style="color:#0086b3">type</span> Extended and of size <span style="color:#099">1014</span> GiB is <span style="color:#0086b3">set</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 1099.5 GB, <span style="color:#099">1099511627776</span> bytes, <span style="color:#099">2147483648</span> sectors
+</span></span><span style="display:flex;"><span><span style="color:#008080">Units</span> <span style="color:#000;font-weight:bold">=</span> sectors of <span style="color:#099">1</span> * <span style="color:#008080">512</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#000;font-weight:bold">(</span>logical/physical<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>I/O size <span style="color:#000;font-weight:bold">(</span>minimum/optimal<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Disk label type: dos
+</span></span><span style="display:flex;"><span>Disk identifier: 0xaa8a2dfe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Device Boot      Start         End      Blocks   Id  System
+</span></span><span style="display:flex;"><span>/dev/sdb1            <span style="color:#099">2048</span>    <span style="color:#099">20973567</span>    <span style="color:#099">10485760</span>   <span style="color:#099">83</span>  Linux
+</span></span><span style="display:flex;"><span>/dev/sdb2        <span style="color:#099">20973568</span>  <span style="color:#099">2147483647</span>  <span style="color:#099">1063255040</span>    <span style="color:#099">5</span>  Extended
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建逻辑分区。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: n
+</span></span><span style="display:flex;"><span>Partition type:
+</span></span><span style="display:flex;"><span>   p   primary <span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span> primary, <span style="color:#099">1</span> extended, <span style="color:#099">2</span> free<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>   l   logical <span style="color:#000;font-weight:bold">(</span>numbered from 5<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Select <span style="color:#000;font-weight:bold">(</span>default p<span style="color:#000;font-weight:bold">)</span>: l
+</span></span><span style="display:flex;"><span>Adding logical partition <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span>First sector <span style="color:#000;font-weight:bold">(</span>20975616-2147483647, default 20975616<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Using default value <span style="color:#099">20975616</span>
+</span></span><span style="display:flex;"><span>Last sector, +sectors or +size<span style="color:#000;font-weight:bold">{</span>K,M,G<span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">(</span>20975616-2147483647, default 2147483647<span style="color:#000;font-weight:bold">)</span>: +20G
+</span></span><span style="display:flex;"><span>Partition <span style="color:#099">5</span> of <span style="color:#0086b3">type</span> Linux and of size <span style="color:#099">20</span> GiB is <span style="color:#0086b3">set</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disk /dev/sdb: 1099.5 GB, <span style="color:#099">1099511627776</span> bytes, <span style="color:#099">2147483648</span> sectors
+</span></span><span style="display:flex;"><span><span style="color:#008080">Units</span> <span style="color:#000;font-weight:bold">=</span> sectors of <span style="color:#099">1</span> * <span style="color:#008080">512</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Sector size <span style="color:#000;font-weight:bold">(</span>logical/physical<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>I/O size <span style="color:#000;font-weight:bold">(</span>minimum/optimal<span style="color:#000;font-weight:bold">)</span>: <span style="color:#099">512</span> bytes / <span style="color:#099">512</span> bytes
+</span></span><span style="display:flex;"><span>Disk label type: dos
+</span></span><span style="display:flex;"><span>Disk identifier: 0xaa8a2dfe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   Device Boot      Start         End      Blocks   Id  System
+</span></span><span style="display:flex;"><span>/dev/sdb1            <span style="color:#099">2048</span>    <span style="color:#099">20973567</span>    <span style="color:#099">10485760</span>   <span style="color:#099">83</span>  Linux
+</span></span><span style="display:flex;"><span>/dev/sdb2        <span style="color:#099">20973568</span>  <span style="color:#099">2147483647</span>  <span style="color:#099">1063255040</span>    <span style="color:#099">5</span>  Extended
+</span></span><span style="display:flex;"><span>/dev/sdb5        <span style="color:#099">20975616</span>    <span style="color:#099">62918655</span>    <span style="color:#099">20971520</span>   <span style="color:#099">83</span>  Linux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存分区信息。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>m <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: w
+</span></span><span style="display:flex;"><span>The partition table has been altered!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calling ioctl<span style="color:#000;font-weight:bold">()</span> to re-read partition table.
+</span></span><span style="display:flex;"><span>Syncing disks.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看分区信息。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># lsblk </span>
+</span></span><span style="display:flex;"><span>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span><span style="display:flex;"><span>sda      8:0    <span style="color:#099">0</span>   20G  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>├─sda1   8:1    <span style="color:#099">0</span>    1G  <span style="color:#099">0</span> part /boot
+</span></span><span style="display:flex;"><span>├─sda2   8:2    <span style="color:#099">0</span>  800M  <span style="color:#099">0</span> part <span style="color:#000;font-weight:bold">[</span>SWAP<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>└─sda3   8:3    <span style="color:#099">0</span> 18.2G  <span style="color:#099">0</span> part /
+</span></span><span style="display:flex;"><span>sdb      8:16   <span style="color:#099">0</span>    1T  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>├─sdb1   8:17   <span style="color:#099">0</span>   10G  <span style="color:#099">0</span> part 
+</span></span><span style="display:flex;"><span>├─sdb2   8:18   <span style="color:#099">0</span>    1K  <span style="color:#099">0</span> part 
+</span></span><span style="display:flex;"><span>└─sdb5   8:21   <span style="color:#099">0</span>   20G  <span style="color:#099">0</span> part 
+</span></span><span style="display:flex;"><span>sdc      8:32   <span style="color:#099">0</span>    4T  <span style="color:#099">0</span> disk 
+</span></span><span style="display:flex;"><span>sr0     11:0    <span style="color:#099">1</span>  4.3G  <span style="color:#099">0</span> rom 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>格式化磁盘。<code>ext4</code>和<code>xfs</code>是最常用的文件系统，如果需要处理大文件和大容量存储，并且对性能要求较高，<code>XFS</code>可能是更合适的选择。对于一般用途和通用性能要求，<code>ext4</code>是一个可靠且广泛支持的选项。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mkfs.xfs /dev/sdb1</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 将/dev/sdb1格式化为xfs格式</span>
+</span></span><span style="display:flex;"><span>meta-data<span style="color:#000;font-weight:bold">=</span>/dev/sdb1              <span style="color:#008080">isize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>    <span style="color:#008080">agcount</span><span style="color:#000;font-weight:bold">=</span>4, <span style="color:#008080">agsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">655360</span> <span style="color:#008080">blks</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sectsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>   <span style="color:#008080">attr</span><span style="color:#000;font-weight:bold">=</span>2, <span style="color:#008080">projid32bit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">1</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">crc</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>        <span style="color:#008080">finobt</span><span style="color:#000;font-weight:bold">=</span>0, <span style="color:#008080">sparse</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">data</span>     <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>2621440, <span style="color:#008080">imaxpct</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">25</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sunit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>      <span style="color:#008080">swidth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> blks
+</span></span><span style="display:flex;"><span><span style="color:#008080">naming</span>   <span style="color:#000;font-weight:bold">=</span>version <span style="color:#099">2</span>              <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   ascii-ci<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> <span style="color:#008080">ftype</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">log</span>      <span style="color:#000;font-weight:bold">=</span>internal log           <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>2560, <span style="color:#008080">version</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">2</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sectsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>   <span style="color:#008080">sunit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> blks, lazy-count<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">realtime</span> <span style="color:#000;font-weight:bold">=</span>none                   <span style="color:#008080">extsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>0, <span style="color:#008080">rtextents</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mkfs.xfs /dev/sdb5</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 将/dev/sdb5格式化为xfs格式</span>
+</span></span><span style="display:flex;"><span>meta-data<span style="color:#000;font-weight:bold">=</span>/dev/sdb5              <span style="color:#008080">isize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>    <span style="color:#008080">agcount</span><span style="color:#000;font-weight:bold">=</span>4, <span style="color:#008080">agsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1310720</span> <span style="color:#008080">blks</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sectsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>   <span style="color:#008080">attr</span><span style="color:#000;font-weight:bold">=</span>2, <span style="color:#008080">projid32bit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">1</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">crc</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>        <span style="color:#008080">finobt</span><span style="color:#000;font-weight:bold">=</span>0, <span style="color:#008080">sparse</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">data</span>     <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>5242880, <span style="color:#008080">imaxpct</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">25</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sunit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>      <span style="color:#008080">swidth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> blks
+</span></span><span style="display:flex;"><span><span style="color:#008080">naming</span>   <span style="color:#000;font-weight:bold">=</span>version <span style="color:#099">2</span>              <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   ascii-ci<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> <span style="color:#008080">ftype</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">log</span>      <span style="color:#000;font-weight:bold">=</span>internal log           <span style="color:#008080">bsize</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>2560, <span style="color:#008080">version</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">2</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">=</span>                       <span style="color:#008080">sectsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512</span>   <span style="color:#008080">sunit</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span> blks, lazy-count<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">realtime</span> <span style="color:#000;font-weight:bold">=</span>none                   <span style="color:#008080">extsz</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4096</span>   <span style="color:#008080">blocks</span><span style="color:#000;font-weight:bold">=</span>0, <span style="color:#008080">rtextents</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>挂载。</p>
+<pre tabindex="0"><code>[root@localhost ~]# mkdir /sdb1
+[root@localhost ~]# mkdir /sdb5
+[root@localhost ~]# mount /dev/sdb1 /sdb1
+[root@localhost ~]# mount /dev/sdb5 /sdb5
+</code></pre><p>查看挂载后的空间。</p>
+<pre tabindex="0"><code>[root@localhost ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda3        19G   19G   33M 100% /
+devtmpfs        476M     0  476M   0% /dev
+tmpfs           487M     0  487M   0% /dev/shm
+tmpfs           487M  7.7M  479M   2% /run
+tmpfs           487M     0  487M   0% /sys/fs/cgroup
+/dev/sda1      1014M  127M  888M  13% /boot
+tmpfs            98M     0   98M   0% /run/user/0
+/dev/sdb1        10G   33M   10G   1% /sdb1
+/dev/sdb5        20G   33M   20G   1% /sdb5
+</code></pre><h3 id="gdisk工具">gdisk工具</h3>
+<p>大于<code>2T</code>的磁盘，需要使用<code>gdisk</code>进行分区。</p>
+<p>安装<code>gdisk</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install gdisk</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>gdisk</code>对磁盘进行分区。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># gdisk /dev/sdc</span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>? <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: n      <span style="color:#998;font-style:italic"># 新建分区</span>
+</span></span><span style="display:flex;"><span>Partition number <span style="color:#000;font-weight:bold">(</span>1-128, default 1<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>First sector <span style="color:#000;font-weight:bold">(</span>2048-8589934558, <span style="color:#008080">default</span> <span style="color:#000;font-weight:bold">=</span> 2048<span style="color:#000;font-weight:bold">)</span> or <span style="color:#000;font-weight:bold">{</span>+-<span style="color:#000;font-weight:bold">}</span>size<span style="color:#000;font-weight:bold">{</span>KMGTP<span style="color:#000;font-weight:bold">}</span>: 
+</span></span><span style="display:flex;"><span>Last sector <span style="color:#000;font-weight:bold">(</span>2048-8589934558, <span style="color:#008080">default</span> <span style="color:#000;font-weight:bold">=</span> 8589934558<span style="color:#000;font-weight:bold">)</span> or <span style="color:#000;font-weight:bold">{</span>+-<span style="color:#000;font-weight:bold">}</span>size<span style="color:#000;font-weight:bold">{</span>KMGTP<span style="color:#000;font-weight:bold">}</span>: +2T      <span style="color:#998;font-style:italic">#创建2T的分区</span>
+</span></span><span style="display:flex;"><span>Current <span style="color:#0086b3">type</span> is <span style="color:#d14">&#39;Linux filesystem&#39;</span>
+</span></span><span style="display:flex;"><span>Hex code or GUID <span style="color:#000;font-weight:bold">(</span>L to show codes, <span style="color:#008080">Enter</span> <span style="color:#000;font-weight:bold">=</span> 8300<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Changed <span style="color:#0086b3">type</span> of partition to <span style="color:#d14">&#39;Linux filesystem&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>? <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: n    <span style="color:#998;font-style:italic"># 新建分区</span>
+</span></span><span style="display:flex;"><span>Partition number <span style="color:#000;font-weight:bold">(</span>2-128, default 2<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>First sector <span style="color:#000;font-weight:bold">(</span>4294969344-8589934558, <span style="color:#008080">default</span> <span style="color:#000;font-weight:bold">=</span> 4294969344<span style="color:#000;font-weight:bold">)</span> or <span style="color:#000;font-weight:bold">{</span>+-<span style="color:#000;font-weight:bold">}</span>size<span style="color:#000;font-weight:bold">{</span>KMGTP<span style="color:#000;font-weight:bold">}</span>: 
+</span></span><span style="display:flex;"><span>Last sector <span style="color:#000;font-weight:bold">(</span>4294969344-8589934558, <span style="color:#008080">default</span> <span style="color:#000;font-weight:bold">=</span> 8589934558<span style="color:#000;font-weight:bold">)</span> or <span style="color:#000;font-weight:bold">{</span>+-<span style="color:#000;font-weight:bold">}</span>size<span style="color:#000;font-weight:bold">{</span>KMGTP<span style="color:#000;font-weight:bold">}</span>: 
+</span></span><span style="display:flex;"><span>Current <span style="color:#0086b3">type</span> is <span style="color:#d14">&#39;Linux filesystem&#39;</span>
+</span></span><span style="display:flex;"><span>Hex code or GUID <span style="color:#000;font-weight:bold">(</span>L to show codes, <span style="color:#008080">Enter</span> <span style="color:#000;font-weight:bold">=</span> 8300<span style="color:#000;font-weight:bold">)</span>: 
+</span></span><span style="display:flex;"><span>Changed <span style="color:#0086b3">type</span> of partition to <span style="color:#d14">&#39;Linux filesystem&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Command <span style="color:#000;font-weight:bold">(</span>? <span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">help</span><span style="color:#000;font-weight:bold">)</span>: w
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 保存分区信息</span>
+</span></span><span style="display:flex;"><span>Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+</span></span><span style="display:flex;"><span>PARTITIONS!!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Do you want to proceed? <span style="color:#000;font-weight:bold">(</span>Y/N<span style="color:#000;font-weight:bold">)</span>: Y
+</span></span><span style="display:flex;"><span>OK; writing new GUID partition table <span style="color:#000;font-weight:bold">(</span>GPT<span style="color:#000;font-weight:bold">)</span> to /dev/sdc.
+</span></span><span style="display:flex;"><span>The operation has completed successfully.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看分区信息。</p>
+<pre tabindex="0"><code>[root@localhost ~]# lsblk 
+sdc      8:32   0    4T  0 disk 
+├─sdc1   8:33   0    2T  0 part 
+└─sdc2   8:34   0    2T  0 part  
+</code></pre><p>格式化分区。</p>
+<pre tabindex="0"><code>[root@localhost ~]# mkfs.xfs /dev/sdc1
+meta-data=/dev/sdc1              isize=512    agcount=4, agsize=134217728 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=536870912, imaxpct=5
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=262144, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost ~]# mkfs.xfs /dev/sdc2
+meta-data=/dev/sdc2              isize=512    agcount=4, agsize=134217663 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=536870651, imaxpct=5
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=262143, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+</code></pre><p>创建挂载点，并将分区挂载到指定的目录。</p>
+<pre tabindex="0"><code>[root@localhost ~]# mkdir -p /data/sdc1 /data/sdc2
+[root@localhost ~]# mount /dev/sdc1 /data/sdc1
+[root@localhost ~]# mount /dev/sdc2 /data/sdc2
+</code></pre><p>检查挂载详情。</p>
+<pre tabindex="0"><code>[root@localhost ~]# df -h
+/dev/sdc1       2.0T   33M  2.0T   1% /data/sdc1
+/dev/sdc2       2.0T   33M  2.0T   1% /data/sdc2
+</code></pre><h2 id="挂载文件系统">挂载文件系统</h2>
+<h3 id="挂载与卸载">挂载与卸载</h3>
+<p><code>mount</code> 命令用于将文件系统挂载到指定的挂载点上，使得该文件系统可以在指定位置访问。</p>
+<p>通过设备名称或者<code>UUID</code>挂载设备。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 通过设备名称挂载</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mount /dev/sdc1 /data/sdc1</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 通过UUID称挂载</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># blkid /dev/sdc2</span>
+</span></span><span style="display:flex;"><span>/dev/sdc2: <span style="color:#008080">UUID</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;a78ece78-4570-4555-bbd5-7f3c723a5f56&#34;</span> <span style="color:#008080">TYPE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;xfs&#34;</span> <span style="color:#008080">PARTLABEL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;Linux filesystem&#34;</span> <span style="color:#008080">PARTUUID</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;569cd012-bb0a-4a87-8471-e056ced2d214&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># mount UUID=&#34;a78ece78-4570-4555-bbd5-7f3c723a5f56&#34; /data/sdc2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># df -h</span>
+</span></span><span style="display:flex;"><span>/dev/sdc1       2.0T   33M  2.0T   1% /data/sdc1
+</span></span><span style="display:flex;"><span>/dev/sdc2       2.0T   33M  2.0T   1% /data/sdc2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>卸载设备。</p>
+<pre tabindex="0"><code>[root@localhost ~]# umount /dev/sdc1
+[root@localhost ~]# umount /data/sdc2
+</code></pre><h3 id="设置开机自动挂载">设置开机自动挂载</h3>
+<p>查看设备的<code>UUID</code>。</p>
+<pre tabindex="0"><code>[root@localhost ~]# blkid /dev/sdc1
+/dev/sdc1: UUID=&#34;fb268812-69fc-4b4f-b4e6-1dd60351059e&#34; TYPE=&#34;xfs&#34; PARTLABEL=&#34;Linux filesystem&#34; PARTUUID=&#34;e176d454-9b18-49d9-873b-477ab33943e5&#34;
+[root@localhost ~]# blkid /dev/sdc2
+/dev/sdc2: UUID=&#34;a78ece78-4570-4555-bbd5-7f3c723a5f56&#34; TYPE=&#34;xfs&#34; PARTLABEL=&#34;Linux filesystem&#34; PARTUUID=&#34;569cd012-bb0a-4a87-8471-e056ced2d214&#34; 
+</code></pre><p>编辑<code>/etc/fstab</code>文件，添加要挂载的设备信息。</p>
+<pre tabindex="0"><code>[root@localhost ~]# tail -2 /etc/fstab
+UUID=fb268812-69fc-4b4f-b4e6-1dd60351059e /data/sdc1 xfs defaults 0 0
+UUID=a78ece78-4570-4555-bbd5-7f3c723a5f56 /data/sdc2 xfs defaults 0 0
+</code></pre><p>加载<code>/etc/fstab</code>文件，并同时检验语法是否存在错误。</p>
+<pre tabindex="0"><code>[root@localhost ~]# mount -a
+</code></pre><p>重启服务器，验证结果。</p>
+<pre tabindex="0"><code>[root@localhost ~]# reboot
+[root@localhost ~]# df -h
+/dev/sdc1       2.0T   33M  2.0T   1% /data/sdc1
+/dev/sdc2       2.0T   33M  2.0T   1% /data/sdc2
+</code></pre><p><code>/etc/fstab</code>文件含义。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">要挂载的设备</th>
+<th style="text-align:center">挂载点</th>
+<th style="text-align:center">文件系统</th>
+<th style="text-align:center">挂载参数</th>
+<th style="text-align:center">是否备份</th>
+<th style="text-align:center">是否检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">UUID=</td>
+<td style="text-align:center">/data/sdc2</td>
+<td style="text-align:center">xfs</td>
+<td style="text-align:center">defaults</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="swap交换分区">swap交换分区</h2>
+<p>当内存不够时，<code>swap</code>分区会充当内存，防止系统出现<code>OOM</code> <code>(OutOfMemroy)</code>故障。 但是如果使用了<code>swap</code>分区，系统会变的特别卡。</p>
+<p>对<code>swap</code>分区进行操作。
+创建分区，并格式化为<code>swap</code>格式。</p>
+<pre tabindex="0"><code>[root@localhost ~]# fdisk /dev/sdb
+[root@localhost ~]# lsblk /dev/sdb 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sdb      8:16   0  300G  0 disk 
+└─sdb1   8:17   0    1G  0 part
+
+[root@localhost ~]# mkswap /dev/sdb1
+mkswap: /dev/sdb1: warning: wiping old xfs signature.
+Setting up swapspace version 1, size = 1048572 KiB
+no label, UUID=ff384ce5-9132-4f52-8af8-be2c8724057a
+</code></pre><p>扩展<code>swap</code>分区。</p>
+<pre tabindex="0"><code>[root@localhost ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            972          95         739           7         137         718
+Swap:           799           0         799
+
+[root@localhost ~]# swapon /dev/sdb1
+[root@localhost ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            972          95         738           7         137         717
+Swap:          1823           0        1823
+</code></pre><p>缩小<code>swap</code>分区。</p>
+<pre tabindex="0"><code>[root@localhost ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            972         103         691           7         177         688
+Swap:          1823           0        1823
+[root@localhost ~]# swapoff /dev/sdb1
+[root@localhost ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            972         102         692           7         177         689
+Swap:           799           0         799
+</code></pre><p>关闭所有的<code>swap</code>。</p>
+<pre tabindex="0"><code>[root@localhost ~]# swapoff -a
+[root@localhost ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            972         103         691           7         177         688
+Swap:             0           0           0
+</code></pre><p>检查当前<code>swap</code>分区有哪些设备。</p>
+<pre tabindex="0"><code>[root@localhost ~]# swapon /dev/sdb1
+[root@localhost ~]# swapon -s
+Filename				Type		Size	Used	Priority
+/dev/sda2                              	partition	819196	0	-2
+/dev/sdb1                              	partition	1048572	0	-3
+</code></pre><h2 id="磁盘阵列">磁盘阵列</h2>
+<p>RAID0：条带卷，最少需要两块硬盘，读写性能好，但是没有容错机制。
+<img src="https://images.snoopyops.top/8505400-2146265ada453234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RAID0"></p>
+<p>RAID1：镜像卷，读写性能一般，有容错机制，磁盘利用率为50%。
+<img src="https://images.snoopyops.top/8505400-17d1a2e190ba480b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RAID1"></p>
+<p>RAID5：校验卷，至少3块硬盘，仅允许坏一块硬盘，硬盘的利用率为(n-1)/n，读写较快。
+<img src="https://images.snoopyops.top/8505400-4377fd38e15ccf01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RAID5"></p>
+<p>RAID10：RAID0和RAID1的组合，具有RAID0的读写速度和RAID1的容错机制，但是磁盘利用率为50%。
+<img src="https://images.snoopyops.top/8505400-991c0e41414b2115.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RAID10"></p>
+<hr>
+<center><img src="https://images.snoopyops.top/wechat-snoopy.jpg" alt="image-20231028232834657" style="zoom:40%;" /></center>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

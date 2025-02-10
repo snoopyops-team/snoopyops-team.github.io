@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SnoopyOPS</title>
+    <link>https://www.snoopyops.top/</link>
+    <description>Recent content on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 19 Feb 2024 18:23:48 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blackbox网络监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/blackbox%E7%BD%91%E7%BB%9C%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Mon, 19 Feb 2024 18:23:48 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/blackbox%E7%BD%91%E7%BB%9C%E7%9B%91%E6%8E%A7/</guid>
+      <description>背景 公司服务器ng-ec-pay-1到 三方VPN 多次中断，由于没有监控及告警，均没能再第一时间处理故障。为了及时发现问题并处理，因此需要通过 Prometheus 对 VPN 链路进行监控。</description>
+    </item>
+    
+    <item>
+      <title>Linux简介</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Thu, 04 Jan 2024 15:44:49 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/0.linux%E7%AE%80%E4%BB%8B/</guid>
+      <description>Linux是什么 Linux的诞生可以追溯到1991年。那年，一位名叫Linus Torvalds（林纳斯·托瓦兹）的大学生对于已有的操作系统并不满意。于是开始着手</description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus/</link>
+      <pubDate>Tue, 02 Jan 2024 14:22:19 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus/</guid>
+      <description>监控概述 什么是监控 监控是整个运维乃至整个产品生命周期中最重要的一环，事前及时预警发现故障，事后提供详实的数据用于追查定位问题。 目前业界有很多不错的开源产品可供选</description>
+    </item>
+    
+    <item>
+      <title>搭建YUM源服务器</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 28 Dec 2023 15:09:42 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E6%90%AD%E5%BB%BAyum%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>为了提高软件包的下载速度，减轻网络负担，提高系统的安全性，我们可自建yum源服务器。 本地yum服务器：自己准备软件安装包，通过ftp或http的方式共享给其他主</description>
+    </item>
+    
+    <item>
+      <title>Prometheus监控华为云服务</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 18 Dec 2023 14:39:50 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1/</guid>
+      <description>公司内使用部分华为云云服务，针对云服务可以采用云监控服务CES进行监控。但是有较多的人员需要看监控图表，这就需要开通很多华为云账号。所以决定将部分华为云服务的监</description>
+    </item>
+    
+    <item>
+      <title>GPU监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/gpu%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Wed, 13 Dec 2023 15:48:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/gpu%E7%9B%91%E6%8E%A7/</guid>
+      <description>公司内有一批GPU服务器，需要针对GPU使用的情况进行监控。 通过nvidia_gpu_exporter可实现对GPU的监控。 安装nvidia_gpu_expor</description>
+    </item>
+    
+    <item>
+      <title>MinIO监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/minio%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Wed, 13 Dec 2023 15:46:59 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/minio%E7%9B%91%E6%8E%A7/</guid>
+      <description>MinIO配置 minio自身提供了Prometheus监控的指标数据，分为两种形式获取： 开放形式获取(不需要任何认证) 需要通过认证获取 通常我们会采用通过认证的方</description>
+    </item>
+    
+    <item>
+      <title>ES集群监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/es%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 08 Dec 2023 16:10:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/es%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装elasticsearch_exporter 公司内部有elasticsearch集群，针对es集群可通过elasticsearch_exporter监控。 在</description>
+    </item>
+    
+    <item>
+      <title>系统初始化</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <pubDate>Wed, 06 Dec 2023 07:52:49 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <description>当我们安装完操作系统后，通常会做一些初始化的操作才会将服务器投入到生产环境中使用。 在使用云环境时，我们也可以将做完初始化的操作系统封装为镜像，后续通过自己封装的</description>
+    </item>
+    
+    <item>
+      <title>通过kubeasz快速部署Kubernetes</title>
+      <link>https://www.snoopyops.top/posts/kubernetes/%E9%80%9A%E8%BF%87kubeasz%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2kubernetes/</link>
+      <pubDate>Wed, 06 Dec 2023 07:44:38 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/kubernetes/%E9%80%9A%E8%BF%87kubeasz%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2kubernetes/</guid>
+      <description>在一些没有云环境的场景，比如自建机房中，当我们需要使用Kubernetes时，需要手动部署。如果通过二进制部署，部署过程相当繁琐。我们可以通过kubeasz工具</description>
+    </item>
+    
+    <item>
+      <title>主机监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E4%B8%BB%E6%9C%BA%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Fri, 24 Nov 2023 19:40:14 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E4%B8%BB%E6%9C%BA%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装node-exporter 脚本地址，点击下载。 下载安装 1 2 3 4 cd /usr/local/src wget https://github.com/prometheus/node_exporter/releases/download/v0.18.0/node_exporter-0.18.0.linux-amd64.tar.gz tar xf node_exporter-0.18.0.linux-amd64.tar.gz -C /opt/ ln -s /opt/node_exporter-0.18.0.linux-amd64/ /opt/node_exporter 以ops用户启动，需要先创建用户并授权。 1 2 useradd ops chown -R ops. /opt/node_exporter* 服务启动 sy</description>
+    </item>
+    
+    <item>
+      <title>Kibana部署</title>
+      <link>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/kibana%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Thu, 23 Nov 2023 16:53:57 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/kibana%E9%83%A8%E7%BD%B2/</guid>
+      <description>下载安装 下载kibana并解压。 1 2 3 4 5 cd /usr/local/src/ wget https://artifacts.elastic.co/downloads/kibana/kibana-7.8.1-linux-x86_64.tar.gz tar -zxf kibana-7.8.1-linux-x86_64.tar.gz -C /opt cd /opt ln -s kibana-7.8.1-linux-x86_64 kibana 配置 备份默认配置。 1 2 cd /opt/kibana mv /opt/kibana/config/kibana.yml /opt/kibana/config/kibana.yml.default 配置kibana。 1 2 3 4 5 6 7 8 cat /opt/kibana/config/kibana.yml server.host: &amp;#34;0.0.0.0&amp;#34; elasticsearch.hosts: [&amp;#34;http://10.0.2.173:9200&amp;#34;] #elasticsearch.username: &amp;#34;kibana_system&amp;#34; #elasticsearch.password: &amp;#34;xxxxxxxxxxxxxxx&amp;#34; elasticsearch.requestTimeout:</description>
+    </item>
+    
+    <item>
+      <title>Minio集群部署</title>
+      <link>https://www.snoopyops.top/posts/%E5%AD%98%E5%82%A8/minio%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Fri, 17 Nov 2023 12:48:29 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E5%AD%98%E5%82%A8/minio%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>环境 主机环境 主机名 IP 磁盘 hwei-ng-public-minio-prod-0001 10.66.2.38 4块数据盘 Hwei-ng-public-minio-prod-0002 10.66.1.2 4块数据盘 Hwei-ng-public-minio-prod-0003 10.66.1.40 4块数据盘 架构类似于下图。下图是4台主机，每台主机3块硬盘。本文档是3台主机，每台主机4块硬盘。 下载并安</description>
+    </item>
+    
+    <item>
+      <title>进程监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E8%BF%9B%E7%A8%8B%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Thu, 16 Nov 2023 18:46:57 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/%E8%BF%9B%E7%A8%8B%E7%9B%91%E6%8E%A7/</guid>
+      <description>安装process-exporter 脚本地址，点击下载。 下载安装。 1 2 3 4 cd /usr/local/src wget https://github.com/ncabatoff/process-exporter/releases/download/v0.7.10/process-exporter-0.7.10.linux-amd64.tar.gz tar xf process-exporter-0.7.10.linux-amd64.tar.gz -C /usr/local/ ln -s /usr/local/process-exporter-0.7.10.linux-amd64/ /usr/local/process-exporter 配置监控所有进程。 1 2 3 4 5 6 cat &amp;gt; /usr/local/process-exporter/process-all.yaml &amp;lt;&amp;lt; EOF process_names: - name: &amp;#34;{{.Comm}}&amp;#34; cmdline: - &amp;#39;.+&amp;#39; EOF 若只</description>
+    </item>
+    
+    <item>
+      <title>Acme免费签发证书</title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/acme%E5%85%8D%E8%B4%B9%E7%AD%BE%E5%8F%91ssl%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Thu, 16 Nov 2023 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/acme%E5%85%8D%E8%B4%B9%E7%AD%BE%E5%8F%91ssl%E8%AF%81%E4%B9%A6/</guid>
+      <description>自动证书管理环境（英语：Automatic Certificate Management Environment，缩写 ACME）是一种通信协议，用于证书颁发机构与其用户的 Web 服务器之间的自动化交互，允许以极</description>
+    </item>
+    
+    <item>
+      <title>RabbitMQ监控</title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/rabbitmq%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Tue, 14 Nov 2023 11:33:16 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/rabbitmq%E7%9B%91%E6%8E%A7/</guid>
+      <description>RabbitMQ安装rabbitmq_prometheus插件后，可支持Prometheus监控。 可参考官方文档。 推荐直接使用官方方案，以下方案为三方方案。 背景</description>
+    </item>
+    
+    <item>
+      <title>定时任务</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Mon, 12 Jun 2023 16:19:32 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/14.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description>crond计划任务 Crontab配置文件记录了时间周期的含义 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 [root@localhost ~]# cat /etc/crontab SHELL=/bin/bash # 执行的命令解释器 PATH=/sbin:/bin:/usr/sbin:/usr/bin # 环境变量 MAILTO=root # 邮件发送给谁 # For details see man 4 crontabs</description>
+    </item>
+    
+    <item>
+      <title>进程管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 04 Jun 2023 12:11:39 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+      <description>认识进程 进程 进程（Process）是指正在运行的程序的实例。当一个程序被执行时，操作系统会为该程序创建一个新的进程，并为其分配所需的资源，如内存空间、文件描述符</description>
+    </item>
+    
+    <item>
+      <title>磁盘管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 03 Jun 2023 13:55:19 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/12.%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</guid>
+      <description>本章节主要解释磁盘分区，磁盘阵列等磁盘相关知识。 磁盘分区 为主机分别添加一个1T和4T的磁盘。 可以通过查看/dev下面的设备或者lsblk命令确认磁盘是否添加成功</description>
+    </item>
+    
+    <item>
+      <title>Linux软件安装</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 01 Jun 2023 12:15:27 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/11.linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/</guid>
+      <description>当我们需要在CentOS系统上安装软件时，通常可以通过RPM、yum和源码安装的几种方式安装。 RPM RPM是 Redhat Package Manager 的缩写，由红帽开发用于软件包的安装升级卸载与查询的</description>
+    </item>
+    
+    <item>
+      <title>压缩与解压</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/</link>
+      <pubDate>Wed, 31 May 2023 17:09:34 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/10.%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B/</guid>
+      <description>在Linux常用的压缩格式如下表： 格式 压缩工具 .zip zip压缩工具。 .gz gzip压缩工具，只能压缩文件，会删除原文件，通常配合tar使用。 .bz2 bzip2压缩工具，只能压</description>
+    </item>
+    
+    <item>
+      <title>文件查找</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/</link>
+      <pubDate>Wed, 31 May 2023 11:55:28 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/9.%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/</guid>
+      <description>文件查找常用场景： 忘记文件所在的具体位置，根据文件名模糊查询。 查找N天前的日志并删除，释放磁盘空间。 find命令可以根据不同的条件来进行查找文件。我们可以根据文</description>
+    </item>
+    
+    <item>
+      <title>Linux输入与输出</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</link>
+      <pubDate>Tue, 30 May 2023 18:49:29 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/8.linux%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</guid>
+      <description>输入与输出 当运行一个程序时通常会自动打开三个标准文件，分别是标准输入、标准输出、错误输出。 在Linux中，一切皆文件。在/dev下有些关于输入与输出的文件。 1 2</description>
+    </item>
+    
+    <item>
+      <title>Linux权限管理</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 27 May 2023 19:13:18 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/7.linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</guid>
+      <description>权限概述 什么是Linux权限 在Linux系统中，权限是控制用户对文件或目录进行访问的一种机制。这种权限定义了谁可以访问文件，以及他们可以做什么。 为什么要有权限 保</description>
+    </item>
+    
+    <item>
+      <title>用户与组</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/</link>
+      <pubDate>Wed, 24 May 2023 14:57:18 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/6.%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/</guid>
+      <description>用户相关概念 认识用户 在Linux系统中，用户和组是用于管理和控制系统资源访问权限的重要概念。 用户（User）：是指系统中的账号。每个用户都有一个唯一的用户名和用</description>
+    </item>
+    
+    <item>
+      <title>Vim编辑器</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/</link>
+      <pubDate>Mon, 22 May 2023 12:14:38 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/5.vim%E7%BC%96%E8%BE%91%E5%99%A8/</guid>
+      <description>认识vim vi和vim vi和vim都是Linux系统中的编辑器。 vim是vi的升级版本，兼容vi的所有指令，并具有一些新的特性，如多级撤消、易用性、语法加亮、可</description>
+    </item>
+    
+    <item>
+      <title>Linux文件操作</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 21 May 2023 20:13:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/4.linux%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>本章节，我们将认识 Linux 系统中常用的文件操作相关命令。 路径切换 我们可以通过cd 命令切换目录。 cd命令常用的参数如下: 命令 解释 cd ~ 切换回当前用户的家目录，注意：roo</description>
+    </item>
+    
+    <item>
+      <title>Linux目录结构</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sat, 20 May 2023 18:04:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/3.linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>目录简介 在Linux中一切皆文件，这些文件按照一定的规则存放在不同的目录当中。为了能够快速找到文件及以后的操作的规范性，我们必须记清楚Linux的目录结构。 Wi</description>
+    </item>
+    
+    <item>
+      <title>1. Kubernetes集群搭建</title>
+      <link>https://www.snoopyops.top/posts/kubernetes/1.-kubernete%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 11 May 2023 18:24:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/kubernetes/1.-kubernete%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid>
+      <description>Kubernete集群搭建 一、环境准备 1. K8S核心组件 K8S的逻辑架构图如下： etcd：保存了整个集群的状态，就是一个数据库。 1.1 主控（master）节点 apiserver 提供 了</description>
+    </item>
+    
+    <item>
+      <title>认识Bash Shell</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/</link>
+      <pubDate>Thu, 11 May 2023 17:43:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/2.%E8%AE%A4%E8%AF%86bash-shell/</guid>
+      <description>初识Shell Shell就是终端程序的统称，它充当了人与内核（硬件）之间的翻译官，将用户输入的命令翻译给内核，内核处理完成之后，将结果返回。现在许多主流Linu</description>
+    </item>
+    
+    <item>
+      <title>虚拟机安装CentOS7</title>
+      <link>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/</link>
+      <pubDate>Thu, 11 May 2023 14:43:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/1.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos7/</guid>
+      <description>本章节我们将学习如何安装创建一个Linux学习环境。 在初学Linux阶段，我们通常会使用虚拟机运行一个Linux的操作系统以供练习。 在windows上常用的虚拟</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://www.snoopyops.top/archive/</link>
+      <pubDate>Thu, 11 May 2023 22:35:36 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometeus%E7%9B%91%E6%8E%A7nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometeus%E7%9B%91%E6%8E%A7nginx/</guid>
+      <description>Nginx插件安装 通过vts监控Nginx可以获取到更全的信息。 下载并解压nginx-module-vts 1 2 3 cd /usr/local/src/ wget https://github.com/vozlt/nginx-module-vts/archive/refs/tags/v0.2.2.zip unzip v0.2.2.zip 查看Nginx安装参数 1 2 3 4 5 6 nginx</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/thanos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/thanos/</guid>
+      <description>ThanOS 前期准备 需要监控的服务器部署好相关的exporter 准备一套Grafana 对象存储 10.220.2.164 Thanos-sidecar,Thanos-query,minio,Promethues 10.220.0.236 Thanos-sidecar,Thanos-query,minio,Prometheus 10.220.6.194 minio 10.220.6.134 Nginx/minio Thanos架构 黄色的部分是prometheus，expor</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/vue/vue3%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/vue/vue3%E7%AC%94%E8%AE%B0/</guid>
+      <description>第一章 课程简介和初始Vue 第1集 Vue3零基础到项目实战课程简介 简介：零基础到项目实战课程简介 适合人群 前端工程师 后端工程师 测开工程师 岗位需求 课程大纲速览 学后水平</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
+      <description>https://yeasy.gitbook.io/docker_practice/buildx/buildkit 目录 Hello 大家好，接下来这段时间我将为大家带来一套全新的课程。Docker技术。 我们将从以下几个方面进行对Docker的学习 [toc] 认识Docker 什么是Docker 现</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E9%AB%98%E6%95%88%E8%BF%90%E7%BB%B4/ansible%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E9%AB%98%E6%95%88%E8%BF%90%E7%BB%B4/ansible%E4%BD%BF%E7%94%A8/</guid>
+      <description>一、Ansible配置文件 [toc] 1. 配置文件优先级 配置文件名称 优先级 文件位置 ANSIBLE_CONFIG 1 定义变量 ansible.cfg 2 当前项目目录中 .ansible.cfg 3 当前执行用户的家目录 /etc/ansible/ansible.cfg 4 默认配置文件位置 验证优先级 1 2 3</description>
+    </item>
+    
+    <item>
+      <title>🌞 导航</title>
+      <link>https://www.snoopyops.top/nav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/nav/</guid>
+      <description>🌞 Linux基础 1. 虚拟机安装CentOS7 2. 认识Bash Shell 3. Linux目录结构 4. Linux文件操作 5. Vim编辑器 6. 用户与组 7. Linux权限管理 8. Linux输入与</description>
+    </item>
+    
+  </channel>
+</rss>

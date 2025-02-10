@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="进程管理 - https://www.snoopyops.top/posts/linux%E5%9F%BA%E7%A1%80/13.%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title>进程管理</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title">进程管理</h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            2023-06-04&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            2024-01-16&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            6591 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            14 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/linux%E5%9F%BA%E7%A1%80">Linux基础</a>
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#认识进程">认识进程</a>
+      <ul>
+        <li><a href="#进程">进程</a></li>
+        <li><a href="#并发">并发</a></li>
+        <li><a href="#线程">线程</a></li>
+      </ul>
+    </li>
+    <li><a href="#监控进程状态">监控进程状态</a>
+      <ul>
+        <li><a href="#ps命令">ps命令</a></li>
+        <li><a href="#top命令">top命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#管理进程状态">管理进程状态</a></li>
+    <li><a href="#后台进程">后台进程</a></li>
+    <li><a href="#进程优先级">进程优先级</a>
+      <ul>
+        <li><a href="#查看进程优先级">查看进程优先级</a></li>
+        <li><a href="#调整进程优先级">调整进程优先级</a></li>
+      </ul>
+    </li>
+    <li><a href="#系统平均负载">系统平均负载</a>
+      <ul>
+        <li><a href="#平均负载概念">平均负载概念</a></li>
+        <li><a href="#平均负载阙值">平均负载阙值</a></li>
+        <li><a href="#影响平均负载的因素">影响平均负载的因素</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h2 id="认识进程">认识进程</h2>
+<h3 id="进程">进程</h3>
+<p>进程（<code>Process</code>）是指正在运行的程序的实例。当一个程序被执行时，操作系统会为该程序创建一个新的进程，并为其分配所需的资源，如内存空间、文件描述符等。进程是操作系统资源分配的最小单元。</p>
+<p>每个进程都有一个唯一的标识符（<code>PID</code>，<code>Process ID</code>），用于在操作系统中标识和管理进程。</p>
+<h3 id="并发">并发</h3>
+<p><code>CPU</code>是支持分时调度的，以时间片的形式来跑指令集。<code>OS</code>层面操作系统会轮换调度进程的一部分指令集给<code>CPU</code>运行。由于<code>CPU</code>的执行效率非常高，时间片非常短，在各个任务之间快速地切换，给人的感觉就是多个任务在同时进行，这也就是我们所说的并发。</p>
+<p><img src="https://images.snoopyops.top/image-20240105165351330.png" alt="image-20240105165351330"></p>
+<h3 id="线程">线程</h3>
+<p>在早期的操作系统中并没有线程的概念，进程是能拥有资源和独立运行的最小单位，也是程序执行的最小单位。任务调度采用的是时间片轮转的抢占式调度方式。随着计算机的发展，对<code>CPU</code>的要求越来越高，进程之间的切换开销较大，已经无法满足越来越复杂的程序的要求了，于是就发明了线程。</p>
+<p>线程是计算机中最基本的执行单位，它是操作系统能够进行运算调度的最小单位。</p>
+<p>一个进程可以有一个或多个线程，各个线程之间共享程序的内存空间(也就是所在进程的内存空间)。</p>
+<p>多线程是目前最流行的并发场景的解决方案，由于线程更加轻量级，创建和销毁的成本都很低。并且线程之间通信以及共享内存非常方便，和多进程相比开销要小得多。</p>
+<p><img src="https://images.snoopyops.top/proc-thread.png" alt="proc-thread"></p>
+<h2 id="监控进程状态">监控进程状态</h2>
+<h3 id="ps命令">ps命令</h3>
+<p><code>ps</code>命令可用于静态展示当前正在运行的进程信息。</p>
+<p>常用选项如表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-aux</td>
+<td style="text-align:left">显示所有进程的详细信息，包括CPU和内存占用等。</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:left">显示所有进程，包括其他用户的进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:left">显示完整格式的进程信息。</td>
+</tr>
+</tbody>
+</table>
+<p>查询当前进程。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps -aux | head</span>
+</span></span><span style="display:flex;"><span>USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">1</span>  0.0  0.3  <span style="color:#099">46240</span>  <span style="color:#099">3768</span> ?        Ss   01:50   0:08 /usr/lib/systemd/systemd --syste
+</span></span><span style="display:flex;"><span>m --deserialize <span style="color:#099">16</span>
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">2</span>  0.0  0.0      <span style="color:#099">0</span>     <span style="color:#099">0</span> ?        S    01:50   0:00 <span style="color:#000;font-weight:bold">[</span>kthreadd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">3</span>  0.0  0.0      <span style="color:#099">0</span>     <span style="color:#099">0</span> ?        S    01:50   0:07 <span style="color:#000;font-weight:bold">[</span>ksoftirqd/0<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">5</span>  0.0  0.0      <span style="color:#099">0</span>     <span style="color:#099">0</span> ?        S&lt;   01:50   0:00 <span style="color:#000;font-weight:bold">[</span>kworker/0:0H<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">7</span>  0.0  0.0      <span style="color:#099">0</span>     <span style="color:#099">0</span> ?        S    01:50   0:00 <span style="color:#000;font-weight:bold">[</span>migration/0<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root          <span style="color:#099">8</span>  0.0  0.0      <span style="color:#099">0</span>     <span style="color:#099">0</span> ?        S    01:50   0:00 <span style="color:#000;font-weight:bold">[</span>rcu_bh<span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>ps -aux</code>为常用组合，用于查看进程的用户、<code>PID</code>、占用<code>cpu</code>百分比、占用内存百分比、状态、执行的命令等。</p>
+<p><code>ps</code>状态及描述：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">USER</td>
+<td>启动进程的用户。</td>
+</tr>
+<tr>
+<td style="text-align:center">PID</td>
+<td>进程运行的ID号。</td>
+</tr>
+<tr>
+<td style="text-align:center">%CPU</td>
+<td>进程占用CPU百分比。</td>
+</tr>
+<tr>
+<td style="text-align:center">%MEM</td>
+<td>进程占用内存百分比。</td>
+</tr>
+<tr>
+<td style="text-align:center">VSZ</td>
+<td>进程占用虚拟内存的大小（单位KB）。</td>
+</tr>
+<tr>
+<td style="text-align:center">RSS</td>
+<td>进程占用物理内存实际大小（单位KB）。</td>
+</tr>
+<tr>
+<td style="text-align:center">TTY</td>
+<td>进程是由哪个终端运行启动的，tty1、pts/0等，？表示内核程序与终端无关。</td>
+</tr>
+<tr>
+<td style="text-align:center">STAT</td>
+<td>进程运行过程中的状态。</td>
+</tr>
+<tr>
+<td style="text-align:center">START</td>
+<td>进程启动的时间。</td>
+</tr>
+<tr>
+<td style="text-align:center">TIME</td>
+<td>进程占用的CPU的总时间（0表示还没超过秒）。</td>
+</tr>
+<tr>
+<td style="text-align:center">COMMAND</td>
+<td>程序执行的指令，[ ]内输入内核态的进程。没有[  ]的是用户态的进程。</td>
+</tr>
+</tbody>
+</table>
+<p><code>STAT</code>的状态及描述。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">STAT基本状态</th>
+<th>描述</th>
+<th style="text-align:center">STAT状态+符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">R</td>
+<td>进程运行。</td>
+<td style="text-align:center">s</td>
+<td>Ss进程的领导者，父进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td>可中断睡眠。</td>
+<td style="text-align:center">&lt;</td>
+<td>进程运行在高优先级上，S&lt;优先级较高的进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td>进程被暂停。</td>
+<td style="text-align:center">N</td>
+<td>进程运行在低优先级上，SN优先级较低的进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td>不可中断的睡眠。</td>
+<td style="text-align:center">+</td>
+<td>当前进程运行在前台，R+表示进程在前台运行。</td>
+</tr>
+<tr>
+<td style="text-align:center">Z</td>
+<td>僵尸进程。</td>
+<td style="text-align:center">l</td>
+<td>进程是多线程的，Sl表示进程是以线程方式运行的。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>查看进程状态</strong></p>
+<p>在终端<code>1</code>上运行<code>vim</code>命令。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim test</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在终端<code>2</code>上通过<code>ps</code>命令查看进程的状态</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vim</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12665</span>  0.2  0.2 <span style="color:#099">151540</span>  <span style="color:#099">5248</span> pts/0    S+   01:46   0:00 vim <span style="color:#0086b3">test</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12667</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">972</span> pts/1    S+   01:46   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在终端<code>1</code>上挂起<code>vim</code>命令，按下：<code>ctrl+z</code>，回到终端<code>2</code>再次运行<code>ps</code>命令查看状态。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vim</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12668</span>  0.1  0.2 <span style="color:#099">151540</span>  <span style="color:#099">5248</span> pts/1    T    01:54   0:00 vim <span style="color:#0086b3">test</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12672</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">976</span> pts/0    S+   01:55   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>不可中断状态</strong></p>
+<p>在终端<code>1</code>上使用<code>tar</code>对文件进行打包。</p>
+<pre tabindex="0"><code>[root@localhost ~]# tar czf test.tar.gz /etc/ /usr/ /var/
+</code></pre><p>在终端<code>2</code>上不断查看状态。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep tar</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12679</span> 15.6  0.1 <span style="color:#099">124832</span>  <span style="color:#099">2592</span> pts/1    R+   02:00   0:09 tar czf test.tar.gz /etc/ /usr/ /var/
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12789</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">976</span> pts/0    S+   02:01   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto tar
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep tar</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">12679</span> 15.6  0.1 <span style="color:#099">124832</span>  <span style="color:#099">2592</span> pts/1    D+   02:00   0:09 tar czf test.tar.gz /etc/ /usr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="top命令">top命令</h3>
+<p>使用<code>top</code>命令查看当前的进程状态（动态）。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># top</span>
+</span></span><span style="display:flex;"><span>top - 02:26:15 up  2:01,  <span style="color:#099">3</span> users,  load average: 0.00, 0.01, 0.08
+</span></span><span style="display:flex;"><span>Tasks: <span style="color:#099">109</span> total,   <span style="color:#099">1</span> running, <span style="color:#099">108</span> sleeping,   <span style="color:#099">0</span> stopped,   <span style="color:#099">0</span> zombie
+</span></span><span style="display:flex;"><span>%Cpu<span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">)</span>:  0.0 us,  0.2 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+</span></span><span style="display:flex;"><span>KiB Mem :  <span style="color:#099">2028116</span> total,    <span style="color:#099">75516</span> free,   <span style="color:#099">137336</span> used,  <span style="color:#099">1815264</span> buff/cache
+</span></span><span style="display:flex;"><span>KiB Swap:   <span style="color:#099">819196</span> total,   <span style="color:#099">819196</span> free,        <span style="color:#099">0</span> used.  <span style="color:#099">1636144</span> avail Mem 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                     
+</span></span><span style="display:flex;"><span> <span style="color:#099">12875</span> root      <span style="color:#099">20</span>   <span style="color:#099">0</span>  <span style="color:#099">161880</span>   <span style="color:#099">2200</span>   <span style="color:#099">1556</span> R   0.3  0.1   0:00.09 top                         
+</span></span><span style="display:flex;"><span>     <span style="color:#099">1</span> root      <span style="color:#099">20</span>   <span style="color:#099">0</span>  <span style="color:#099">128408</span>   <span style="color:#099">6972</span>   <span style="color:#099">4160</span> S   0.0  0.3   0:03.95 systemd                     
+</span></span><span style="display:flex;"><span>     <span style="color:#099">2</span> root      <span style="color:#099">20</span>   <span style="color:#099">0</span>       <span style="color:#099">0</span>      <span style="color:#099">0</span>      <span style="color:#099">0</span> S   0.0  0.0   0:00.01 kthreadd                    
+</span></span><span style="display:flex;"><span>     <span style="color:#099">3</span> root      <span style="color:#099">20</span>   <span style="color:#099">0</span>       <span style="color:#099">0</span>      <span style="color:#099">0</span>      <span style="color:#099">0</span> S   0.0  0.0   0:01.19 ksoftirqd/0                 
+</span></span><span style="display:flex;"><span>     <span style="color:#099">5</span> root       <span style="color:#099">0</span> -20       <span style="color:#099">0</span>      <span style="color:#099">0</span>      <span style="color:#099">0</span> S   0.0  0.0   0:00.00 kworker/0:0H                
+</span></span><span style="display:flex;"><span>     <span style="color:#099">7</span> root      rt   <span style="color:#099">0</span>       <span style="color:#099">0</span>      <span style="color:#099">0</span>      <span style="color:#099">0</span> S   0.0  0.0   0:00.23 migration/0  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一行解释及说明。</p>
+<pre tabindex="0"><code>top - 02:26:15 up  2:01,  3 users,  load average: 0.00, 0.01, 0.08
+</code></pre><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02:26:15</td>
+<td>当前系统时间。</td>
+</tr>
+<tr>
+<td>2:01</td>
+<td>系统运行时长。</td>
+</tr>
+<tr>
+<td>3 users</td>
+<td>当前有3个用户（终端）连接到系统。</td>
+</tr>
+<tr>
+<td>load average</td>
+<td>平均负载。</td>
+</tr>
+<tr>
+<td>0.00</td>
+<td>一分钟内平均负载。</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>五分钟内平均负载。</td>
+</tr>
+<tr>
+<td>0.08</td>
+<td>十五分内平均负载。</td>
+</tr>
+</tbody>
+</table>
+<p>第二行解释及说明。</p>
+<pre tabindex="0"><code>Tasks: 109 total,   1 running, 108 sleeping,   0 stopped,   0 zombie
+</code></pre><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>109 total</td>
+<td>当前进程总数。</td>
+</tr>
+<tr>
+<td>1 running</td>
+<td>正在运行的进程数量(R)。</td>
+</tr>
+<tr>
+<td>108 sleeping</td>
+<td>睡眠的进程数(S)。</td>
+</tr>
+<tr>
+<td>0 stopped</td>
+<td>停止，挂起的进程数(T)。</td>
+</tr>
+<tr>
+<td>0 zombie</td>
+<td>僵尸进程数。</td>
+</tr>
+</tbody>
+</table>
+<p>第三列解释及说明</p>
+<pre tabindex="0"><code>%Cpu(s):  0.0 us,  0.2 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+</code></pre><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0 us</td>
+<td>系统用户进程使用CPU百分比。</td>
+</tr>
+<tr>
+<td>0.2 sy</td>
+<td>内核中的进程占用CPU百分比，通常内核是于硬件进行交互。</td>
+</tr>
+<tr>
+<td>0.0 ni</td>
+<td>优先级的进程占用cpu的百分比。</td>
+</tr>
+<tr>
+<td>99.8 id</td>
+<td>空闲CPU的百分比。</td>
+</tr>
+<tr>
+<td>0.0 wa</td>
+<td>CPU等待IO完成的时间。</td>
+</tr>
+<tr>
+<td>0.0 hi</td>
+<td>硬中断，占的CPU百分比。</td>
+</tr>
+<tr>
+<td>0.0 si</td>
+<td>软中断，占的CPU百分比。</td>
+</tr>
+<tr>
+<td>0.0 st</td>
+<td>比如虚拟机占用物理CPU的时间。</td>
+</tr>
+</tbody>
+</table>
+<p><code>top</code>常见指令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">h</td>
+<td>查看帮助。</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td>数字1，显示所有CPU核心的负载。</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td>高亮显示处于R状态的进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td>按内存使用百分比排序输出。</td>
+</tr>
+<tr>
+<td style="text-align:center">P</td>
+<td>按CPU使用百分比排序输出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="管理进程状态">管理进程状态</h2>
+<p>当程序正在运行，我们可以使用kill命令对进程发送关闭信号，停止进程。</p>
+<p>列出<code>kill</code>当前系统所支持的信号。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kill -l</span>
+</span></span><span style="display:flex;"><span> 1<span style="color:#000;font-weight:bold">)</span> SIGHUP	 2<span style="color:#000;font-weight:bold">)</span> SIGINT	 3<span style="color:#000;font-weight:bold">)</span> SIGQUIT	 4<span style="color:#000;font-weight:bold">)</span> SIGILL	 5<span style="color:#000;font-weight:bold">)</span> SIGTRAP
+</span></span><span style="display:flex;"><span> 6<span style="color:#000;font-weight:bold">)</span> SIGABRT	 7<span style="color:#000;font-weight:bold">)</span> SIGBUS	 8<span style="color:#000;font-weight:bold">)</span> SIGFPE	 9<span style="color:#000;font-weight:bold">)</span> SIGKILL	10<span style="color:#000;font-weight:bold">)</span> SIGUSR1
+</span></span><span style="display:flex;"><span>11<span style="color:#000;font-weight:bold">)</span> SIGSEGV	12<span style="color:#000;font-weight:bold">)</span> SIGUSR2	13<span style="color:#000;font-weight:bold">)</span> SIGPIPE	14<span style="color:#000;font-weight:bold">)</span> SIGALRM	15<span style="color:#000;font-weight:bold">)</span> SIGTERM
+</span></span><span style="display:flex;"><span>16<span style="color:#000;font-weight:bold">)</span> SIGSTKFLT	17<span style="color:#000;font-weight:bold">)</span> SIGCHLD	18<span style="color:#000;font-weight:bold">)</span> SIGCONT	19<span style="color:#000;font-weight:bold">)</span> SIGSTOP	20<span style="color:#000;font-weight:bold">)</span> SIGTSTP
+</span></span><span style="display:flex;"><span>21<span style="color:#000;font-weight:bold">)</span> SIGTTIN	22<span style="color:#000;font-weight:bold">)</span> SIGTTOU	23<span style="color:#000;font-weight:bold">)</span> SIGURG	24<span style="color:#000;font-weight:bold">)</span> SIGXCPU	25<span style="color:#000;font-weight:bold">)</span> SIGXFSZ
+</span></span><span style="display:flex;"><span>26<span style="color:#000;font-weight:bold">)</span> SIGVTALRM	27<span style="color:#000;font-weight:bold">)</span> SIGPROF	28<span style="color:#000;font-weight:bold">)</span> SIGWINCH	29<span style="color:#000;font-weight:bold">)</span> SIGIO	30<span style="color:#000;font-weight:bold">)</span> SIGPWR
+</span></span><span style="display:flex;"><span>31<span style="color:#000;font-weight:bold">)</span> SIGSYS	34<span style="color:#000;font-weight:bold">)</span> SIGRTMIN	35<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+1	36<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+2	37<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+3
+</span></span><span style="display:flex;"><span>38<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+4	39<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+5	40<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+6	41<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+7	42<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+8
+</span></span><span style="display:flex;"><span>43<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+9	44<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+10	45<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+11	46<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+12	47<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+13
+</span></span><span style="display:flex;"><span>48<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+14	49<span style="color:#000;font-weight:bold">)</span> SIGRTMIN+15	50<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-14	51<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-13	52<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-12
+</span></span><span style="display:flex;"><span>53<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-11	54<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-10	55<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-9	56<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-8	57<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-7
+</span></span><span style="display:flex;"><span>58<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-6	59<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-5	60<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-4	61<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-3	62<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-2
+</span></span><span style="display:flex;"><span>63<span style="color:#000;font-weight:bold">)</span> SIGRTMAX-1	64<span style="color:#000;font-weight:bold">)</span> SIGRTMAX	
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中比较常用的信号有1、9、15</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数字编号</th>
+<th style="text-align:center">信号含义</th>
+<th>信号翻译</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">SIGHUP</td>
+<td>通常用来重新加载配置文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">SIGKILL</td>
+<td>强制杀死进程</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">SIGTERM</td>
+<td>终止进程，默认kill使用该信号</td>
+</tr>
+</tbody>
+</table>
+<p>使用<code>kill</code>命令杀死指定的进程。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vsftpd</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28085</span>  0.0  0.0  <span style="color:#099">53264</span>   <span style="color:#099">572</span> ?        Ss   15:00   0:00 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28087</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:00   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vsftpd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>kill -1</code>为发送从在信号，当修改了配置文件是，可通过这条命令重新加载。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kill -1 28085</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vsftpd</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28085</span>  0.0  0.0  <span style="color:#099">53264</span>   <span style="color:#099">748</span> ?        Ss   15:00   0:00 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28113</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:01   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vsftpd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>发送停止信号，停止正在运行的服务。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kill 28085</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vsftpd</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28153</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:04   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vsftpd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>kill -9</code>为发送强制停止信号，当无法停止服务时，可强制终止信号。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vsftpd</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28186</span>  0.0  0.0  <span style="color:#099">53264</span>   <span style="color:#099">576</span> ?        Ss   15:06   0:00 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28193</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">976</span> pts/0    R+   15:06   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vsftpd
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kill -9 28186</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep vsftpd</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28199</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:07   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto vsftpd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>kill -9 PID可强制杀死进程 ，对于mysql这类有状态的进程慎用。</p>
+</blockquote>
+<p>在<code>Linux</code>中，除了<code>kill</code>我们还可以用<code>killall</code>和<code>pkill</code>对进程进行管理。<code>killall</code>和<code>pkill</code>无需指定进程的<code>PID</code>就可以结束服务所都应的所有进程。</p>
+<p>通过<code>killall</code>结束<code>nginx</code>的所有进程。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep nginx</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28474</span>  0.0  0.2 <span style="color:#099">125100</span>  <span style="color:#099">2112</span> ?        Ss   15:21   0:00 nginx: master process /usr/sbin/ngin
+</span></span><span style="display:flex;"><span>nginx    <span style="color:#099">28475</span>  0.0  0.3 <span style="color:#099">127572</span>  <span style="color:#099">3572</span> ?        S    15:21   0:00 nginx: worker process
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28485</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:21   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto nginx
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># killall nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep nginx</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28491</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:22   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>pkill</code>结束<code>nginx</code>的所有进程。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep nginx</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28420</span>  0.0  0.2 <span style="color:#099">125100</span>  <span style="color:#099">2116</span> ?        Ss   15:18   0:00 nginx: master process /usr/sbin/ngin
+</span></span><span style="display:flex;"><span>nginx    <span style="color:#099">28421</span>  0.0  0.3 <span style="color:#099">127572</span>  <span style="color:#099">3576</span> ?        S    15:18   0:00 nginx: worker process
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28433</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:19   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto nginx
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># pkill nginx</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps aux | grep nginx</span>
+</span></span><span style="display:flex;"><span>root     <span style="color:#099">28442</span>  0.0  0.0 <span style="color:#099">112708</span>   <span style="color:#099">980</span> pts/0    R+   15:19   0:00 grep --color<span style="color:#000;font-weight:bold">=</span>auto nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用<code>pkill</code>踢出从远程登录到本机的用户，终止<code>pts/1</code>上所有进程，并且<code>bash</code>也结束（用户被强制退出）</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># w</span>
+</span></span><span style="display:flex;"><span> 15:24:10 up <span style="color:#099">10</span> days,  5:44,  <span style="color:#099">2</span> users,  load average: 0.00, 0.04, 0.05
+</span></span><span style="display:flex;"><span>USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+</span></span><span style="display:flex;"><span>root     pts/0    124.127.202.190  14:59    2.00s  0.08s  0.00s w
+</span></span><span style="display:flex;"><span>root     pts/1    124.127.202.102  15:23   17.00s  0.02s  0.02s -bash
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># -t为指定终端</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># pkill -9 -t pts/1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="后台进程">后台进程</h2>
+<p>通常进程都会在终端前台运行，一旦关闭终端，进程也会随着结束，那么此时我们就希望进程能在后台运行，就是将在前台运行的进程放入后台运行，这样及时我们关闭了终端也不影响进程的正常运行。</p>
+<p>早期的时候大家都选择使用<code>&amp;</code>符号将进程放入后台，然后在使用<code>jobs</code>、<code>bg</code>、<code>fg</code>等方式查看进程状态，但太麻烦了。在实际生成过程中<code>screen</code>使用起来更方便。</p>
+<p>安装<code>screen</code>工具。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install screen -y</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>开启一个<code>screen</code>窗口，指定名称。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># screen -S wget_CentOS</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在新的窗口中可执行命令。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># wget https://mirrors.aliyun.com/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso</span>
+</span></span><span style="display:flex;"><span>--2019-08-22 15:45:14--  https://mirrors.aliyun.com/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso
+</span></span><span style="display:flex;"><span>Resolving mirrors.aliyun.com <span style="color:#000;font-weight:bold">(</span>mirrors.aliyun.com<span style="color:#000;font-weight:bold">)</span>... 183.2.199.241, 183.2.199.242, 183.2.199.243, ...
+</span></span><span style="display:flex;"><span>Connecting to mirrors.aliyun.com <span style="color:#000;font-weight:bold">(</span>mirrors.aliyun.com<span style="color:#000;font-weight:bold">)</span>|183.2.199.241|:443... connected.
+</span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#099">200</span> OK
+</span></span><span style="display:flex;"><span>Length: <span style="color:#099">4588568576</span> <span style="color:#000;font-weight:bold">(</span>4.3G<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">[</span>application/octet-stream<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>Saving to: ‘CentOS-7-x86_64-DVD-1810.iso’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> 2% <span style="color:#000;font-weight:bold">[</span>&gt;                                                            <span style="color:#000;font-weight:bold">]</span> 106,655,380 12.1MB/s  eta 6m 0s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>平滑的退出<code>screen</code>，但不会终止<code>screen</code>中的任务。注意: 如果使用<code>exit</code>才算真的关闭<code>screen</code>窗口。`</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ctrl+a+d
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>detached from 28852.wget_CentOS<span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看当前正在运行的<code>screen</code>任务。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># screen -list</span>
+</span></span><span style="display:flex;"><span>There is a screen on:
+</span></span><span style="display:flex;"><span>	28852.wget_CentOS	<span style="color:#000;font-weight:bold">(</span>Detached<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">1</span> Socket in /var/run/screen/S-root.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可通过<code>screen</code>名称或<code>ID</code>进入正在运行的<code>screen</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># screen -r wget_CentOS</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># screen -r 28852</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="进程优先级">进程优先级</h2>
+<p>优先级指的是优先享受资源，优先级高，<code>CPU</code>会优先处理。</p>
+<p>在启动进程时，为不同的进程使用不同的调度策略。</p>
+<p><strong>nice值越高：</strong> 表示优先级越低，例如<code>+19</code>，该进程容易将<code>CPU</code>使用量让给其他进程。</p>
+<p><strong>nice 值越低：</strong> 表示优先级越高，例如<code>-20</code>，该进程更不倾向于让出<code>CPU</code>。</p>
+<h3 id="查看进程优先级">查看进程优先级</h3>
+<p>使用<code>top</code>可以查看<code>nice</code>优先级。 <code>NI</code>: 实际<code>nice</code>级别，默认是<code>0</code>。</p>
+<pre tabindex="0"><code>  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                           
+    1 root      20   0  125476   3116   1768 S  0.0  0.3   0:25.64 systemd                                                  
+    5 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 kworker/0:0H                      
+    7 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0 
+</code></pre><p>使用<code>ps</code>查看进程优先级。</p>
+<pre tabindex="0"><code>[root@localhost ~]# ps axo command,nice
+COMMAND                      NI
+/usr/lib/systemd/systemd --   0
+[kworker/0:0H]              -20
+[rcu_sched]                   0
+[lru-add-drain]             -20
+</code></pre><h3 id="调整进程优先级">调整进程优先级</h3>
+<p><code>nice</code>指定程序的优先级。语法格式<code>nice -n 优先级数字 进程名称</code>。</p>
+<pre tabindex="0"><code>[root@localhost ~]# nice -n -5 vim test
+[root@localhost ~]# ps axo command,nice | grep vim
+vim test                     -5
+</code></pre><blockquote>
+<p>通过nice修改程序的优先级，最终的优先级和ssh的优先级有关系。比如当前ssh的nice是-20，当把vim的nice设置为5时，实际的vim的优先级为-15</p>
+</blockquote>
+<p><code>renice</code>命令修改一个正在运行的进程优先级。语法格式<code>renice -n 优先级数字 进程pid</code>
+修改<code>ssh</code>的<code>nice</code></p>
+<pre tabindex="0"><code>[root@localhost ~]# ps axo pid,command,nice | grep ssh
+ 2318 /usr/sbin/sshd -D             0
+27994 sshd: root@pts/0              0
+29478 grep --color=auto ssh         0
+[root@localhost ~]# renice -n -20 2318
+2318 (process ID) old priority 0, new priority -20
+</code></pre><p>重新登陆后，<code>ssh</code>的<code>nice</code>都变为了<code>-20</code></p>
+<pre tabindex="0"><code>[root@localhost ~]# ps axo pid,command,nice | grep ssh
+ 2318 /usr/sbin/sshd -D           -20
+29533 sshd: root@pts/2            -20
+29591 sshd: root@pts/0            -20
+</code></pre><blockquote>
+<p>为了防止因服务器假死出现ssh连接服务器困难的情况，可将ssh的nice调整为-20</p>
+</blockquote>
+<h2 id="系统平均负载">系统平均负载</h2>
+<h3 id="平均负载概念">平均负载概念</h3>
+<p><strong>平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数，也就是平均活跃进程数</strong>，它和 <code>CPU</code>使用率并没有直接关系。</p>
+<p>所谓可运行状态的进程，是指正在使用<code>CPU</code>或者正在等待<code>CPU</code>的进程，也就是我们常用<code>ps</code>命令看到的，处于<code>R</code>状态（<code>Running</code>或<code>Runnable</code>）的进程。</p>
+<p>不可中断状态的进程则是正处于内核态关键流程中的进程，并且这些流程是不可打断的，比如最常见的是等待硬件设备的<code>I/O</code>响应，也就是我们在<code>ps</code>命令中看到的<code>D</code>状态的进程。</p>
+<p>比如，当一个进程向磁盘读写数据时，为了保证数据的一致性，在得到磁盘回复前，它是不能被其他进程或者中断打断的，这个时候的进程就处于不可中断状态。如果此时的进程被打断了，就容易出现磁盘数据与进程数据不一致的问题。</p>
+<p>既然平均的是活跃进程数，那么最理想的，就是每个<code>CPU</code>上都刚好运行着一个进程，这样每个<code>CPU</code>都得到了充分利用。比如当平均负载为<code>2</code>时，意味着什么呢？</p>
+<ul>
+<li>在<code>4</code>个<code>CPU</code>的系统上，意味着<code>CPU</code>有<code>50</code>的空闲。</li>
+<li>在只有<code>2</code>个<code>CPU</code>的系统上，意味着所有的<code>CPU</code>都刚好被完全占用。</li>
+<li>在只有<code>1</code>个<code>CPU</code>的系统中，则意味着有一半的进程竞争不到<code>CPU</code>。</li>
+</ul>
+<h3 id="平均负载阙值">平均负载阙值</h3>
+<p>平均负载有三个数值，分别表示<code>1</code>分钟、<code>5</code>分钟、<code>15</code>分钟内的平均负载。我们通过这三个值，可全面的看出目前系统的负载情况。</p>
+<ul>
+<li>
+<p>如果<code>1</code>分钟、<code>5</code>分钟、<code>1</code> 分钟的三个值基本相同，或者相差不大，那就说明系统负载很平稳。</p>
+</li>
+<li>
+<p>如果<code>1</code>分钟的值远小于<code>15</code>分钟的值，就说明系统最近<code>1</code>分钟的负载在减少，而过去<code>15</code>分钟内却有很大的负载。</p>
+</li>
+<li>
+<p>如果<code>1</code>分钟的值远大于<code>15</code>分钟的值，就说明最近<code>1</code>分钟的负载在增加，这种增加有可能只是临时性的，也有可能还会持续增加下去，所以就需要持续观察。一旦<code>1</code>分钟的平均负载接近或超过了<code>CPU</code>的个数，就意味着系统正在发生过载的问题，这时就得分析调查是哪里导致的问题，并要想办法优化了。</p>
+</li>
+</ul>
+<p>在举个例子，假设我们在有<code>2</code>个<code>CPU</code>系统上看到平均负载为<code>2.73，6.90，12.98</code>。那么说明：</p>
+<ul>
+<li>
+<p>在过去<code>1</code>分钟内，每个CPU有<code>36%</code>的超载<code> (2.73-2)/2=36%</code>；</p>
+</li>
+<li>
+<p>在过去<code>5</code>分钟内，每个CPU有<code>245%</code>的超载 <code>(6.90-2)/2=245%</code>；</p>
+</li>
+<li>
+<p>过去<code>15</code>分钟内，每个CPU有<code>549%</code>的超载，<code>(12.98-2)/2=549%</code>。</p>
+</li>
+</ul>
+<p>但从整体趋势来看，系统的负载是在逐步的降低。</p>
+<p><strong>当平均负载高于CPU数量70%的时候，我们就应该分析排查负载高的问题了</strong>。一旦负载过高，就可能导致进程响应变慢，进而影响服务的正常功能。</p>
+<h3 id="影响平均负载的因素">影响平均负载的因素</h3>
+<p>哪些情况会导致平均负载升高呢？</p>
+<p><strong>平均负载案例分析实战</strong></p>
+<p>下面，我们以三个示例分别来看这三种情况，并用 <em><strong>stress、mpstat、pidstat</strong></em> 等工具，找出平均负载升高的根源。
+<strong>stress</strong>是Linux系统压力测试工具，这里我们用作异常进程模拟平均负载升高的场景。
+<strong>mpstat</strong>是多核 CPU 性能分析工具，用来实时查看每个CPU的性能指标，以及所有 CPU 的平均指标。
+<strong>pidstat</strong>是一个常用的进程性能分析工具，用来实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标。</p>
+<p>如果出现无法使用mpstat、pidstat命令查看%wait指标建议更新下软件包</p>
+<pre tabindex="0"><code>[root@localhost ~]# wget http://pagesperso-orange.fr/sebastien.godard/sysstat-11.7.3-1.x86_64.rpm
+[root@localhost ~]# rpm -Uvh sysstat-11.7.3-1.x86_64.rpm
+</code></pre><p><strong>CPU 密集型进程</strong>
+第一个终端运行<code>stress</code>命令，模拟一个<code>CPU</code> 使用率<code>100%</code> 的场景。</p>
+<pre tabindex="0"><code>[root@localhost ~]# stress --cpu 1 --timeout 600
+stress: info: [30367] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
+# --cpu 产生n个进程,每个进程都反复不停的计算随机数的平方根
+# --timeout 指定运行N秒后停止
+</code></pre><p>通过<code>top</code>查看，CPU的使用率为<code>100%</code>，平均负载在不断的增加。</p>
+<pre tabindex="0"><code>[root@localhost ~]# top
+top - 17:33:47 up 10 days,  7:53,  3 users,  load average: 4.76, 2.14, 0.84
+Tasks:  88 total,   4 running,  84 sleeping,   0 stopped,   0 zombie
+%Cpu(s):100.0 us,  0.0 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  1014888 total,   143192 free,   125864 used,   745832 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.   671156 avail Mem
+</code></pre><p>在第三个终端运行<code>mpstat</code>查看<code>CPU</code> 使用率的变化情况。</p>
+<pre tabindex="0"><code>[root@localhost ~]# mpstat -P ALL 5
+# -P ALL表示监控所有CPU，后面数字5表示间隔5秒后输出一组数据
+Linux 3.10.0-957.21.3.el7.x86_64 (ennan) 	08/22/2019 	_x86_64_	(1 CPU)
+# 单核CPU，所以只有ALL和0，利用率为100%
+05:32:26 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+05:32:31 PM  all  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00
+05:32:31 PM    0  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00
+</code></pre><p>使用<code>pidstat</code>工具，间隔<code>5</code>秒后输出一组数据。</p>
+<pre tabindex="0"><code>[root@localhost ~]# pidstat -u 5 1
+Linux 3.10.0-957.21.3.el7.x86_64 (ennan) 	08/22/2019 	_x86_64_	(1 CPU)
+# 通过以下数据可看出stress所占用的CPU最高
+05:49:09 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+05:49:14 PM     0      2389    0.00    0.20    0.00    0.00    0.20     0  NetworkManager
+05:49:14 PM     0      2616    0.20    0.00    0.00    0.00    0.20     0  bcm-agent
+05:49:14 PM     0     30644   99.00    0.00    0.00    1.20   99.00     0  stress
+05:49:14 PM     0     30658    0.00    0.20    0.00    0.00    0.20     0  pidstat
+</code></pre><p>**问题分析：**通过以上实验，我们可以看出平均负载和<code>cpu</code>的使用率再不断的提升，但是<code>iowait</code>为<code>0</code>。而<code>stress</code>占用了大量的<code>CPU（99%）</code>，从而可以分析出，是<code>stree</code>占用<code>CPU</code>过高导致平均负载的升高。</p>
+<blockquote>
+<p>CPU 密集型进程，使用大量 CPU 会导致平均负载升高，此时这两者是一致的；</p>
+</blockquote>
+<p><strong>I/O 密集型进程</strong>
+运行 <code>stress</code> 命令，但这次模拟 <code>I/O</code> 压力，即不停地执行 <code>sync</code></p>
+<pre tabindex="0"><code>[root@localhost ~]# stress --io 1 --timeout 600s
+</code></pre><p>通过<code>top</code>命令可看到平均负载在不断的升高，<code>wa</code>也会升高。</p>
+<pre tabindex="0"><code>[root@localhost ~]# top
+top - 18:27:55 up 10 days,  8:48,  3 users,  load average: 3.93, 1.82, 0.99
+Tasks:  92 total,   2 running,  90 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.7 us, 94.0 sy,  0.0 ni,  0.0 id,  4.0 wa,  0.0 hi,  0.0 si,  0.3 st
+KiB Mem :  1014888 total,   101312 free,   129256 used,   784320 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.   667648 avail Mem
+</code></pre><p>通过<code>pidstat</code>可看出<code>stress</code>占用较多的资源。</p>
+<pre tabindex="0"><code>[root@localhost ~]# pidstat -u 5 1
+# 间隔5秒后输出一组数据
+Linux 3.10.0-957.21.3.el7.x86_64 (ennan) 	08/22/2019 	_x86_64_	(1 CPU)
+06:33:55 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+06:34:00 PM     0     31173    0.00   20.96    0.00   59.28   20.96     0  stress
+06:34:00 PM     0     31174    0.00   23.55    0.00   55.49   23.55     0  stress
+06:34:00 PM     0     31175    0.20   31.54    0.00   63.67   31.74     0  stress
+06:34:00 PM     0     31176    0.00   21.96    0.00   56.29   21.96     0  stress
+</code></pre><p>**问题分析：**通过<code>top</code>中的<code>wa</code>及<code>pidstat</code>中的<code>wait</code>可分析出，是<code>I/0</code>过高导致了平均负载的提升。</p>
+<blockquote>
+<p>I/O 密集型进程，等待 I/O 也会导致平均负载升高，但 CPU 使用率不一定很高；</p>
+</blockquote>
+<p><strong>大量进程的场景</strong>
+使用 <code>stress</code>，模拟的是 <code>4</code> 个进程。</p>
+<pre tabindex="0"><code>[root@localhost ~]# stress -c 4 --timeout 600
+</code></pre><p>通过<code>top</code>命令可看到平均负载在不断的升高，<code>CPU</code>利用率也再升高。</p>
+<pre tabindex="0"><code>[root@localhost ~]# top
+top - 19:15:18 up 10 days,  9:35,  3 users,  load average: 8.77, 5.68, 3.19
+Tasks:  89 total,   5 running,  83 sleeping,   0 stopped,   1 zombie
+%Cpu(s): 99.7 us,  0.0 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.3 st
+KiB Mem :  1014888 total,    94984 free,   123008 used,   796896 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.   674120 avail Mem
+</code></pre><p>通过<code>pidstat</code>可看出<code>stress</code>占用较多的资源。</p>
+<pre tabindex="0"><code>[root@localhost ~]# pidstat -u 5 1
+# 间隔5秒后输出一组数据
+Linux 3.10.0-957.21.3.el7.x86_64 (ennan) 	08/22/2019 	_x86_64_	(1 CPU)
+07:15:58 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+07:16:03 PM     0     31503   24.95    0.00    0.00   75.25   24.95     0  stress
+07:16:03 PM     0     31504   24.75    0.00    0.00   75.65   24.75     0  stress
+07:16:03 PM     0     31505   25.15    0.00    0.00   76.05   25.15     0  stress
+07:16:03 PM     0     31506   24.95    0.00    0.00   74.45   24.95     0  stress
+</code></pre><p>**问题分析：**4 个进程在争抢 1 个 <code>CPU</code>，每个进程等待 <code>CPU</code> 的时间（也就是代码块中的 <code>%wait</code> 列）高达 75%。这些超出 <code>CPU</code> 计算能力的进程，最终导致 <code>CPU</code> 过载。</p>
+<blockquote>
+<p>大量等待 CPU 的进程调度也会导致平均负载升高，此时的 CPU 使用率也会比较高。</p>
+</blockquote>
+<hr>
+<center><img src="https://images.snoopyops.top/wechat-snoopy.jpg" alt="image-20231028232834657" style="zoom:40%;" /></center>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> © 2016 - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>
