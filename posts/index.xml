@@ -6,7 +6,16 @@
     <description>Recent content in Posts on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 19 Feb 2024 18:23:48 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Feb 2025 16:43:31 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>
+      <pubDate>Wed, 19 Feb 2025 16:43:31 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
+      <description>认识Docker 什么是Docker 现在云计算已经是比较普遍的技术，中小企业往往会从阿里云或者AWS之类的云厂商直接够买云主机。我们通常会通过脚本或者手工的方式在</description>
+    </item>
+    
     <item>
       <title>Blackbox网络监控</title>
       <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/blackbox%E7%BD%91%E7%BB%9C%E7%9B%91%E6%8E%A7/</link>
@@ -311,15 +320,6 @@
       
       <guid>https://www.snoopyops.top/posts/vue/vue3%E7%AC%94%E8%AE%B0/</guid>
       <description>第一章 课程简介和初始Vue 第1集 Vue3零基础到项目实战课程简介 简介：零基础到项目实战课程简介 适合人群 前端工程师 后端工程师 测开工程师 岗位需求 课程大纲速览 学后水平</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
-      <description>https://yeasy.gitbook.io/docker_practice/buildx/buildkit 目录 Hello 大家好，接下来这段时间我将为大家带来一套全新的课程。Docker技术。 我们将从以下几个方面进行对Docker的学习 [toc] 认识Docker 什么是Docker 现</description>
     </item>
     
     <item>
