@@ -68,7 +68,7 @@
         <span>
             
             <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
-            9423 字</span>&nbsp;
+            9470 字</span>&nbsp;
         <span>
             
             <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
@@ -115,6 +115,7 @@
       <ul>
         <li><a href="#什么是容器">什么是容器</a></li>
         <li><a href="#容器管理">容器管理</a></li>
+        <li><a href="#常用参数">常用参数</a></li>
         <li><a href="#端口映射">端口映射</a></li>
         <li><a href="#数据持久化">数据持久化</a></li>
         <li><a href="#docker网络">Docker网络</a></li>
@@ -125,8 +126,8 @@
       <ul>
         <li><a href="#资源隔离">资源隔离</a></li>
         <li><a href="#资源限制">资源限制</a></li>
+        <li><a href="#联合文件系统">联合文件系统</a></li>
         <li><a href="#chroot">chroot</a></li>
-        <li><a href="#镜像相关">镜像相关</a></li>
         <li><a href="#与虚拟机对比">与虚拟机对比</a></li>
       </ul>
     </li>
@@ -515,28 +516,86 @@
 </span></span><span style="display:flex;"><span>docker rm -f <span style="color:#000;font-weight:bold">[</span>容器ID<span style="color:#000;font-weight:bold">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h3 id="常用参数">常用参数</h3>
+<h4 id="指定启动命令">指定启动命令</h4>
+<p>docker容器内第一个进程必须一直处于前台运行的状态，否则这个容器就会处于退出状态。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d centos
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 容器处于退出状态</span>
+</span></span><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>容器过<code>10s</code>会退出</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d centos sleep <span style="color:#099">10</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>容器用不退出的命令，常用于启动容器后，进入容器排查问题。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d centos tail -f /dev/null
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>开启一个<code>bash</code>终端容器也不会退出</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d centos /bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="指定容器名称">指定容器名称</h4>
+<p>可以通过<code>name</code>指定容器名称，容器名称不可以重复。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d nginx:1.26.3
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h3 id="端口映射">端口映射</h3>
-<p>容器的IP是内部的，只能在宿主机内部访问。要从外部访问，需要使用<code>-p</code>参数将容器端口映射到宿主机的某个端口。</p>
+<p>容器的IP是内部的，只能在宿主机内部访问。要从外部访问，我们需要将容器端口映射到宿主机的某个端口。</p>
+<p>映射到宿主机的随机端口</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d -P nginx:1.26.3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>映射到宿主机的指定端口</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># --name用于指定容器名称</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># -p用于映射端口</span>
-</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 nginx:1.26.3
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -p 443:443 nginx:1.26.3
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 验证宿主机端口是否监听</span>
 </span></span><span style="display:flex;"><span>netstat -lnpt | grep <span style="color:#099">80</span>
 </span></span><span style="display:flex;"><span>curl localhost:80
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="数据持久化">数据持久化</h3>
-<p>进入容器修改主页</p>
+<p>上线公司官网并进入容器修改主页</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -546,20 +605,18 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 进入容器</span>
 </span></span><span style="display:flex;"><span>docker <span style="color:#0086b3">exec</span> -it mynginx bash
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 查看配置文件</span>
-</span></span><span style="display:flex;"><span>cat /etc/nginx/nginx.conf
-</span></span><span style="display:flex;"><span>cat /etc/nginx/conf.d/default.conf
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 配置文件中站点目录为/usr/share/nginx/html</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 修改index.html</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;SnoopyOPS&#34;</span> &gt; /usr/share/nginx/html/index.html
+</span></span><span style="display:flex;"><span>curl -o lvyou.tar.gz https://tools.snoopyops.top/file/lvyou.tar.gz
+</span></span><span style="display:flex;"><span>rm -rvf /usr/share/nginx/html/*
+</span></span><span style="display:flex;"><span>tar xf lvyou.tar.gz
+</span></span><span style="display:flex;"><span>cp -rvf lvyou/* /usr/share/nginx/html/
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>假设我们需要对Nginx的版本进行升级</p>
+</div><p>假设我们需要对<code>Nginx</code>的版本进行升级</p>
 <p>删除容器</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -578,8 +635,8 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 nginx:1.27.4
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>目录挂载</strong></p>
-<p>可以通过-v参数实现数据持久化</p>
+</div><h4 id="目录挂载">目录挂载</h4>
+<p>可以通过<code>-v</code>参数实现数据持久化</p>
 <p>持久化网页</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -588,13 +645,21 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /data/Docker/nginx/html
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;SnoopyOPS&#34;</span> &gt;&gt; /data/Docker/nginx/html/index.html
-</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/:/usr/share/nginx/html/ nginx:1.26.3
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /data/Docker/nginx/html <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#0086b3">cd</span> /data/Docker/nginx/html
+</span></span><span style="display:flex;"><span>curl -o lvyou.tar.gz https://tools.snoopyops.top/file/lvyou.tar.gz
+</span></span><span style="display:flex;"><span>tar xf lvyou.tar.gz
+</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/lvyou:/usr/share/nginx/html/ nginx:1.26.3
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 更新网页</span>
+</span></span><span style="display:flex;"><span>sed -i s@享受自然之美@漫步自然盛景@g index.html
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 升级Nginx</span>
 </span></span><span style="display:flex;"><span>docker stop mynginx <span style="color:#000;font-weight:bold">&amp;&amp;</span> docker rm mynginx
-</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/:/usr/share/nginx/html/ nginx:1.27.4
+</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/lvyou:/usr/share/nginx/html/ nginx:1.27.4
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>持久化配置文件</p>
@@ -607,10 +672,10 @@
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /data/Docker/nginx/config
 </span></span><span style="display:flex;"><span>docker cp mynginx:/etc/nginx/ /data/Docker/nginx/config/
-</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/:/usr/share/nginx/html/ -v /data/Docker/nginx/config/nginx:/etc/nginx/ nginx:1.27.4
+</span></span><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/lvyou:/usr/share/nginx/html/ -v /data/Docker/nginx/config/nginx:/etc/nginx/ nginx:1.27.4
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>数据卷</strong></p>
+</div><h4 id="数据卷">数据卷</h4>
 <p>我们也可以通过数据卷的方式把nginx配置挂载出来</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -619,14 +684,14 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/:/usr/share/nginx/html/ -v ngconfig:/etc/nginx nginx:1.27.4
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name mynginx -d -p 80:80 -v /data/Docker/nginx/html/lvyou:/usr/share/nginx/html/ -v ngconfig:/etc/nginx nginx:1.27.4
 </span></span><span style="display:flex;"><span>docker volume ls
 </span></span><span style="display:flex;"><span>docker inspect ngconfig
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="docker网络">Docker网络</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/554015619">https://zhuanlan.zhihu.com/p/554015619</a></p>
-<p>三种网络模式</p>
+<p>查看<code>docker</code>网络模式</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -643,8 +708,8 @@
 </span></span><span style="display:flex;"><span>5a63194b5625   none      null      <span style="color:#0086b3">local</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>bridge模式</strong></p>
-<p>Docker 安装后会自动创建一个名为docker0的虚拟网桥，它相当于一个虚拟的以太网交换机，docker0网桥负责连接所有默认网络模式下的 Docker 容器，并为容器分配 IP 地址。</p>
+</div><h4 id="bridge模式">bridge模式</h4>
+<p><code>Docker</code>安装后会自动创建一个名为<code>docker0</code>的虚拟网桥，它相当于一个虚拟的交换机，<code>docker0</code>网桥负责连接所有默认网络模式下的<code>Docker</code>容器，并为容器分配<code>IP</code>地址。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -653,13 +718,13 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip ad
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>当启动一个新的 Docker 容器时，Docker 会创建一对虚拟网络设备，称为 veth 设备。</p>
+</div><p>当启动一个新的<code>Docker</code>容器时，<code>Docker</code>会创建一对虚拟网络设备，称为<code>veth</code>设备。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -it alpine:3.9
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -it centos
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看容器和网桥详情</p>
@@ -682,14 +747,14 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brctl show
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>host模式</strong></p>
-<p>通过&ndash;network指定网络类型</p>
+</div><h4 id="host模式">host模式</h4>
+<p>通过<code>--network</code>指定网络类型</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -it --network<span style="color:#000;font-weight:bold">=</span>host alpine:3.9
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -it --network<span style="color:#000;font-weight:bold">=</span>host centos
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看容器和网桥详情</p>
@@ -701,75 +766,31 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#000;font-weight:bold">[</span>容器ID<span style="color:#000;font-weight:bold">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>none模式</strong></p>
+</div><h4 id="none模式">none模式</h4>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d --network<span style="color:#000;font-weight:bold">=</span>none alpine:3.9
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d --network<span style="color:#000;font-weight:bold">=</span>none centos
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>Container模式</strong></p>
+</div><h4 id="container模式">Container模式</h4>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d --network<span style="color:#000;font-weight:bold">=</span>container:<span style="color:#000;font-weight:bold">[</span>容器ID<span style="color:#000;font-weight:bold">]</span> alpine:3.9
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d --network<span style="color:#000;font-weight:bold">=</span>container:<span style="color:#000;font-weight:bold">[</span>容器ID<span style="color:#000;font-weight:bold">]</span> centos
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>自定义网络</strong></p>
+</div><h4 id="自定义网络">自定义网络</h4>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create -d bridgt --subnet 172.18.0.0/16 --gateway 172.18.0.1 mynet
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>通过IP访问</strong></p>
-<p>两个容器网络互通</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name nginx1 -d -p 80:80 nginx:1.27.4
-</span></span><span style="display:flex;"><span>docker run --name nginx2 -d -p 90:80 nginx:1.27.4
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>查看nginx1的IP地址</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect nginx1
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在nginx2中访问nginx1</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#0086b3">exec</span> -it nginx2 bash
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 在容器中请求nginx1</span>
-</span></span><span style="display:flex;"><span>curl 172.17.0.4:80
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>通过容器名访问</strong></p>
-<p>创建自定义网络</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create mynet
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create -d bridge --subnet 172.18.0.0/16 --gateway 172.18.0.1 mynet
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行两个容器</p>
@@ -780,10 +801,10 @@
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name nginx1 --network mynet -d -p 80:80 nginx:1.27.4
-</span></span><span style="display:flex;"><span>docker run --name nginx2 --network mynet -d -p 90:80 nginx:1.27.4
+</span></span><span style="display:flex;"><span>docker run --name nginx2 --network mynet -d -p 8080:80 nginx:1.27.4
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在nginx2中访问nginx1</p>
+</div><p>在<code>nginx2</code>中访问<code>nginx1</code></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -840,7 +861,7 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CREATE DATABASE <span style="color:#d14">`</span>wordpress<span style="color:#d14">`</span> DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>运行wordpress</p>
+</div><p>运行<code>wordpress</code></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -851,7 +872,8 @@
 </div>
 </div><h2 id="docker容器实现原理">Docker容器实现原理</h2>
 <h3 id="资源隔离">资源隔离</h3>
-<p>运行一个nginx容器</p>
+<p>容器是通过<code>Namespace</code>实现资源隔离的。</p>
+<p>运行一个<code>nginx</code>容器</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -877,12 +899,11 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -ef | grep nginx
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在容器中nginx的PID为1，宿主机中PID为其他非1的数。这是因为我们通过Dcoekr运行nginx的时候，Docker会给这个进程施一个“障眼法”，让他永远看不到其他的进程，以为自己就是1号进程。这种技术，就是 Linux 里面的 Namespace 机制。</p>
-<p>除了我们刚刚用到的 PID Namespace，Linux 操作系统还提供了 Mount、UTS、IPC、Network 和 User 这些 Namespace，用来对各种不同的进程上下文进行“障眼法”操作。</p>
-<p>实际上是在创建容器进程时，指定了这个进程所需要启用的一组 Namespace 参数。这样，容器就只能“看”到当前 Namespace 所限定的资源、文件、设备、状态，或者配置。而对于宿主机以及其他不相关的程序，它就完全看不到了。</p>
-<p>Namespace 技术实际上修改了应用进程看待整个计算机“视图”，即它的“视线”被操作系统做了限制，只能“看到”某些指定的内容。但对于宿主机来说，这些被“隔离”了的进程跟其他进程并没有太大区别。</p>
+</div><p>在容器中<code>nginx</code>的<code>PID</code>为<code>1</code>，宿主机中<code>PID</code>为其他非<code>1</code>的数。这是因为我们通过<code>Dcoekr</code>运行<code>nginx</code>的时候，<code>Docker</code>会给这个进程施一个“障眼法”，让他永远看不到其他的进程，以为自己就是<code>1</code>号进程。这种技术，就是 <code>Linux</code>里面的<code>Namespace</code>机制。</p>
+<p>除了我们刚刚用到的<code>PID Namespace</code>，<code>Linux</code>操作系统还提供了<code>Mount</code>、<code>UTS</code>、<code>IPC</code>、<code>Network</code>和<code>User</code>这些 <code>Namespace</code>，用来对各种不同的进程上下文进行“障眼法”操作。<code>Namespace</code>技术实际上修改了应用进程看待整个计算机“视图”，它只能“看到”某些指定的内容。</p>
 <h3 id="资源限制">资源限制</h3>
-<p>这个命令启动一个容器，限制其最大内存使用为 256MB，最多使用 0.25 个 CPU 核心。</p>
+<p>容器是通过<code>cgroups</code>实现资源限制的。</p>
+<p>这个命令启动一个容器，限制其最大内存使用为<code>256MB</code>，最多使用<code>0.25</code>个<code>CPU</code>核心。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -891,31 +912,11 @@
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it --memory<span style="color:#000;font-weight:bold">=</span>256m --cpus<span style="color:#000;font-weight:bold">=</span>0.25 ubuntu:latest bash
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>但是，你如果在容器里执行 top 指令，就会发现，它显示的信息居然是宿主机的 CPU 和内存数据，而不是当前容器的数据。造成这个问题的原因就是，/proc 文件系统并不知道用户通过 Cgroups 给这个容器做了什么样的资源限制，即：/proc 文件系统不了解 Cgroups 限制的存在。</p>
-<p><a href="https://time.geekbang.org/column/article/313255">https://time.geekbang.org/column/article/313255</a></p>
-<h3 id="chroot">chroot</h3>
-<p>从<code>https://mirrors.tuna.tsinghua.edu.cn/lxc-images/images/</code>可以找到各Linux镜像的系统</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /data/centos <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#0086b3">cd</span> /data/centos
-</span></span><span style="display:flex;"><span>wget <span style="color:#d14">&#34;https://mirrors.tuna.tsinghua.edu.cn/lxc-images/images/centos/9-Stream/amd64/default/20250219_07%3A08/rootfs.tar.xz&#34;</span>
-</span></span><span style="display:flex;"><span>tar xf rootfs.tar.xz
-</span></span><span style="display:flex;"><span>chroot /data/centos/
-</span></span><span style="display:flex;"><span>cat /etc/redhat-release
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="镜像相关">镜像相关</h3>
+</div><p>但是，你如果在容器里执行<code>top</code>指令，就会发现，它显示的信息居然是宿主机的<code>CPU</code>和内存数据，而不是当前容器的数据。造成这个问题的原因就是，<code>/proc</code>文件系统并不知道用户通过<code>Cgroups</code>给这个容器做了什么样的资源限制，即：<code>/proc</code> 文件系统不了解<code>Cgroups</code>限制的存在。</p>
+<p>可参考https://time.geekbang.org/column/article/313255</p>
+<h3 id="联合文件系统">联合文件系统</h3>
 <p>挂载在容器根目录上、用来为容器进程提供隔离后执行环境的文件系统，就是所谓的“容器镜像”。它还有一个更为专业的名字，叫作：rootfs（根文件系统）。rootfs 只是一个操作系统所包含的文件、配置和目录，并不包括操作系统内核。同一台机器上的所有容器，都共享宿主机操作系统的内核。</p>
-<p>正是由于 rootfs 的存在，容器才有了一个被反复宣传至今的重要特性：一致性。</p>
 <p>由于 rootfs 里打包的不只是应用，而是整个操作系统的文件和目录，也就意味着，应用以及它运行所需要的所有依赖，都被封装在了一起。</p>
-<p>这种深入到操作系统级别的运行环境一致性，打通了应用在本地开发和远端执行环境之间难以逾越的鸿沟。</p>
 <p>现在用 Ubuntu 操作系统的 ISO 做了一个 rootfs，然后又在里面安装了 Java 环境，用来部署我的 Java 应用。那么，我的另一个同事在发布他的 Java 应用时，显然希望能够直接使用我安装过 Java 环境的 rootfs，而不是重复这个流程。一种比较直观的解决办法是，我在制作 rootfs 的时候，每做一步“有意义”的操作，就保存一个 rootfs 出来，这样其他同事就可以按需求去用他需要的 rootfs 了。</p>
 <p>Docker 在镜像的设计中，引入了层（layer）的概念。也就是说，用户制作镜像的每一步操作，都会生成一个层，也就是一个增量 rootfs。</p>
 <p>而Docker通过联合文件系统实现层的概念，用户制作镜像的每一步操作，都会生成一个层，也就是一个增量 rootfs。</p>
@@ -961,8 +962,26 @@
 </span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># a1这个文件就是我们在一开始提到的 whiteout文件，它是一种主/次设备号都为0的字符设备</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>overlay在对文件进行操作时用到了**写时复制（Copy on Write）**技术，在没有对文件进行修改时，merged 目录直接使用 lower 目录下的文件，只有当我们在 merged 目录对文件进行修改时，才会把修改的文件复制到 upper 目录</p>
-<p>分享</p>
+</div><p>overlay在对文件进行操作时用到了**写时复制（Copy on Write）**技术，在没有对文件进行修改时，merged 目录直接使用 lower 目录下的文件，只有当我们在 merged 目录对文件进行修改时，才会把修改的文件复制到 upper</p>
+<h3 id="chroot">chroot</h3>
+<p>从<code>https://mirrors.tuna.tsinghua.edu.cn/lxc-images/images/</code>可以找到各Linux镜像的系统</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /data/centos <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#0086b3">cd</span> /data/centos
+</span></span><span style="display:flex;"><span>wget <span style="color:#d14">&#34;https://mirrors.tuna.tsinghua.edu.cn/lxc-images/images/centos/9-Stream/amd64/default/20250219_07%3A08/rootfs.tar.xz&#34;</span>
+</span></span><span style="display:flex;"><span>tar xf rootfs.tar.xz
+</span></span><span style="display:flex;"><span>chroot /data/centos/
+</span></span><span style="display:flex;"><span>cat /etc/redhat-release
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>分享</p>
 <p><a href="https://blog.csdn.net/ysf15609260848/article/details/121594667">https://blog.csdn.net/ysf15609260848/article/details/121594667</a></p>
 <h3 id="与虚拟机对比">与虚拟机对比</h3>
 <p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”。</p>
@@ -1511,7 +1530,7 @@ CMD [&#34;/usr/sbin/nginx&#34;, &#34;-g&#34;, &#34;daemon off;&#34;]
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -d --name dpanel --restart<span style="color:#000;font-weight:bold">=</span>always <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span> -p 80:80 -p 443:443 -p 8807:8080 <span style="color:#d14">\
 </span></span></span><span style="display:flex;"><span><span style="color:#d14"></span> -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#d14">\
-</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span> -v dpanel:/dpanel -e <span style="color:#008080">APP_NAME</span><span style="color:#000;font-weight:bold">=</span>dpanel dpanel/dpanel:latest
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span> -v dpanel:/dpanel -e <span style="color:#008080">APP_NAME</span><span style="color:#000;font-weight:bold">=</span>dpanel registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="实战私有化部署docker仓库">实战：私有化部署Docker仓库</h2>
