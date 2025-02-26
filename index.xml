@@ -6,7 +6,16 @@
     <description>Recent content on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Feb 2025 16:43:31 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Feb 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx中proxy_pass路径后带/与不带/的区别</title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx-proxy_pass%E8%B7%AF%E5%BE%84%E5%90%8E%E5%B8%A6%E4%B8%8E%E4%B8%8D%E5%B8%A6%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Wed, 26 Feb 2025 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx-proxy_pass%E8%B7%AF%E5%BE%84%E5%90%8E%E5%B8%A6%E4%B8%8E%E4%B8%8D%E5%B8%A6%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>前言 nginx的代理的路径是否有时候会让你摸不着头脑？介绍nginx配置文件中proxy_pass路径后带/与不带/的区别，只有掌握了这个，才能不被nginx的</description>
+    </item>
+    
     <item>
       <title>Docker</title>
       <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>

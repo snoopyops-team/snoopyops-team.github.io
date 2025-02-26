@@ -6,7 +6,16 @@
     <description>Recent content in Categories on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Feb 2025 16:43:31 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Feb 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web相关</title>
+      <link>https://www.snoopyops.top/categories/web%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Wed, 26 Feb 2025 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/categories/web%E7%9B%B8%E5%85%B3/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>容器</title>
       <link>https://www.snoopyops.top/categories/%E5%AE%B9%E5%99%A8/</link>
@@ -67,15 +76,6 @@
       <pubDate>Fri, 17 Nov 2023 12:48:29 +0800</pubDate>
       
       <guid>https://www.snoopyops.top/categories/%E5%AD%98%E5%82%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web相关</title>
-      <link>https://www.snoopyops.top/categories/web%E7%9B%B8%E5%85%B3/</link>
-      <pubDate>Thu, 16 Nov 2023 10:56:41 +0800</pubDate>
-      
-      <guid>https://www.snoopyops.top/categories/web%E7%9B%B8%E5%85%B3/</guid>
       <description></description>
     </item>
     
