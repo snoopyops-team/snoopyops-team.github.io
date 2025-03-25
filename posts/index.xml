@@ -6,14 +6,23 @@
     <description>Recent content in Posts on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Feb 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu下编译部署Nginx</title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/</link>
+      <pubDate>Sun, 16 Mar 2025 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/</guid>
+      <description>必要的依赖包 1 apt -y install libpcre3 libpcre3-dev openssl libssl-dev zlib1g-dev gcc make 下载并解压 1 2 3 cd /usr/local/src/ wget https://nginx.org/download/nginx-1.24.0.tar.gz tar xf nginx-1.24.0.tar.gz 编译安装 1 2 3 cd nginx-1.24.0/ ./configure --prefix=/usr/local/nginx --user=nobody --group=nobody --with-stream --with-http_realip_module --with-http_stub_status_module --with-http_sub_module --with-http_ssl_module --with-http_v2_module --with-http_flv_module --with-http_stub_status_module --with-http_gzip_static_module --with-pcre --with-debug --with-stream_ssl_module --with-compat --with-http_dav_module make &amp;amp;&amp;amp; make install 启动文件 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
+    </item>
+    
     <item>
       <title>彻底掌握Nginx中proxy_pass路径斜杠的规则差异</title>
       <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E4%B8%ADproxy_pass%E8%B7%AF%E5%BE%84%E6%96%9C%E6%9D%A0%E7%9A%84%E8%A7%84%E5%88%99/</link>
       <pubDate>Wed, 26 Feb 2025 10:56:41 +0800</pubDate>
       
       <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E4%B8%ADproxy_pass%E8%B7%AF%E5%BE%84%E6%96%9C%E6%9D%A0%E7%9A%84%E8%A7%84%E5%88%99/</guid>
-      <description>前言：为何要关注这个斜杠？ 在Nginx的代理配置中，proxy_pass指令后的路径是否包含斜杠，直接影响着请求的最终转发路径。许多开发者都曾在此处踩坑：相同的</description>
+      <description>点解此处查看视频教程 前言：为何要关注这个斜杠？ 在Nginx的代理配置中，proxy_pass指令后的路径是否包含斜杠，直接影响着请求的最终转发路径。许多开发者都</description>
     </item>
     
     <item>
@@ -23,6 +32,15 @@
       
       <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
       <description>认识Docker 什么是Docker 现在云计算已经是比较普遍的技术，中小企业往往会从阿里云或者AWS之类的云厂商直接够买云主机。我们通常会通过脚本或者手工的方式在</description>
+    </item>
+    
+    <item>
+      <title>OpenLdap容器化部署</title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 09 Apr 2024 11:26:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
+      <description>部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ --name openldap \ --restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ --env</description>
     </item>
     
     <item>
@@ -306,6 +324,15 @@
     
     <item>
       <title></title>
+      <link>https://www.snoopyops.top/posts/cicd/token-argocd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/cicd/token-argocd/</guid>
+      <description>Cli https://github.com/tektoncd/cli/releases 1 2 3 4 5 wget https://github.com/tektoncd/cli/releases/download/v0.40.0/tektoncd-cli-0.40.0_Linux-64bit.deb dpkg -i tektoncd-cli-0.40.0_Linux-64bit.deb tkn version Dashboard 1 kubectl apply --filename https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml 配置ingress</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometeus%E7%9B%91%E6%8E%A7nginx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -329,6 +356,15 @@
       
       <guid>https://www.snoopyops.top/posts/vue/vue3%E7%AC%94%E8%AE%B0/</guid>
       <description>第一章 课程简介和初始Vue 第1集 Vue3零基础到项目实战课程简介 简介：零基础到项目实战课程简介 适合人群 前端工程师 后端工程师 测开工程师 岗位需求 课程大纲速览 学后水平</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%A7%E4%BB%A3%E7%90%86%E4%B8%8Bnginx%E9%80%8F%E4%BC%A0%E7%9C%9F%E5%AE%9Eip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%A7%E4%BB%A3%E7%90%86%E4%B8%8Bnginx%E9%80%8F%E4%BC%A0%E7%9C%9F%E5%AE%9Eip/</guid>
+      <description>Nginx透传真实IP 环境 示意图 在proxy-3上准备后端文件 1 2 wget -O /opt/http_server https://tools.snoopyops.top/file/http_server chmod a+x /opt/http_server 1 2 3 log_format main &amp;#39;$remote_addr - $remote_user [$time_local] &amp;#34;$request&amp;#34; &amp;#39; &amp;#39;$status $body_bytes_sent &amp;#34;$http_referer&amp;#34; &amp;#39; &amp;#39;&amp;#34;$http_user_agent&amp;#34; &amp;#34;$http_x_forwarded_for&amp;#34;&amp;#39;; remote_addr 默认获取到的是remote_addr，这个变</description>
     </item>
     
     <item>

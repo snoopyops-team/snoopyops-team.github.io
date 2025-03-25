@@ -55,9 +55,13 @@
 	</div>
 </div><div class="list post-list">
              
-            <div class="count">文章列表： 37 篇</div>
+            <div class="count">文章列表： 41 篇</div>
             
             
+            
+                
+            
+                
             
                 
             
@@ -252,6 +256,18 @@
                 <div class="item" >
                    
                     
+                    <a href="https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> OpenLdap容器化部署 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
                     <a href="https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus/">
                         <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
                         <span> Prometheus <sup></sup></span>
@@ -279,6 +295,18 @@
                     <a href="https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/rabbitmq%E7%9B%91%E6%8E%A7/">
                         <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
                         <span> RabbitMQ监控 <sup></sup></span>
+                    </a>
+                </div>
+                
+            
+                
+                
+                <div class="item" >
+                   
+                    
+                    <a href="https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/">
+                        <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                        <span> Ubuntu下编译部署Nginx <sup></sup></span>
                     </a>
                 </div>
                 
@@ -479,12 +507,12 @@
         
         
         <div class="item" >
-            <div class="c-date">2025-02-26</div>
+            <div class="c-date">2025-03-16</div>
 
             
-            <a href="https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E4%B8%ADproxy_pass%E8%B7%AF%E5%BE%84%E6%96%9C%E6%9D%A0%E7%9A%84%E8%A7%84%E5%88%99/">
+            <a href="https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/">
                 <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
-                <span> 彻底掌握Nginx中proxy_pass路径斜杠的规则差异 <sup></sup></span>
+                <span> Ubuntu下编译部署Nginx <sup></sup></span>
             </a>
 
             
@@ -492,7 +520,7 @@
                 <span class="date">
                     
                     
-                    2025-02-26 ~ 2025-02-26
+                    2025-03-16 ~ 2025-03-25
                 </span>
             </div>
             
@@ -506,7 +534,49 @@
 			
 		</div>
 	</div>
-</div><div class="summary">前言：为何要关注这个斜杠？ 在Nginx的代理配置中，proxy_pass指令后的路径是否包含斜杠，直接影响着请求的最终转发路径。许多开发者都曾在此处踩坑：相同的</div>
+</div><div class="summary">必要的依赖包 1 apt -y install libpcre3 libpcre3-dev openssl libssl-dev zlib1g-dev gcc make 下载并解压 1 2 3 cd /usr/local/src/ wget <a href="https://nginx.org/download/nginx-1.24.0.tar.gz">https://nginx.org/download/nginx-1.24.0.tar.gz</a> tar xf nginx-1.24.0.tar.gz 编译安装 1 2 3 cd nginx-1.24.0/ ./configure &ndash;prefix=/usr/local/nginx &ndash;user=nobody &ndash;group=nobody &ndash;with-stream &ndash;with-http_realip_module &ndash;with-http_stub_status_module &ndash;with-http_sub_module &ndash;with-http_ssl_module &ndash;with-http_v2_module &ndash;with-http_flv_module &ndash;with-http_stub_status_module &ndash;with-http_gzip_static_module &ndash;with-pcre &ndash;with-debug &ndash;with-stream_ssl_module &ndash;with-compat &ndash;with-http_dav_module make &amp;&amp; make install 启动文件 1 2 3 4 5 6 7 8 9 10 11 12 13</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2025-02-26</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E4%B8%ADproxy_pass%E8%B7%AF%E5%BE%84%E6%96%9C%E6%9D%A0%E7%9A%84%E8%A7%84%E5%88%99/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> 彻底掌握Nginx中proxy_pass路径斜杠的规则差异 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2025-02-26 ~ 2025-03-03
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/web">web</a>
+			
+		</div>
+	</div>
+</div><div class="summary">点解此处查看视频教程 前言：为何要关注这个斜杠？ 在Nginx的代理配置中，proxy_pass指令后的路径是否包含斜杠，直接影响着请求的最终转发路径。许多开发者都</div>
 				
 				
 				<div class="read-more">
@@ -534,7 +604,7 @@
                 <span class="date">
                     
                     
-                    2025-02-19 ~ 2025-02-25
+                    2025-02-19 ~ 2025-02-26
                 </span>
             </div>
             
@@ -553,6 +623,48 @@
 				
 				<div class="read-more">
 				  <a href="/posts/%E5%AE%B9%E5%99%A8/docker/">查看更多…</a>
+				</div>
+				
+            
+
+        </div>
+        
+    
+        
+        
+        <div class="item" >
+            <div class="c-date">2024-04-09</div>
+
+            
+            <a href="https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
+                <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
+                <span> OpenLdap容器化部署 <sup></sup></span>
+            </a>
+
+            
+            <div class="desc">
+                <span class="date">
+                    
+                    
+                    2024-04-09 ~ 2025-03-25
+                </span>
+            </div>
+            
+            
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+			<a href="/tags/ldap">LDAP</a>
+			
+		</div>
+	</div>
+</div><div class="summary">部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ &ndash;name openldap \ &ndash;restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ &ndash;env</div>
+				
+				
+				<div class="read-more">
+				  <a href="/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">查看更多…</a>
 				</div>
 				
             
@@ -1858,6 +1970,10 @@
             
 
         </div>
+        
+    
+        
+    
         
     
         

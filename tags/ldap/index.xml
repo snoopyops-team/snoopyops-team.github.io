@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LDAP on SnoopyOPS</title>
+    <link>https://www.snoopyops.top/tags/ldap/</link>
+    <description>Recent content in LDAP on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Apr 2024 11:26:51 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenLdap容器化部署</title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 09 Apr 2024 11:26:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
+      <description>部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ --name openldap \ --restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ --env</description>
+    </item>
+    
+  </channel>
+</rss>

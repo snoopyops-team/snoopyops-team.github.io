@@ -2,11 +2,11 @@
 <html lang="zh-CN"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="description" content="容器 - https://www.snoopyops.top/tags/%E5%AE%B9%E5%99%A8/">
+    <meta name="description" content="中间件 - https://www.snoopyops.top/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
     <meta name="author" content="snoopy - https://www.snoopyops.top/">
     
     <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
-    <title>容器</title>
+    <title>中间件</title>
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
@@ -34,7 +34,7 @@
     
     <div class="right">
         
-        <h1 class="title">容器</h1>
+        <h1 class="title">中间件</h1>
     
         
             
@@ -64,9 +64,9 @@
                 <div class="item" >
                    
                     
-                    <a href="https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/">
+                    <a href="https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
                         <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
-                        <span> Docker <sup></sup></span>
+                        <span> OpenLdap容器化部署 <sup></sup></span>
                     </a>
                 </div>
                 
@@ -87,12 +87,12 @@
         
         
         <div class="item" >
-            <div class="c-date">2025-02-19</div>
+            <div class="c-date">2024-04-09</div>
 
             
-            <a href="https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/">
+            <a href="https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
                 <span> <img src="/imgs/icons/post-3.svg" width="16" /> </span>
-                <span> Docker <sup></sup></span>
+                <span> OpenLdap容器化部署 <sup></sup></span>
             </a>
 
             
@@ -100,7 +100,7 @@
                 <span class="date">
                     
                     
-                    2025-02-19 ~ 2025-02-26
+                    2024-04-09 ~ 2025-03-25
                 </span>
             </div>
             
@@ -110,15 +110,15 @@
 		<div class="tag">
 			
 			
-			<a href="/tags/%E5%AE%B9%E5%99%A8">容器</a>
+			<a href="/tags/ldap">LDAP</a>
 			
 		</div>
 	</div>
-</div><div class="summary">认识Docker 什么是Docker 现在云计算已经是比较普遍的技术，中小企业往往会从阿里云或者AWS之类的云厂商直接够买云主机。我们通常会通过脚本或者手工的方式在</div>
+</div><div class="summary">部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ &ndash;name openldap \ &ndash;restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ &ndash;env</div>
 				
 				
 				<div class="read-more">
-				  <a href="/posts/%E5%AE%B9%E5%99%A8/docker/">查看更多…</a>
+				  <a href="/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">查看更多…</a>
 				</div>
 				
             
