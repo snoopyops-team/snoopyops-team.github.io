@@ -6,7 +6,16 @@
     <description>Recent content in web on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 16 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx多层代理下透传客户端真实IP</title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E5%A4%9A%E5%B1%82%E4%BB%A3%E7%90%86%E4%B8%8B%E9%80%8F%E4%BC%A0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip/</link>
+      <pubDate>Wed, 26 Mar 2025 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E5%A4%9A%E5%B1%82%E4%BB%A3%E7%90%86%E4%B8%8B%E9%80%8F%E4%BC%A0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip/</guid>
+      <description>点解此处查看视频教程 当你的网站使用多层Nginx代理（如CDN + 负载均衡 + 后端服务器），客户端真实IP总是被覆盖？日志里全是代理服务器的IP？我们应该如何在这种</description>
+    </item>
+    
     <item>
       <title>Ubuntu下编译部署Nginx</title>
       <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/</link>

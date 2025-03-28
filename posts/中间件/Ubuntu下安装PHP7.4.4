@@ -1,0 +1,64 @@
+---
+title: "Ubuntu下安装PHP7.4"
+date: 2024-04-09T11:26:51+08:00
+draft: false
+categories: [中间件]
+tags: [服务部署]
+card: false
+weight: 1
+---
+
+添加 PHP 7.4 的 PPA 存储库
+
+```Bash
+apt install software-properties-common
+add-apt-repository ppa:ondrej/php
+```
+
+安装PHP及必要的组件
+
+```Bash
+apt install php7.4 php7.4-cli php7.4-fpm php7.4-mysql php7.4-curl php7.4-gd php7.4-zip php7.4-xsl php7.4-mbstring php7.4-xml php7.4-xmlrpc php7.4-opcache sqlite3 libsqlite3-dev php7.4-sqlite3
+```
+
+验证
+
+```Bash
+php -v
+```
+
+配置PHP
+
+```Bash
+# cat /etc/php/7.4/fpm/pool.d/www.conf
+[www]
+listen = /data/php/php-cgi-74.sock
+listen.backlog = 8192
+listen.allowed_clients = 127.0.0.1
+listen.owner = www-data
+listen.group = www-data
+listen.mode = 0666
+user = www-data
+group = www-data
+pm = dynamic
+;pm.status_path = /phpfpm_71_status
+pm.max_children = 80
+pm.start_servers = 5
+pm.min_spare_servers = 5
+pm.max_spare_servers = 20
+request_terminate_timeout = 100
+request_slowlog_timeout = 30
+slowlog = /data/php/log/slow.log
+```
+
+创建相应目录
+
+```Bash
+# mkdir -p /data/php/log/
+```
+
+重启服务
+
+```Bash
+# systemctl restart php7.4-fpm.service
+```

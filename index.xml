@@ -6,7 +6,16 @@
     <description>Recent content on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 16 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx多层代理下透传客户端真实IP</title>
+      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E5%A4%9A%E5%B1%82%E4%BB%A3%E7%90%86%E4%B8%8B%E9%80%8F%E4%BC%A0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip/</link>
+      <pubDate>Wed, 26 Mar 2025 10:56:41 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E5%A4%9A%E5%B1%82%E4%BB%A3%E7%90%86%E4%B8%8B%E9%80%8F%E4%BC%A0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip/</guid>
+      <description>点解此处查看视频教程 当你的网站使用多层Nginx代理（如CDN + 负载均衡 + 后端服务器），客户端真实IP总是被覆盖？日志里全是代理服务器的IP？我们应该如何在这种</description>
+    </item>
+    
     <item>
       <title>Ubuntu下编译部署Nginx</title>
       <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/ubuntu%E4%B8%8B%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2nginx/</link>
@@ -27,20 +36,29 @@
     
     <item>
       <title>Docker</title>
-      <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>
+      <link>https://www.snoopyops.top/posts/kubernetes/docker/</link>
       <pubDate>Wed, 19 Feb 2025 16:43:31 +0800</pubDate>
       
-      <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
+      <guid>https://www.snoopyops.top/posts/kubernetes/docker/</guid>
       <description>认识Docker 什么是Docker 现在云计算已经是比较普遍的技术，中小企业往往会从阿里云或者AWS之类的云厂商直接够买云主机。我们通常会通过脚本或者手工的方式在</description>
     </item>
     
     <item>
       <title>OpenLdap容器化部署</title>
-      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/openldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Tue, 09 Apr 2024 11:26:51 +0800</pubDate>
       
-      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/ldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/openldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
       <description>部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ --name openldap \ --restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ --env</description>
+    </item>
+    
+    <item>
+      <title>Etcd集群部署</title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/etcd%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 08 Apr 2024 10:24:00 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/etcd%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>etcd集群部署 下载 cd /usr/local/src/ version=v3.4.27 wget https://github.com/etcd-io/etcd/releases/download/&amp;#34;$version&amp;#34;/etcd-&amp;#34;$version&amp;#34;-linux-amd64.tar.gz 部署 tar xf etcd-v3.4.27-linux-amd64.tar.gz -C /opt/ ln -s /opt/etcd-v3.4.27-linux-amd64/ /opt/etcd ln -s /opt/etcd/etcdctl /usr/local/bin/etcdctl ln -s /opt/etcd/etcd /usr/local/bin/etcd 验证 etcd -version WARNING: Package &amp;#34;github.com/golang/protobuf/protoc-gen-go/generator&amp;#34; is deprecated. A future release of golang/protobuf will delete this package, which has long been excluded from the compatibility promise. etcd Version: 3.4.27 Git SHA: c92fb80f3 Go Version: go1.19.10 Go OS/Arch: linux/amd64 配置启动文件 cat</description>
     </item>
     
     <item>
@@ -342,11 +360,65 @@
     
     <item>
       <title></title>
+      <link>https://www.snoopyops.top/posts/go/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/go/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</guid>
+      <description>[toc] 一、Go基本介绍 1. 环境安装与配置 1.1 SDK下载与配置 下载SDK 官网：https://golang.google.cn/ go中文网：https://studygo</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/kubernetes/%E5%8D%8E%E4%B8%BA%E4%BA%91%E5%AE%B9%E5%99%A810g%E9%99%90%E5%88%B6%E8%B0%83%E6%95%B4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/kubernetes/%E5%8D%8E%E4%B8%BA%E4%BA%91%E5%AE%B9%E5%99%A810g%E9%99%90%E5%88%B6%E8%B0%83%E6%95%B4/</guid>
+      <description>环境 K8S集群：华为云CCE v1.19 1 2 3 [root@hwei-ng-em-test-1 ~]# kubectl version Client Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;19&amp;#34;, GitVersion:&amp;#34;v1.19.16&amp;#34;, GitCommit:&amp;#34;e37e4ab4cc8dcda84f1344dda47a97bb1927d074&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2021-10-27T16:25:59Z&amp;#34;, GoVersion:&amp;#34;go1.15.15&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;} Server Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;19+&amp;#34;, GitVersion:&amp;#34;v1.19.10-r0-CCE21.11.1.B005-21.11.1.B005&amp;#34;, GitCommit:&amp;#34;aa6aaf3c00ad28e5fe57be8e1b553a7f9ccb439d&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2021-11-19T07:05:59Z&amp;#34;, GoVersion:&amp;#34;go1.15.15&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;} Node节点操作系统：CentOS 7.6 现象 如图，此环境下默认给 pod 分配 10G 的磁</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/lhf/%E5%87%8C%E5%8D%8E%E5%B3%B0-jumpserver%E7%AE%A1%E7%90%86%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/lhf/%E5%87%8C%E5%8D%8E%E5%B3%B0-jumpserver%E7%AE%A1%E7%90%86%E6%96%87%E6%A1%A3/</guid>
+      <description>一、添加堡垒机 堡垒机登陆地址：http://36.133.58.88:8888/ 以郑州的服务器为例，公网IP为36.134.45.130。 1. 添加 ec2-user 用户 通过 ssh 远程</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/jvm_export/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/jvm_export/</guid>
+      <description>[root@ali-microloan-ng-kk-config-1 src]# mkdir -p /usr/local/prometheus/jmx_exporter/377 cd /usr/local/src/379 wget &amp;#34;https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar&amp;#34; [root@ali-microloan-ng-kk-config-1 jmx_exporter]# cat jmx_exporter.ymllowercaseOutputLabelNames: truelowercaseOutputName: truewhitelistObjectNames: [&amp;#34;java.lang:type=OperatingSystem&amp;#34;]blacklistObjectNames: []rules:- pattern: &amp;#39;java.lang&amp;lt;type=OperatingSystem&amp;gt;&amp;lt;&amp;gt;(committed_virtual_memory|free_physical_memory|free_swap_space|total_physical_memory|total_swap_space)_size:&amp;#39;name: os_$1_bytestype: GAUGEattrNameSnakeCase: true- pattern: &amp;#39;java.lang&amp;lt;type=OperatingSystem&amp;gt;&amp;lt;&amp;gt;((?!process_cpu_time)\w+):&amp;#39;name: os_$1type: GAUGEattrNameSnakeCase: true [root@ali-microloan-ng-kk-config-1 jmx_exporter]# cat jvm_exporter_8103_9103.json{&amp;#34;id&amp;#34;: &amp;#34;ali-microloan-ng-kk-config-1-jvm_exporter:8103&amp;#34;,&amp;#34;name&amp;#34;: &amp;#34;jvm_exporter&amp;#34;,&amp;#34;tags&amp;#34;: [&amp;#34;host=ali-microloan-ng-kk-config-1&amp;#34;,&amp;#34;group=fg-ng-kk-microloan&amp;#34;,&amp;#34;env=product&amp;#34;,&amp;#34;java_port=8103&amp;#34;],&amp;#34;port&amp;#34;: 9103,&amp;#34;checks&amp;#34;:[{&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:9103/metrics&amp;#34;,&amp;#34;interval&amp;#34;:&amp;#34;15s&amp;#34;}]} </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometeus%E7%9B%91%E6%8E%A7nginx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometeus%E7%9B%91%E6%8E%A7nginx/</guid>
       <description>Nginx插件安装 通过vts监控Nginx可以获取到更全的信息。 下载并解压nginx-module-vts 1 2 3 cd /usr/local/src/ wget https://github.com/vozlt/nginx-module-vts/archive/refs/tags/v0.2.2.zip unzip v0.2.2.zip 查看Nginx安装参数 1 2 3 4 5 6 nginx</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7apollo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7apollo/</guid>
+      <description>Prometheus监控Apollo 从1.5.0版本开始，Apollo服务端支持通过 /prometheus 暴露prometheus格式的metrics，如http://${some</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E9%9B%86%E7%BE%A4%E5%A4%96etcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E9%9B%86%E7%BE%A4%E5%A4%96etcd/</guid>
+      <description>Prometheus监控集群外etcd 环境 Prometheus部署在了Kubernetes中，etcd在集群外。 Metrics etcd针对Prometheus提供了metr</description>
     </item>
     
     <item>
@@ -360,6 +432,24 @@
     
     <item>
       <title></title>
+      <link>https://www.snoopyops.top/posts/scripts/apollo/apollo%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/scripts/apollo/apollo%E9%83%A8%E7%BD%B2/</guid>
+      <description>##0 安装java环境 [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# wget --no-cookies --no-check-certificate --header &amp;#34;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&amp;#34; &amp;#34;http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz&amp;#34; [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# tar xf jdk-8u141-linux-x64.tar.gz -C /usr/local/ [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# tail -5 /etc/profile #####set java environment###### export JAVA_HOME=/usr/local/jdk1.8.0_141 export JRE_HOME=$JAVA_HOME/jre export PATH=$JAVA_HOME/bin:$PATH export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# source /etc/profile [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# which java /usr/local/jdk1.8.0_141/bin/java [root@ss-micro-mx-nanopay-platform-apollo-1 apollo-portal]# ##1 下载安装包 cd /usr/local/src wget https://github.com/ctripcorp/apollo/releases/download/v1.6.1/apollo-adminservice-1.6.1-github.zip wget https://github.com/ctripcorp/apollo/releases/download/v1.6.1/apollo-configservice-1.6.1-github.zip wget https://github.com/ctripcorp/apollo/releases/download/v1.6.1/apollo-portal-1.6.1-github.zip ##2 解压 mkdir -p /opt/apollo/{apollo-adminservice,apollo-configservice,apollo-portal} cd /usr/local/src unzip apollo-adminservice-1.6.1-github.zip -d /opt/apollo/apollo-adminservice/ unzip</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/scripts/rocketmq/rocketmq%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/scripts/rocketmq/rocketmq%E9%83%A8%E7%BD%B2/</guid>
+      <description>墨西哥生产环境Rocketmq部署 参考安装方式: https://github.com/apache/rocketmq/blob/master/docs/cn/operation.md 与研发确认采用2m-2s-async模式部署。 采用4台服务器，master上部署namesrv。 安装Java 1</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://www.snoopyops.top/posts/vue/vue3%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -369,11 +459,47 @@
     
     <item>
       <title></title>
-      <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%A7%E4%BB%A3%E7%90%86%E4%B8%8Bnginx%E9%80%8F%E4%BC%A0%E7%9C%9F%E5%AE%9Eip/</link>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/dnsmasq%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/%E5%A4%9A%E7%BA%A7%E4%BB%A3%E7%90%86%E4%B8%8Bnginx%E9%80%8F%E4%BC%A0%E7%9C%9F%E5%AE%9Eip/</guid>
-      <description>Nginx透传真实IP 环境 示意图 在proxy-3上准备后端文件 1 2 wget -O /opt/http_server https://tools.snoopyops.top/file/http_server chmod a+x /opt/http_server 1 2 3 log_format main &amp;#39;$remote_addr - $remote_user [$time_local] &amp;#34;$request&amp;#34; &amp;#39; &amp;#39;$status $body_bytes_sent &amp;#34;$http_referer&amp;#34; &amp;#39; &amp;#39;&amp;#34;$http_user_agent&amp;#34; &amp;#34;$http_x_forwarded_for&amp;#34;&amp;#39;; remote_addr 默认获取到的是remote_addr，这个变</description>
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/dnsmasq%E9%83%A8%E7%BD%B2/</guid>
+      <description>服务端配置 安装 dnsmasq 1 2 [root@rhv-eg-solfa-nginx-prod-02 ~]# yum -y install dnsmasq [root@rhv-eg-solfa-nginx-prod-02 ~]# cp /etc/dnsmasq.conf /etc/dnsmasq.conf`date +%F` 编辑配置文件 1 2 3 4 5 6 7 8 9 10 [root@rhv-eg-solfa-nginx-prod-02 ~]# cat /etc/dnsmasq.conf # db.solfa-eg.osa的域名，交由以下几个地址进行解析 server=/db.solfa-eg.osa/10.90.58.142 server=/db.solfa-eg.osa/10.90.58.143 server=/db.solfa-eg.osa/10.90.58.144 # 上游</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/nexus%E6%B8%85%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/nexus%E6%B8%85%E7%90%86/</guid>
+      <description>Nexus清理 故障现象 服务器 / 目录占用为 100% ，经排查此服务部署了 Nexus ，/usr/local/sonatype-work/nexus3/blobs/default/c</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/elk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/elk/</guid>
+      <description>[toc] 背景 日志收集路径： Filebeat&amp;mdash;-Kafka &amp;mdash; logsmash &amp;mdash; ES &amp;ndash;Kibana Kafka使用的是云产品，此文档不包含此部分。 ES/Kibana利旧，此文档不包含此部分。 Filebeat 下载并配置systemd 1 2 3 4 5 6</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/es%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/es%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>ElasticSearch 本次采用3台服务器做部署ES集群。配置为8C16G 服务器调优 配置es可以创建的最大线程数量 1 2 3 4 5 6 7 8 vim /etc/security/limits.conf 添加 root soft nofile 65535 root hard nofile 65535 * soft nofile 65535 * hard nofile 65535 * hard noproc 65535 * soft</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/log-pilot%E6%94%B6%E9%9B%86nginx-ingress%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/log-pilot%E6%94%B6%E9%9B%86nginx-ingress%E6%97%A5%E5%BF%97/</guid>
+      <description>一、Log-pilog 部署 log-pilot apiVersion: apps/v1 kind: DaemonSet metadata: name: log-pilot labels: k8s-app: log-pilot namespace: kube-system spec: updateStrategy: type: RollingUpdate selector: matchLabels: k8s-app: log-pilot template: metadata: labels: k8s-app: log-pilot annotations: scheduler.alpha.kubernetes.io/critical-pod: &amp;#39;&amp;#39; spec: tolerations: - key: node-role.kubernetes.io/master effect: NoSchedule containers: - name: log-pilot image: registry.cn-hangzhou.aliyuncs.com/acs/log-pilot:0.9.6-filebeat resources: limits: cpu: 1 memory: 2Gi requests: cpu: 0.01 memory: 10Mi env: - name: &amp;#34;LOGGING_OUTPUT&amp;#34; value: &amp;#34;kafka&amp;#34; - name: &amp;#34;KAFKA_BROKERS&amp;#34; # 注意到k</description>
     </item>
     
     <item>

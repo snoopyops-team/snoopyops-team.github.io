@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 19 Feb 2025 16:43:31 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker</title>
-      <link>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</link>
+      <link>https://www.snoopyops.top/posts/kubernetes/docker/</link>
       <pubDate>Wed, 19 Feb 2025 16:43:31 +0800</pubDate>
       
-      <guid>https://www.snoopyops.top/posts/%E5%AE%B9%E5%99%A8/docker/</guid>
+      <guid>https://www.snoopyops.top/posts/kubernetes/docker/</guid>
       <description>认识Docker 什么是Docker 现在云计算已经是比较普遍的技术，中小企业往往会从阿里云或者AWS之类的云厂商直接够买云主机。我们通常会通过脚本或者手工的方式在</description>
     </item>
     

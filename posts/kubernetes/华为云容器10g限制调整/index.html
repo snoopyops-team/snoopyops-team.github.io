@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content=" - https://www.snoopyops.top/posts/kubernetes/%E5%8D%8E%E4%B8%BA%E4%BA%91%E5%AE%B9%E5%99%A810g%E9%99%90%E5%88%B6%E8%B0%83%E6%95%B4/">
+    <meta name="author" content="snoopy - https://www.snoopyops.top/">
+    
+    <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
+    <title></title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
+    
+    <link rel="stylesheet" href="https://www.snoopyops.top/style.min.6bbccf0916939df698171c34d30f896276712c30bd56be0d7fd8023e1b00c3d9.css">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?080713f769977324f1fbafc95c5fa4c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="active-animate cool">
+        <div class="cool-before" style="background: url('/imgs/bg/foxgirl.jpg') center center/cover no-repeat fixed;"></div>
+        <div id="readmore-container">
+            <div id="header" class=""><div class="container-header">
+    
+    
+    <div class="right">
+        
+        <h1 class="title"></h1>
+    
+        
+            
+            <div id="toc">📜</div>
+        
+    </div>
+</div>
+</div>
+            <div id="content">
+
+
+
+
+
+
+
+
+
+
+<div class="container-main container-page ">
+
+    <div class="desc">
+        
+        <span>
+            
+            <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
+            0001-01-01&nbsp;&nbsp;&nbsp;
+            <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
+            0001-01-01&nbsp;&nbsp;&nbsp;
+        </span>
+        <span>
+            
+            <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
+            659 字</span>&nbsp;
+        <span>
+            
+            <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
+            2 分钟</span>
+            <div class="container-ctgtag">
+	<div class="taxonomy">
+		<div class="tag">
+			
+			
+		</div>
+	</div>
+</div>
+        
+    </div>
+    
+    <div class="toc">
+        <div class="container-page-operation">
+	<div class="page-operation">
+		<div><a href="/"><img src="/imgs/icons/home-2.svg" alt=""></a></div>
+		<div><a href="/nav"><img src="/imgs/icons/iov-navigate-1.svg" alt=""></a></div>
+		<div><a href="/tags"><img src="/imgs/icons/treetags.svg" alt=""></a></div>
+		<div id="light-dark"><a><img src="/imgs/icons/moon2.svg" alt=""></a></div>
+		<div><a href="#"><img src="/imgs/icons/up2.svg" alt=""></a></div>
+	</div>
+</div>
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#环境">环境</a></li>
+        <li><a href="#现象">现象</a></li>
+        <li><a href="#分析">分析</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#实施步骤">实施步骤</a></li>
+        <li><a href="#验证">验证</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div class='content  '>
+        <h3 id="环境">环境</h3>
+<p>K8S集群：华为云CCE v1.19</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@hwei-ng-em-test-1 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kubectl version</span>
+</span></span><span style="display:flex;"><span>Client Version: version.Info<span style="color:#000;font-weight:bold">{</span>Major:<span style="color:#d14">&#34;1&#34;</span>, Minor:<span style="color:#d14">&#34;19&#34;</span>, GitVersion:<span style="color:#d14">&#34;v1.19.16&#34;</span>, GitCommit:<span style="color:#d14">&#34;e37e4ab4cc8dcda84f1344dda47a97bb1927d074&#34;</span>, GitTreeState:<span style="color:#d14">&#34;clean&#34;</span>, BuildDate:<span style="color:#d14">&#34;2021-10-27T16:25:59Z&#34;</span>, GoVersion:<span style="color:#d14">&#34;go1.15.15&#34;</span>, Compiler:<span style="color:#d14">&#34;gc&#34;</span>, Platform:<span style="color:#d14">&#34;linux/amd64&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>Server Version: version.Info<span style="color:#000;font-weight:bold">{</span>Major:<span style="color:#d14">&#34;1&#34;</span>, Minor:<span style="color:#d14">&#34;19+&#34;</span>, GitVersion:<span style="color:#d14">&#34;v1.19.10-r0-CCE21.11.1.B005-21.11.1.B005&#34;</span>, GitCommit:<span style="color:#d14">&#34;aa6aaf3c00ad28e5fe57be8e1b553a7f9ccb439d&#34;</span>, GitTreeState:<span style="color:#d14">&#34;clean&#34;</span>, BuildDate:<span style="color:#d14">&#34;2021-11-19T07:05:59Z&#34;</span>, GoVersion:<span style="color:#d14">&#34;go1.15.15&#34;</span>, Compiler:<span style="color:#d14">&#34;gc&#34;</span>, Platform:<span style="color:#d14">&#34;linux/amd64&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Node节点操作系统：CentOS 7.6</p>
+<h3 id="现象">现象</h3>
+<p>如图，此环境下默认给 <code>pod</code> 分配 <code>10G</code> 的磁盘空间，当 <code>pod</code> 长时间运行不重启或有大量数据落盘的情况下，可能会导致磁盘存储空间不足。</p>
+<p><img src="https://images.snoopyops.top/image-20221019145334741.png" alt="image-20221019145334741"></p>
+<h3 id="分析">分析</h3>
+<p>根据 <a href="https://support.huaweicloud.com/usermanual-cce/cce_10_0180.html#cce_10_0180__section159298451879">节点操作系统与容器引擎对应关系</a> 可发现，此环境下使用的 <code>Rootfs</code> 为 <code>Devicemapper</code> 。</p>
+<p>**Devicemapper: **块级存储，所有的操作都是直接对块进行操作，而不是文件。Device mapper 驱动默认会创建一个100G的文件包含镜像和容器。每一个容器被限制在10G大小的卷内，可以自己配置调整。</p>
+<p>登录到 <code>Node</code> 节点，确认容器使用的就是 <code>Devicemapper</code>。</p>
+<p><img src="https://images.snoopyops.top/image-20221019151655315.png" alt="image-20221019151655315"></p>
+<p>可以通过调整容器的限制，解决10G空间不够用的问题。经沟通，业务侧希望完全不限制容器磁盘的使用。因此，需要将 <code>Rootfs</code> 修改为文件级的存储驱动，如 <code>Overlayfs</code>。</p>
+<p>因此针对华为云CCE集群，有两个方案。</p>
+<ol>
+<li>升级CCE集群到1.19.16以上版本。此方案风险较大，暂不考虑。</li>
+<li>变更Node节点的操作系统为Ubuntu 18.04或者EulerOS 2.9。由于变更较小，决定使用此方案。</li>
+</ol>
+<h3 id="注意事项">注意事项</h3>
+<ol>
+<li>
+<p>Ubuntu 18.04和EulerOS 2.9内核版本均高于现有CentOS7.6。由于容器与宿主机共用内核，需在测试环境进行充分测试后，再对生产环境进行变更。</p>
+</li>
+<li>
+<p>重置Node节点时，会驱逐节点上的Pod。如过其他节点没有镜像文件，会重新拉取镜像，耗时依据网络情况。</p>
+</li>
+</ol>
+<h3 id="实施步骤">实施步骤</h3>
+<ol>
+<li>新增等量Ubuntu 18.04的节点。</li>
+<li>逐一移除现有节点。移除时，须观察pod状态。</li>
+</ol>
+<h3 id="验证">验证</h3>
+<ol>
+<li>
+<p>验证Node节点Rootfs类型</p>
+<p><img src="https://images.snoopyops.top/image-20221019151736775.png" alt="image-20221019151736775"></p>
+</li>
+<li>
+<p>验证Pod的磁盘</p>
+<p><img src="https://images.snoopyops.top/image-20221019173443387.png" alt="image-20221019173443387"></p>
+</li>
+<li>
+<p>业务验证</p>
+</li>
+</ol>
+
+    </div>
+    
+    
+
+    
+</div>
+
+            </div>
+            <div id="footer"><div class="container-footer">
+    
+    
+
+    <div class="beian">
+        
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=">
+            
+
+        </a>
+
+        <a href="" target="_blank">
+            
+            <span class="some">icp...<span>
+            
+        </a>
+    </div>
+
+    <div class="info">
+        <a href="https://github.com/loveminimal/hugo-theme-virgo">Copyright</a> ©  - <span id="info-date"></span>
+    </div>
+
+</div></div>
+        </div>
+        <div class="cool-after" style="background-color: rgba(255, 255, 255, 0.81);"></div>
+    </body>
+</html>
+<link href="https://qiniu.techgrow.cn/readmore/dist/readmore.css" type="text/css" rel="stylesheet">
+<script src="https://qiniu.techgrow.cn/readmore/dist/readmore.js" type="text/javascript"></script>
+<script>
+    var regex = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+    var isMobile = navigator.userAgent.match(regex);
+    if (!isMobile) {
+        try {
+            var plugin = new ReadmorePlugin();
+            plugin.init({
+                id: "readmore-container",
+                blogId: "25525-2853989927488-092",
+                name: "史努比会点运维",
+                keyword: "验证码",
+                qrcode: "https://images.snoopyops.top/wechat/wechat_snoopyops.jpg",
+                type: "hugo",
+                height: "auto",
+                expires: "7",
+                interval: "60",
+                random: "1"
+            })
+        } catch (e) {
+            console.warn("readmore plugin occurred error: " + e.name + " | " + e.message);
+        }
+    }
+</script>

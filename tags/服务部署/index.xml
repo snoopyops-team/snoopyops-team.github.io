@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务部署 on SnoopyOPS</title>
+    <link>https://www.snoopyops.top/tags/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in 服务部署 on SnoopyOPS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Apr 2024 11:26:51 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/tags/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenLdap容器化部署</title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/openldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 09 Apr 2024 11:26:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/openldap%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
+      <description>部署LDAP 需要先安装Docker，并创建相应的目录。 1 2 mkdir -p /data/docker/ldap/data mkdir -p /data/docker/ldap/conf 容器化部署OpenLdap 1 2 3 4 5 6 7 8 9 10 11 docker run \ -d -p 389:389 -p 636:636 \ --name openldap \ --restart=always \ -v /data/docker/ldap/data:/var/lib/ldap \ -v /data/docker/ldap/conf:/etc/ldap/slapd.d \ --env</description>
+    </item>
+    
+    <item>
+      <title>Etcd集群部署</title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/etcd%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 08 Apr 2024 10:24:00 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/etcd%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>etcd集群部署 下载 cd /usr/local/src/ version=v3.4.27 wget https://github.com/etcd-io/etcd/releases/download/&amp;#34;$version&amp;#34;/etcd-&amp;#34;$version&amp;#34;-linux-amd64.tar.gz 部署 tar xf etcd-v3.4.27-linux-amd64.tar.gz -C /opt/ ln -s /opt/etcd-v3.4.27-linux-amd64/ /opt/etcd ln -s /opt/etcd/etcdctl /usr/local/bin/etcdctl ln -s /opt/etcd/etcd /usr/local/bin/etcd 验证 etcd -version WARNING: Package &amp;#34;github.com/golang/protobuf/protoc-gen-go/generator&amp;#34; is deprecated. A future release of golang/protobuf will delete this package, which has long been excluded from the compatibility promise. etcd Version: 3.4.27 Git SHA: c92fb80f3 Go Version: go1.19.10 Go OS/Arch: linux/amd64 配置启动文件 cat</description>
+    </item>
+    
+    <item>
+      <title>Minio集群部署</title>
+      <link>https://www.snoopyops.top/posts/%E5%AD%98%E5%82%A8/minio%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Fri, 17 Nov 2023 12:48:29 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E5%AD%98%E5%82%A8/minio%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>环境 主机环境 主机名 IP 磁盘 hwei-ng-public-minio-prod-0001 10.66.2.38 4块数据盘 Hwei-ng-public-minio-prod-0002 10.66.1.2 4块数据盘 Hwei-ng-public-minio-prod-0003 10.66.1.40 4块数据盘 架构类似于下图。下图是4台主机，每台主机3块硬盘。本文档是3台主机，每台主机4块硬盘。 下载并安</description>
+    </item>
+    
+  </channel>
+</rss>
