@@ -2,11 +2,11 @@
 <html lang="zh-CN"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="description" content=" - https://www.snoopyops.top/posts/prometheus%E7%9B%91%E6%8E%A7/prometheus%E7%9B%91%E6%8E%A7%E9%9B%86%E7%BE%A4%E5%A4%96etcd/">
+    <meta name="description" content="GitLab容器化部署 - https://www.snoopyops.top/posts/cicd/gitlab%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
     <meta name="author" content="snoopy - https://www.snoopyops.top/">
     
     <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
-    <title></title>
+    <title>GitLab容器化部署</title>
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.min.css" />
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
@@ -34,7 +34,7 @@
     
     <div class="right">
         
-        <h1 class="title"></h1>
+        <h1 class="title">GitLab容器化部署</h1>
     
         
             
@@ -61,14 +61,14 @@
         <span>
             
             <svg t="1656736000388" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7409" width="12" height="12"><path d="M524.885333 338.986667L200.362667 663.466667c-17.28 15.274667-27.989333 36.693333-29.696 56.234666v133.76l130.730666 0.085334c22.784-1.621333 43.989333-12.245333 61.013334-31.701334l322.688-322.645333-160.213334-160.213333z m60.373334-60.330667l160.170666 160.213333 102.144-102.144a19.712 19.712 0 0 0 0-27.861333L715.093333 176.426667a19.456 19.456 0 0 0-27.605333 0L585.258667 278.613333zM701.312 85.333333c27.946667 0 54.741333 11.136 74.282667 30.848l132.309333 132.309334a105.045333 105.045333 0 0 1 0 148.565333L424.874667 879.957333c-29.824 34.346667-72.106667 55.466667-120.448 58.794667H85.333333v-42.666667l0.128-179.84c3.626667-44.970667 24.576-86.826667 56.448-114.944l485.12-485.034666A104.789333 104.789333 0 0 1 701.269333 85.333333z" p-id="7410" fill="#adb5bd"></path></svg>
-            0001-01-01&nbsp;&nbsp;&nbsp;
+            2025-03-30&nbsp;&nbsp;&nbsp;
             <svg t="1656737270708" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23838" width="11" height="11"><path d="M824.264 95.36c0-23.859 25.043-44.16 48.902-44.16s49.714 20.301 49.714 44.16v190.08c0 23.859-19.054 52.868-42.913 52.868h-190.08c-23.859 0-46.696-25.96-46.696-49.819s22.55-46.249 46.409-46.249h82.025C702.344 175.534 610.22 155.853 512 155.853c-206.775 0-360.398 149.372-360.398 356.147 0 206.775 153.623 358.23 360.398 358.23 206.775 0 357.467-151.455 357.467-358.23 0-23.859 23.634-50.706 53.413-50.706 29.78 0 49.92 26.847 49.92 50.706 0 254.493-206.307 460.8-460.8 460.8-254.493 0-460.8-206.307-460.8-460.8C51.2 257.507 257.507 51.2 512 51.2c122.4 0 226.684 33.296 312.264 117.369 0.358 0.351 0.358-24.052 0-73.209z" p-id="23839" fill="#adb5bd"></path></svg>
             2025-03-28&nbsp;&nbsp;&nbsp;
         </span>
         <span>
             
             <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
-            585 字</span>&nbsp;
+            973 字</span>&nbsp;
         <span>
             
             <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
@@ -77,6 +77,8 @@
 	<div class="taxonomy">
 		<div class="tag">
 			
+			
+			<a href="/tags/cicd">cicd</a>
 			
 		</div>
 	</div>
@@ -96,25 +98,29 @@
 </div>
         <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#环境">环境</a></li>
-        <li><a href="#metrics">Metrics</a></li>
-        <li><a href="#prometheus监控">Prometheus监控</a></li>
-        <li><a href="#告警">告警</a></li>
-        <li><a href="#出图">出图</a></li>
-      </ul>
-    </li>
+    <li><a href="#容器化部署gitlab">容器化部署GitLab</a></li>
+    <li><a href="#配置https">配置https</a></li>
+    <li><a href="#禁止注册">禁止注册</a></li>
+    <li><a href="#接入ldap">接入LDAP</a></li>
   </ul>
 </nav>
     </div>
 
     <div class='content  '>
-        <p>Prometheus监控集群外etcd</p>
-<h3 id="环境">环境</h3>
-<p>Prometheus部署在了Kubernetes中，etcd在集群外。</p>
-<h3 id="metrics">Metrics</h3>
-<p>etcd针对Prometheus提供了metrics。</p>
+        <h2 id="容器化部署gitlab">容器化部署GitLab</h2>
+<p>服务器规格低于<code>4C8G</code>可能会导致安装失败。</p>
+<p>准备目录，用于持久化存储数据</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /data/gitlab
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">GITLAB_HOME</span><span style="color:#000;font-weight:bold">=</span>/data/gitlab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>容器化部署<code>gitlab</code>，需要替换<code>hostname</code>字段，代码仓库会使用到此字段。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -127,64 +133,146 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@ccp-prod-k8m1 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># curl localhost:2379/metrics</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># TYPE etcd_cluster_version gauge</span>
-</span></span><span style="display:flex;"><span>etcd_cluster_version<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">cluster_version</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;3.4&#34;</span><span style="color:#000;font-weight:bold">}</span> <span style="color:#099">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># HELP etcd_debugging_auth_revision The current revision of auth store.</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># TYPE etcd_debugging_auth_revision gauge</span>
-</span></span><span style="display:flex;"><span>etcd_debugging_auth_revision <span style="color:#099">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># HELP etcd_debugging_disk_backend_commit_rebalance_duration_seconds The latency distributions of commit.r</span>
-</span></span><span style="display:flex;"><span>ebalance called by bboltdb backend.
-</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># TYPE etcd_debugging_disk_backend_commit_rebalance_duration_seconds histogram</span>
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.001&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.880892e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.002&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.881924e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.004&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.881989e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.008&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.881997e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.016&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.882007e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.032&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.882008e+06
-</span></span><span style="display:flex;"><span>etcd_debugging_disk_backend_commit_rebalance_duration_seconds_bucket<span style="color:#000;font-weight:bold">{</span><span style="color:#008080">le</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;0.064&#34;</span><span style="color:#000;font-weight:bold">}</span> 2.882008e+06
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --detach <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --hostname gitlab.snoopyops.top <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --publish 443:443 --publish 80:80 --publish 2222:22 <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --name gitlab <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --restart always <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --volume <span style="color:#008080">$GITLAB_HOME</span>/config:/etc/gitlab <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --volume <span style="color:#008080">$GITLAB_HOME</span>/logs:/var/log/gitlab <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --volume <span style="color:#008080">$GITLAB_HOME</span>/data:/var/opt/gitlab <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  --shm-size 256m <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>  gitlab/gitlab-ce:latest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>通过其他主机访问 metrics 时，需要带上etcd证书，具体方式如下</p>
+</div><p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>容器参数</strong></th>
+<th><strong>主机参数说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hostname</td>
+<td>建议修改为当前ECS实例的公网IP地址，或者gitlab将要使用的域名。</td>
+</tr>
+<tr>
+<td>443:443</td>
+<td>将主机的443端口映射到容器的443端口，使用HTTPS访问需要的端口。</td>
+</tr>
+<tr>
+<td>80:80</td>
+<td>将主机的80端口映射到容器的80端口，使用HTTP访问需要的端口。</td>
+</tr>
+<tr>
+<td>2222:22</td>
+<td>将主机的2222端口映射到容器的22端口，使用Git操作进行代码克隆、推送和拉取操作，需要使用SSH服务。</td>
+</tr>
+</tbody>
+</table>
+<p>实例的路径和容器路径的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>ECS路径</strong></th>
+<th><strong>容器路径</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$GITLAB_HOME/data</code></td>
+<td><code>/var/opt/gitlab</code></td>
+<td>存储应用程序数据。</td>
+</tr>
+<tr>
+<td><code>$GITLAB_HOME/logs</code></td>
+<td><code>/var/log/gitlab</code></td>
+<td>存储GitLab配置文件。</td>
+</tr>
+<tr>
+<td><code>$GITLAB_HOME/config</code></td>
+<td><code>/etc/gitlab</code></td>
+<td>存储GitLab配置文件。</td>
+</tr>
+</tbody>
+</table>
+<p>查看容器状态。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo docker ps -a
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当容器状态为<code>healthy</code>时，说明<code>GitLab</code>容器已经正常启动。</p>
+<p>通过<code>http://ip</code>的方式可以访问到<code>gitlab</code>的页面，管理员用户名为<code>root</code></p>
+<p>登录密码可通过一下命令查看。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#0086b3">exec</span> -it gitlab grep <span style="color:#d14">&#39;Password:&#39;</span> /etc/gitlab/initial_root_password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置https">配置https</h2>
+<p>修改<code>gitlab.rb</code>配置，由于<code>gitlab</code>自签证书每3个月会过期，如果自己有证书的情况下，最好禁用<code>gitlab</code>自签证书，使用自己的证书。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#008080">ETCDCTL_CERT_FILE</span><span style="color:#000;font-weight:bold">=</span>/etc/ssl/certs/etcd-client.pem
-</span></span><span style="display:flex;"><span><span style="color:#008080">ETCDCTL_KEY_FILE</span><span style="color:#000;font-weight:bold">=</span>/etc/ssl/certs/etcd-client-key.pem
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>curl -k --cert <span style="color:#008080">$ETCDCTL_CERT_FILE</span> --key <span style="color:#008080">$ETCDCTL_KEY_FILE</span> https://myHOST:2379/metrics
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -Ev <span style="color:#d14">&#34;^#|^</span>$<span style="color:#d14">&#34;</span> /data/gitlab/config/gitlab.rb
+</span></span><span style="display:flex;"><span>external_url <span style="color:#d14">&#39;https://gitlab.snoopyops.top&#39;</span>
+</span></span><span style="display:flex;"><span>nginx<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;redirect_http_to_https&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">false</span>
+</span></span><span style="display:flex;"><span>nginx<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;ssl_certificate&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;/etc/gitlab/ssl/snoopyops.top.crt&#34;</span>
+</span></span><span style="display:flex;"><span>nginx<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;ssl_certificate_key&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;/etc/gitlab/ssl/snoopyops.top.key&#34;</span>
+</span></span><span style="display:flex;"><span>letsencrypt<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;enable&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">false</span>
+</span></span><span style="display:flex;"><span>letsencrypt<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;auto_renew&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">false</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="prometheus监控">Prometheus监控</h3>
-<p>由于访问etcd metrics需要通过证书认证，先创建secret存放证书文件。</p>
+</div><p>创建证书目录，由于运行容器时，通过<code>--volume</code>映射了目录，所以需要在宿主机<code>/data/gitlab/</code>目录下准备证书相关文件。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@ccp-prod-k8m1 ssl<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kubectl create secret generic etcd-client-cert --from-file=./ca.pem --from-file=./etcd.pem --from-file=./etcd-key.pem -n mon</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@ccp-prod-k8m1 ssl<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># kubectl get secrets -n mon etcd-client-cert</span>
-</span></span><span style="display:flex;"><span>NAME               TYPE     DATA   AGE
-</span></span><span style="display:flex;"><span>etcd-client-cert   Opaque   <span style="color:#099">3</span>      17h
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /data/gitlab/config/ssl
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 将自由证书复制到此目录</span>
+</span></span><span style="display:flex;"><span>ll /data/gitlab/config/ssl/
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#099">1</span> root root <span style="color:#099">1464</span> Mar <span style="color:#099">31</span> 02:37 snoopyops.top.crt
+</span></span><span style="display:flex;"><span>-rw------- <span style="color:#099">1</span> root root  <span style="color:#099">227</span> Mar <span style="color:#099">31</span> 02:37 snoopyops.top.key
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>修改Prometheus的deployment配置文件，将证书挂载到pod内</p>
+</div><p>重启<code>gitlab</code>容器</p>
+<h2 id="禁止注册">禁止注册</h2>
+<p>默认情况下，任何访问到<code>gitlab</code>的用户都可以进行账号注册。如果是企业内部使用，强烈建议禁用新用户注册。由管理员对分配用户给其他同事。</p>
+<p>禁用步骤如下：</p>
+<ol>
+<li>在左侧导航栏底部，选择<code>管理员</code>。</li>
+<li>选择 <code>设置 &gt; 通用</code>。</li>
+<li>展开 <code>注册限制</code>。</li>
+<li>清除 <code>已启用注册功能</code> 复选框，然后选择 <code>保存修改</code>。</li>
+</ol>
+<p><img src="https://images.snoopyops.top/cicd/image-20250331110159007.png" alt="image-20250331110159007"></p>
+<h2 id="接入ldap">接入LDAP</h2>
+<p>对<code>/data/gitlab/config/gitlab.rb</code>做如下修改</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -210,77 +298,34 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>        volumeMounts:
-</span></span><span style="display:flex;"><span>        - mountPath: <span style="color:#d14">&#34;/etc/prometheus&#34;</span>
-</span></span><span style="display:flex;"><span>          name: config-volume
-</span></span><span style="display:flex;"><span>        - mountPath: <span style="color:#d14">&#34;/etc/alert-manager&#34;</span>
-</span></span><span style="display:flex;"><span>          name: config-alert
-</span></span><span style="display:flex;"><span>        - mountPath: <span style="color:#d14">&#34;/prometheus&#34;</span>
-</span></span><span style="display:flex;"><span>          name: data
-</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic"># 将证书文件挂载到pod /etc/etcd-cert目录</span>
-</span></span><span style="display:flex;"><span>        - mountPath: <span style="color:#d14">&#34;/etc/etcd-cert&#34;</span>
-</span></span><span style="display:flex;"><span>          name: etcd-cert
-</span></span><span style="display:flex;"><span>          readOnly: <span style="color:#0086b3">true</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;ldap_enabled&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">true</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      volumes:
-</span></span><span style="display:flex;"><span>      - name: data
-</span></span><span style="display:flex;"><span>        hostPath:
-</span></span><span style="display:flex;"><span>          path: /data/prometheus
-</span></span><span style="display:flex;"><span>          type: <span style="color:#d14">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>      - name: config-volume
-</span></span><span style="display:flex;"><span>        configMap:
-</span></span><span style="display:flex;"><span>          name: prometheus-config
-</span></span><span style="display:flex;"><span>      - name: config-alert
-</span></span><span style="display:flex;"><span>        configMap:
-</span></span><span style="display:flex;"><span>          name: config-alert-prometheus
-</span></span><span style="display:flex;"><span>      <span style="color:#998;font-style:italic"># 挂载secret</span>
-</span></span><span style="display:flex;"><span>      - name: etcd-cert
-</span></span><span style="display:flex;"><span>        secret:
-</span></span><span style="display:flex;"><span>          secretName: etcd-client-cert
-</span></span><span style="display:flex;"><span>          optional: <span style="color:#0086b3">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">###! **remember to close this block with &#39;EOS&#39; below**</span>
+</span></span><span style="display:flex;"><span>gitlab_rails<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;ldap_servers&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> YAML.load <span style="color:#d14">&lt;&lt;-&#39;EOS&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">  main: # &#39;main&#39; is the GitLab &#39;provider ID&#39; of this LDAP server
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    label: &#39;LDAP&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    host: &#39;10.20.0.56&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    port: 389
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    uid: &#39;cn&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    bind_dn: &#39;cn=admin,dc=snoopyops,dc=top&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    password: &#39;PassW0rd&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    encryption: &#39;plain&#39; # &#34;start_tls&#34; or &#34;simple_tls&#34; or &#34;plain&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    verify_certificates: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    smartcard_auth: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    active_directory: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    smartcard_ad_cert_field: &#39;altSecurityIdentities&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    smartcard_ad_cert_format: null # &#39;issuer_and_serial_number&#39;, &#39;issuer_and_subject&#39; , &#39;principal_name&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    allow_username_or_email_login: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    lowercase_usernames: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    block_auto_created_users: false
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    base: &#39;ou=People,dc=snoopyops,dc=top&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">    user_filter: &#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">EOS</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>修改Prometheus配置文件，添加etcd相关内容。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    - job_name: etcd
-</span></span><span style="display:flex;"><span>      scheme: https
-</span></span><span style="display:flex;"><span>      tls_config:
-</span></span><span style="display:flex;"><span>        ca_file: /etc/etcd-cert/ca.pem
-</span></span><span style="display:flex;"><span>        cert_file: /etc/etcd-cert/etcd.pem
-</span></span><span style="display:flex;"><span>        key_file: /etc/etcd-cert/etcd-key.pem
-</span></span><span style="display:flex;"><span>      static_configs:
-</span></span><span style="display:flex;"><span>      - targets: <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#39;10.23.111.17:2379&#39;</span>,<span style="color:#d14">&#39;10.23.111.44:2379&#39;</span>,<span style="color:#d14">&#39;10.23.111.45:2379&#39;</span>,<span style="color:#d14">&#39;10.23.111.21:2379&#39;</span>,<span style="color:#d14">&#39;10.23.111.22:2379&#39;</span><span style="color:#000;font-weight:bold">]</span>
-</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="告警">告警</h3>
-<p>根据etcd版本从GitHub找配置告警规则</p>
-<p>以etcd 3.4为例，告警规则路径为： <a href="https://github.com/etcd-io/etcd/blob/release-3.4/Documentation/op-guide/etcd3_alert.rules.yml">Github etcd告警规则</a></p>
-<blockquote>
-<p>文件备份路径： <a href="https://tools.wuennan.cn/file/etcd3_alert.rules.yml">https://tools.wuennan.cn/file/etcd3_alert.rules.yml</a></p>
-</blockquote>
-<p><img src="https://images.snoopyops.top/image-20230308140944564.png" alt="image-20230308140944564"></p>
-<h3 id="出图">出图</h3>
-<p>导入ID为3070的Granfana模版，具体地址为<a href="https://grafana.com/grafana/dashboards/3070-etcd/">Grafana模版</a></p>
-<p><img src="https://images.snoopyops.top/image-20230308114704893.png" alt="image-20230308114704893"></p>
-
     </div>
     
     

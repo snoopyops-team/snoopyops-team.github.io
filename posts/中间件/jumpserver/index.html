@@ -2,7 +2,7 @@
 <html lang="zh-CN"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="description" content=" - https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/nexus%E6%B8%85%E7%90%86/">
+    <meta name="description" content=" - https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/jumpserver/">
     <meta name="author" content="snoopy - https://www.snoopyops.top/">
     
     <meta name="msvalidate.01" content="B46311949B856F2A7015F366FB3CE878" />
@@ -68,7 +68,7 @@
         <span>
             
             <svg t="1656737548689" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33866" width="12" height="12"><path d="M832.038608 64.662657H192.030028C121.255125 64.662657 63.940169 121.98845 63.940169 192.694717v446.793671C63.940169 710.205493 121.255125 767.643272 192.030028 767.643272h133.353183a63.940169 63.940169 0 0 1 55.219742 31.576328l76.099638 129.83828c12.358154 21.093031 33.790754 31.626903 55.216129 31.626903s42.832688-10.544709 55.198067-31.619678l76.222461-129.870792a63.940169 63.940169 0 0 1 55.212517-31.551041h133.54103c70.576219 0 127.732228-57.289669 127.732227-127.800865V192.391272C959.825022 121.85479 902.643727 64.662657 832.038608 64.662657zM895.884854 639.842407A63.85347 63.85347 0 0 1 832.092795 703.703103h-133.54103a127.753903 127.753903 0 0 0-110.349172 63.09847l-76.222461 129.856342a0.274545 0.274545 0 0 1 0-0.050574h-0.032512s-0.021675 0.061411-0.032512 0.061412l-76.1466-129.85273A127.804477 127.804477 0 0 0 325.383211 703.703103H192.030028A64.207489 64.207489 0 0 1 127.880338 639.488388V192.694717A64.102729 64.102729 0 0 1 192.030028 128.602826h640.00858A63.799284 63.799284 0 0 1 895.884854 192.391272v447.451135z" fill="#adb5bd" p-id="33867"></path><path d="M608.154093 288.092004A31.970084 31.970084 0 0 0 576.184009 320.062089v160.078006l-134.650049-179.278119A31.970084 31.970084 0 0 0 384.002258 320.062089v255.760676a31.970084 31.970084 0 0 0 63.940169 0v-159.958796l134.650048 179.274507a31.970084 31.970084 0 0 0 57.531703-19.200113V320.062089a31.970084 31.970084 0 0 0-31.970085-31.970085z" fill="#adb5bd" p-id="33868"></path></svg>
-            172 字</span>&nbsp;
+            474 字</span>&nbsp;
         <span>
             
             <svg t="1656737462334" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32892" width="12" height="12"><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m0 810.666666c-204.8 0-373.333333-168.533333-373.333333-373.333333S307.2 138.666667 512 138.666667 885.333333 307.2 885.333333 512 716.8 885.333333 512 885.333333z" p-id="32893" fill="#adb5bd"></path><path d="M695.466667 567.466667l-151.466667-70.4V277.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v238.933334c0 12.8 6.4 23.466667 19.2 29.866666l170.666667 81.066667c4.266667 2.133333 8.533333 2.133333 12.8 2.133333 12.8 0 23.466667-6.4 29.866666-19.2 6.4-14.933333 0-34.133333-17.066666-42.666666z" p-id="32894" fill="#adb5bd"></path></svg>
@@ -96,10 +96,17 @@
 </div>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#nexus清理">Nexus清理</a>
+    <li><a href="#如何登录">如何登录</a>
       <ul>
-        <li><a href="#故障现象">故障现象</a></li>
-        <li><a href="#解决方案">解决方案</a></li>
+        <li><a href="#web登录">WEB登录</a></li>
+        <li><a href="#终端登录">终端登录</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户说明">用户说明</a></li>
+    <li><a href="#常见问题">常见问题</a>
+      <ul>
+        <li><a href="#忘记密码如何重置">忘记密码，如何重置</a></li>
+        <li><a href="#密码正确依然无法登录">密码正确，依然无法登录</a></li>
       </ul>
     </li>
   </ul>
@@ -107,20 +114,41 @@
     </div>
 
     <div class='content  '>
-        <h2 id="nexus清理">Nexus清理</h2>
-<h3 id="故障现象">故障现象</h3>
-<p>服务器 <code>/</code> 目录占用为 100% ，经排查此服务部署了 <code>Nexus</code> ，<code>/usr/local/sonatype-work/nexus3/blobs/default/content</code> 占用过高。</p>
-<h3 id="解决方案">解决方案</h3>
-<p>使用 <code>admin</code> 用户登陆到 <code>Nexus</code> ，按照下图导航，配置清理策略策略</p>
-<p><img src="https://images.snoopyops.top/image-20220908164435744.png" alt="image-20220908164435744"></p>
-<p>将配置的策略，关联到仓库</p>
-<p><img src="https://images.snoopyops.top/image-20220908164528177.png" alt="image-20220908164528177"></p>
-<p>手动执行 <code>Task</code> ，删除策略中指定的文件</p>
-<p><img src="https://images.snoopyops.top/image-20220908164633560.png" alt="image-20220908164633560"></p>
-<p>执行 <code>Compact blob store</code> 类型的 <code>Task</code> 释放磁盘空间</p>
-<p><img src="https://images.snoopyops.top/image-20220908164723794.png" alt="image-20220908164723794"></p>
-<p>磁盘占用量逐渐减少</p>
-<p><img src="https://images.snoopyops.top/image-20220908165704953.png" alt="image-20220908165704953"></p>
+        <p>因安全审计需求，<strong>公司所有机器通过堡垒机进行登录，不允许直连服务器。</strong></p>
+<h2 id="如何登录">如何登录</h2>
+<h3 id="web登录">WEB登录</h3>
+<p>登录地址：https://jumpserver.linke.ai/</p>
+<p>请使用LDAP域账号进行登录，若没有账号或登录失败，请联系@武恩楠 。</p>
+<h3 id="终端登录">终端登录</h3>
+<p>通过web登录后, 点击右上角头像&ndash;&gt;个人信息&ndash;&gt;更新SSH公钥&ndash;&gt;上传本机的SSH公钥。</p>
+<p><img src="https://rg975ojk5z.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTIxMDU5ODk2YzAyNGY3MGFjOTU5NDI2MjY1NWIwNDlfb3lmQzRBVER0WUNnNm9WbFBqaEJyUzhvR1FCbXVxa1dfVG9rZW46Q0pQcWJrZ2M3b1BoM0N4SVU4TmNvWndvbk1jXzE3NDMxNDQwMDg6MTc0MzE0NzYwOF9WNA" alt="img"></p>
+<p>配置成功后，你就可以通过终端免密登录堡垒机了。</p>
+<p>登录命令为</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span>ssh<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">-</span>p<span style="color:#bbb"> </span><span style="color:#099">5577</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#a61717;background-color:#e3d2d2">用户名</span><span style="color:#000;font-weight:bold">&gt;@</span>jumpserver.linke.ai<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#a61717;background-color:#e3d2d2">如</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>ssh<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">-</span>p<span style="color:#bbb"> </span><span style="color:#099">5577</span><span style="color:#bbb"> </span>ennan.wu<span style="color:#000;font-weight:bold">@</span>jumpserver.linke.ai<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>登录成功后，会有如下提示</p>
+<p><img src="https://rg975ojk5z.feishu.cn/space/api/box/stream/download/asynccode/?code=ODE1ZjgzZjhhN2EwMjljZDkxZWUxOGY1NzU4NjBkOTdfVU5yMXdrMWNaczc3OWxJZVl5Qk5JMTM3R21WUmhCMEpfVG9rZW46R3k0S2JJQTZVb3hVcjR4dGhXZmNoZnNpbktiXzE3NDMxNDQwMDg6MTc0MzE0NzYwOF9WNA" alt="img"></p>
+<h2 id="用户说明">用户说明</h2>
+<p>连接服务器时，有3个用户可供选择。分别对应3个权限。</p>
+<p><img src="https://rg975ojk5z.feishu.cn/space/api/box/stream/download/asynccode/?code=NGI5NDQwY2FiY2UwOTAyYjU1YjNiMmNhOGYyYmJjNjdfdERCYWZ1dlM1NWQ3aHEweUxnTWlMTExwSmU5bHJoSTRfVG9rZW46Q1RQemJaR1dQb0djcTR4M3FIcmNNZWxxbldlXzE3NDMxNDQwMDg6MTc0MzE0NzYwOF9WNA" alt="img"></p>
+<p>ecs-user用户：管理员，具有最高权限，可免密使用sudo命令提权。也可直接通过 <code>sudo su -</code>命令切换到<code>root</code>用户。</p>
+<p>worker用户：普通用户，具有 <code>systemctl</code>权限。</p>
+<p>develop用户：普通用户，可查看日志等。</p>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="忘记密码如何重置">忘记密码，如何重置</h3>
+<p>参考<a href="https://rg975ojk5z.feishu.cn/wiki/IcWOwjVyRib0XqkWdLlcVDn6nbh?fromScene=spaceOverview">域账号密码管理</a>进行重置密码。</p>
+<h3 id="密码正确依然无法登录">密码正确，依然无法登录</h3>
+<p>一般是多次输入错误密码导致账号被锁定，需联系@武恩楠 进行处理。</p>
 
     </div>
     

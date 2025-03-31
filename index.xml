@@ -6,7 +6,16 @@
     <description>Recent content on SnoopyOPS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Mar 2025 10:56:41 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Mar 2025 11:26:51 +0800</lastBuildDate><atom:link href="https://www.snoopyops.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitLab容器化部署</title>
+      <link>https://www.snoopyops.top/posts/cicd/gitlab%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sun, 30 Mar 2025 11:26:51 +0800</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/cicd/gitlab%E5%AE%B9%E5%99%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</guid>
+      <description>容器化部署GitLab 服务器规格低于4C8G可能会导致安装失败。 准备目录，用于持久化存储数据 1 2 mkdir -p /data/gitlab export GITLAB_HOME=/data/gitlab 容器化部署gitlab，需要替换hostname字段，</description>
+    </item>
+    
     <item>
       <title>Nginx多层代理下透传客户端真实IP</title>
       <link>https://www.snoopyops.top/posts/web%E7%9B%B8%E5%85%B3/nginx%E5%A4%9A%E5%B1%82%E4%BB%A3%E7%90%86%E4%B8%8B%E9%80%8F%E4%BC%A0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip/</link>
@@ -468,6 +477,15 @@
     
     <item>
       <title></title>
+      <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/jumpserver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/jumpserver/</guid>
+      <description>因安全审计需求，公司所有机器通过堡垒机进行登录，不允许直连服务器。 如何登录 WEB登录 登录地址：https://jumpserver.linke.ai/ 请使用LD</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://www.snoopyops.top/posts/%E4%B8%AD%E9%97%B4%E4%BB%B6/nexus%E6%B8%85%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -500,6 +518,24 @@
       
       <guid>https://www.snoopyops.top/posts/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/log-pilot%E6%94%B6%E9%9B%86nginx-ingress%E6%97%A5%E5%BF%97/</guid>
       <description>一、Log-pilog 部署 log-pilot apiVersion: apps/v1 kind: DaemonSet metadata: name: log-pilot labels: k8s-app: log-pilot namespace: kube-system spec: updateStrategy: type: RollingUpdate selector: matchLabels: k8s-app: log-pilot template: metadata: labels: k8s-app: log-pilot annotations: scheduler.alpha.kubernetes.io/critical-pod: &amp;#39;&amp;#39; spec: tolerations: - key: node-role.kubernetes.io/master effect: NoSchedule containers: - name: log-pilot image: registry.cn-hangzhou.aliyuncs.com/acs/log-pilot:0.9.6-filebeat resources: limits: cpu: 1 memory: 2Gi requests: cpu: 0.01 memory: 10Mi env: - name: &amp;#34;LOGGING_OUTPUT&amp;#34; value: &amp;#34;kafka&amp;#34; - name: &amp;#34;KAFKA_BROKERS&amp;#34; # 注意到k</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E8%BF%90%E7%BB%B4%E8%A7%84%E8%8C%83/%E6%88%90%E6%9C%AC%E5%8F%8C%E5%91%A8%E6%8A%A5%E6%A8%A1%E7%89%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E8%BF%90%E7%BB%B4%E8%A7%84%E8%8C%83/%E6%88%90%E6%9C%AC%E5%8F%8C%E5%91%A8%E6%8A%A5%E6%A8%A1%E7%89%88/</guid>
+      <description>成本双周报 总结 linky账号盘点， 共计减少2.9w/月费用 利用率不高，释放多台GPU机器（7台V100,4台T4） 负载较低，对多台ECS及RDS进行回收和降配 天</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.snoopyops.top/posts/%E8%BF%90%E7%BB%B4%E8%A7%84%E8%8C%83/%E6%88%90%E6%9C%AC%E6%9C%88%E6%8A%A5%E6%A8%A1%E7%89%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.snoopyops.top/posts/%E8%BF%90%E7%BB%B4%E8%A7%84%E8%8C%83/%E6%88%90%E6%9C%AC%E6%9C%88%E6%8A%A5%E6%A8%A1%E7%89%88/</guid>
+      <description>成本介绍 AIStory服务资源均采用云服务商，列表如下 阿里云/腾讯云/Azure/akamai/aws/火山云 其中akamai、aws按照美元计价，美元兑人民币</description>
     </item>
     
     <item>
